@@ -11,7 +11,7 @@ def test_create_repo() -> bool:
         print(f"Repository '{repo_name}' created successfully!")
         return True
     else:
-        print(f"Error creating repository. Status code: {response.status_code}")
+        print(f"Error creating repository. Status code: {response}")
         print(response.json())
         return False
 def test_delete_repo() -> bool:
