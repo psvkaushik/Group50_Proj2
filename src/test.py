@@ -7,7 +7,7 @@ github_token = os.environ['GITS_GITHUB_TOKEN']
 def test_create_repo() -> bool:
     repo_name = 'test'
     response = create_github_repo(github_token, repo_name)
-    if response.status_code == 201:
+    if response == 201:
         print(f"Repository '{repo_name}' created successfully!")
         return True
     else:
