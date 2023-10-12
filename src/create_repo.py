@@ -22,7 +22,7 @@ def create_github_repo(token, repo_name):
     # else:
     #     print(f"Error creating repository. Status code: {response.status_code}")
     #     print(response.json())
-    return response.status_code
+    return response
 
 # Replace 'your_repo_name' with the desired repository name
 # repo_name = 'test'
