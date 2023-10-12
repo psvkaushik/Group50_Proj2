@@ -1,0 +1,29 @@
+name: Python CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Do not use python versions below 3.9 since type annotations are only supported in Python >= 3.9
+        python-version: ["3.9", "3.10"]
+        script: ["src/main.py -t all"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Run tests
+        env:
+            GITS_GITHUB_TOKEN : ${{secrets.GITS_GITHUB_TOKEN}}
+        run: |
+          python ${{ matrix.script }}
