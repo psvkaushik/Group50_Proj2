@@ -12,7 +12,7 @@ def create_github_repo(token, repo_name):
     }
 
     # Replace 'your_username' with your GitHub username
-    url = f'https://api.github.com/GITSSE23/repos'
+    url = f'https://api.github.com/user/repos'
 
     response = requests.post(url, headers=headers, json=data)
 
@@ -24,7 +24,7 @@ def create_github_repo(token, repo_name):
     return response
 
 # Replace 'your_repo_name' with the desired repository name
-repo_name = 'HTML'
-github_token = "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"
-create_github_repo(github_token, repo_name)
+#repo_name = 'HTML'
+#github_token = "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"
+#create_github_repo(github_token, repo_name)
 

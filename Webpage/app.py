@@ -15,6 +15,7 @@ def create_github_repo():
 
     # Call your create_github_repo function from your Python script
     response = create_repo.create_github_repo(token, repo_name)
+    print(response)
 
     # Handle the response as needed (e.g., return a success message)
     if response.status_code == 201:
