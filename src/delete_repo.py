@@ -1,5 +1,5 @@
 import requests
-import yaml
+#import yaml
 
 def delete_github_repo(auth_token, user,  repo_name_to_delete):
     headers = {
