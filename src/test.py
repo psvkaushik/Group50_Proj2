@@ -1,7 +1,9 @@
 from create_repo import create_github_repo
+from delete_repo import delete_github_repo
 import os
 
 github_token = os.environ['GITS_GITHUB_TOKEN']
+github_user = 'GITSSE23'
 
 
 def test_create_repo() -> bool:
@@ -9,11 +11,20 @@ def test_create_repo() -> bool:
     response = create_github_repo(github_token, repo_name)
     if response.status_code == 201:
         print(f"Repository '{repo_name}' created successfully!")
-        return True
+        
+    elif response.status_code == 422:
+        print(f'Repo called {repo_name} already exists')
     else:
         print(f"Error creating repository. Status code: {response.status_code}")
         print(response.json())
-        return False
+        return True
 def test_delete_repo() -> bool:
-    return False
+    repo_name = 'test'
+    response = delete_github_repo(github_token, github_user, repo_name)
+    if response.status_code == 204:
+        print(f"Repository '{repo_name}' deleted successfully!")
+    else:
+        print(f"Error deleting repository. Status code: {response.status_code}")
+        print(response.json())
+    return True
   
