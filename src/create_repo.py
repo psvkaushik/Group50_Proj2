@@ -1,5 +1,6 @@
 import requests
 #from read_token import github_token
+import yaml
 
 def create_github_repo(token, repo_name):
     headers = {
@@ -17,15 +18,19 @@ def create_github_repo(token, repo_name):
 
     response = requests.post(url, headers=headers, json=data)
 
-    # if response.status_code == 201:
-    #     print(f"Repository '{repo_name}' created successfully!")
-    # else:
-    #     print(f"Error creating repository. Status code: {response.status_code}")
-    #     print(response.json())
+    if response.status_code == 201:
+        print(f"Repository '{repo_name}' created successfully!")
+    else:
+        print(f"Error creating repository. Status code: {response.status_code}")
+        print(response.json())
     return response
 
 # Replace 'your_repo_name' with the desired repository name
 # repo_name = 'test'
 
-# create_github_repo(github_token, repo_name)
+# file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\se23\Group50_Proj2\vars.yaml'
+# with open(file_path, 'r') as file:
+#     data = yaml.safe_load(file)
+# token = data['github_token']
+# create_github_repo(token, repo_name)
 
