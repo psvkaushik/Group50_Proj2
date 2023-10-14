@@ -1,88 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image and Form Example</title>
-    <style>
-        body {
-            background-color: #666666;
-            color: white;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            margin-top: 20px;
-        }
-        h1 {
-            font-size: 24px;
-        }
-        #form-container-create,
-        #form-container-clone {
-            display: none;
-        }
-        /* Rest of your CSS styles remain the same */
-    </style>
+  <title>Image and Form Example</title>
+
+  <style>
+    body {
+      background-color: #666666;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    #form-container-create,
+    #form-container-clone,
+    #form-container-delete {
+      display: none;
+    }
+
+  </style>
+
 </head>
+
 <body>
-    <h1>GIITS Homepage</h1>
 
-    <!-- Container for center-aligning the image -->
-    <div id="image-container">
-        <img src="{{ url_for('static', filename='image.gif') }}" alt="Animated GIF" width="450" height="300">
-    </div>
+  <h1>GIITS Homepage</h1>
 
-    <!-- Add a line break for proper spacing -->
-    <br>
+  <!-- Image container -->
 
-    <!-- Dropdown to control the visibility of form elements -->
-    <label for="option">Select an option to continue:</label>
-    <br>
+  <div id="image-container">
+      <img src="{{ url_for('static', filename='image.gif') }}" alt="Animated GIF" width="450" height="300">
+  </div>
 
-    <select id="option" onchange="toggleForm(this)">
-        <option value="hidden">-- Select --</option>
-        <option value="create_repo">Create Repo</option>
-        <option value="clone_repo">Clone Repo</option>
-    </select>
-    <br>
+  <br>
 
-    <!-- Form container with input fields and submit button for Create Repo -->
-    <div id="form-container-create">
-        <form action="/create_repo" method="post">
-            <label for="repoName">Repo Name:</label>
-            <input type="text" id="repoName" name="repoName" required> <br> <br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+  <label for="option">Select an option:</label>
+  <br>
+  <select id="option" onchange="toggleForm(this)">
+    <option value="hidden">-- Select --</option>
+    <option value="create_repo">Create Repo</option>
+    <option value="clone_repo">Clone Repo</option>
+    <option value="delete_repo">Delete Repo</option>
+  </select>
+  <br>
+  <div id="form-container-create">
+    <form action="/create_repo" method="post">
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
-    <!-- Form container with input fields and submit button for Clone Repo -->
-    <div id="form-container-clone">
-        <form action="/clone_repo" method="post">
-            <label for="repoURL">Repository URL:</label>
-            <input type="text" id="repoURL" name="repoURL" required><br> <br>
-            <label for="destinationPath">Destination Path:</label>
-            <input type="text" id="destinationPath" name="destinationPath" required><br> <br>
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+  <div id="form-container-clone">
+    <form action="/clone_repo" method="post">
+      <label for="repoURL">Repository URL:</label>
+      <input type="text" id="repoURL" name="repoURL" required><br> <br>
 
-    <script>
-        function toggleForm(selectElement) {
-            var formContainerCreate = document.getElementById('form-container-create');
-            var formContainerClone = document.getElementById('form-container-clone');
+      <label for="destinationPath">Destination Path:</label>
+      <input type="text" id="destinationPath" name="destinationPath" required><br> <br>
 
-            if (selectElement.value === 'create_repo') {
-                formContainerCreate.style.display = 'block';
-                formContainerClone.style.display = 'none';
-            } else if (selectElement.value === 'clone_repo') {
-                formContainerCreate.style.display = 'none';
-                formContainerClone.style.display = 'block';
-            } else {
-                formContainerCreate.style.display = 'none';
-                formContainerClone.style.display = 'none';
-            }
-        }
-    </script>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-delete">
+    <form action="/delete_repo" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    function toggleForm(selectElement) {
+      document.getElementById('form-container-create').style.display = 'none';
+      document.getElementById('form-container-clone').style.display = 'none';
+      document.getElementById('form-container-delete').style.display = 'none';
+
+      if (selectElement.value === 'create_repo') {
+        document.getElementById('form-container-create').style.display = 'block';
+      } else if (selectElement.value === 'clone_repo') {
+        document.getElementById('form-container-clone').style.display = 'block';
+      } else if (selectElement.value === 'delete_repo') {
+        document.getElementById('form-container-delete').style.display = 'block';
+      }
+    }
+  </script>
+
 </body>
 </html>

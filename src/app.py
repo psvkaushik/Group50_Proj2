@@ -7,7 +7,7 @@ import yaml
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
-token = "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"
+token = "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"
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -40,6 +40,19 @@ def clone_repository():
         return "Repository cloned successfully!"
     else:
         return f"Error cloning repository. Error message: {result.stderr}"
+
+@app.route('/delete_repo', methods=['POST'])
+def delete_repository():
+    user_name = request.form['userName']
+    repo_name = request.form['repoName']
+    # Call your delete_repo function here and handle the response
+    # For example, you can return a success or error message
+    result = delete_repo.delete_github_repo(token,user_name, repo_name)
+    if result.status_code == 204:
+        return "Repository deleted successfully!"
+    else:
+        return f"Error deleting repository. Error message: {result.json()}"
+
 
 if __name__ == '__main__':
     app.run(debug= True, port=5020)
