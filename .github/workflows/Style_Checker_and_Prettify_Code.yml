@@ -3,7 +3,7 @@ name: Style Checker and Code Prettify
 on:
   push:
     branches:
-      - main
+      - VaishnaviNaik96-patch1
 
 jobs:
   style-check-and-prettify:
