@@ -1,0 +1,42 @@
+name: Style Checker and Code Prettify
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  style-check-and-prettify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8 # You can specify your preferred Python version
+
+      - name: Install Python Dependencies
+        run: pip install -r requirements.txt
+
+      - name: Lint Python Code
+        run: flake8 .
+
+      - name: Install Prettier
+        run: npm install --global prettier
+
+      - name: Prettify HTML Files
+        run: |
+          find . -name "*.html" -exec prettier --write {} \;
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Auto code prettification and style check"
+          git push
+
