@@ -23,3 +23,4 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/psvkaushik/Group50_Proj2)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/psvkaushik/Group50_Proj2)
 [![Python CI](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml/badge.svg?branch=VaishnaviNaik96-patch-1&event=status)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml)
+[![Python CI](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml/badge.svg?branch=VaishnaviNaik96-patch-1)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml)
