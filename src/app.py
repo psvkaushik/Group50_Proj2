@@ -2,12 +2,13 @@ from flask import Flask, request, render_template
 import create_repo # Import your Python script
 import delete_repo
 import clone_repo
-import yaml
+import gits_pull
+
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
-token = "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"
+token = "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"
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -53,6 +54,17 @@ def delete_repository():
     else:
         return f"Error deleting repository. Error message: {result.json()}"
 
+@app.route('/pull_repo', methods=['POST'])
+def pull_repository():
+    repo_owner = request.form['repoOwner']
+    repo_name = request.form['repoName']
+    filename = request.form['filename']
+    local_filepath = request.form['localPath']
+    result = gits_pull.pull_file_from_github(token, repo_owner, repo_name, filename, local_filepath)
+    if result.status_code == 200:
+        return (f"File '{filename}' successfully pulled to '{local_filepath}'")
+    else:
+        return (f"Error pulling the file. Status code: {result.status_code}. /n {result.text}")
 
 if __name__ == '__main__':
     app.run(debug= True, port=5020)

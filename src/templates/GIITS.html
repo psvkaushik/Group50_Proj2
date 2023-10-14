@@ -23,6 +23,7 @@
 
     #form-container-create,
     #form-container-clone,
+    #form-container-pull,
     #form-container-delete {
       display: none;
     }
@@ -50,6 +51,7 @@
     <option value="create_repo">Create Repo</option>
     <option value="clone_repo">Clone Repo</option>
     <option value="delete_repo">Delete Repo</option>
+    <option value="pull_repo">Pull Repo</option>
   </select>
   <br>
   <div id="form-container-create">
@@ -84,10 +86,29 @@
     </form>
   </div>
 
+  <div id="form-container-pull">
+    <form action="/pull_repo" method="post">
+      <label for="repoOwner">Repo Owner:</label>
+      <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="filename">Filename:</label>
+      <input type="text" id="filename" name="filename" required> <br> <br>
+
+      <label for="localPath">Local FilePath:</label>
+      <input type="text" id="localPath" name="localPath" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
   <script>
     function toggleForm(selectElement) {
       document.getElementById('form-container-create').style.display = 'none';
       document.getElementById('form-container-clone').style.display = 'none';
+      document.getElementById('form-container-pull').style.display = 'none';
       document.getElementById('form-container-delete').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
@@ -96,6 +117,8 @@
         document.getElementById('form-container-clone').style.display = 'block';
       } else if (selectElement.value === 'delete_repo') {
         document.getElementById('form-container-delete').style.display = 'block';
+      } else if (selectElement.value === 'pull_repo') {
+        document.getElementById('form-container-pull').style.display = 'block';
       }
     }
   </script>
