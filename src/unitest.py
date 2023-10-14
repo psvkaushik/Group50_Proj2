@@ -74,6 +74,40 @@ class TestCreateGithubRepo(unittest.TestCase):
             }
         )
 
+    @patch('subprocess.run')
+    def test_clone_successful(self, mock_subprocess_run):
+        # Mock the subprocess.run function to return a successful result
+        mock_subprocess_run.return_value.returncode = 0
+        mock_subprocess_run.return_value.stdout = b"Cloning into 'destination'..."
+
+        # Call the function with mock data
+        result = clone_repository('repo_url', 'destination')
+
+        # Assertions
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(result.stdout, b"Cloning into 'destination'...")
+
+        # Ensure that subprocess.run was called with the expected arguments
+        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
+                                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+    @patch('subprocess.run')
+    def test_clone_failed(self, mock_subprocess_run):
+        # Mock the subprocess.run function to return a failed result
+        mock_subprocess_run.return_value.returncode = 1
+        mock_subprocess_run.return_value.stderr = b"Error: Repository not found"
+
+        # Call the function with mock data
+        result = clone_repository('repo_url', 'destination')
+
+        # Assertions
+        self.assertEqual(result.returncode, 1)
+        self.assertEqual(result.stderr, b"Error: Repository not found")
+
+        # Ensure that subprocess.run was called with the expected arguments
+        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
+                                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
 
 if __name__ == '__main__':
     unittest.main()
