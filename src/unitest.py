@@ -22,6 +22,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Assert
         self.assertEqual(response.status_code, 201)
         self.assertTrue(mock_post.called)
+        return True
 
     @patch('requests.post')
     def test_failed_repo_creation(self, mock_post):
@@ -40,6 +41,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Assert
         self.assertEqual(response.status_code, 400)
         self.assertTrue(mock_post.called)
+        return False
         
     @patch('requests.get')
     def test_successful_request(self, mock_get):
@@ -93,6 +95,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Ensure that subprocess.run was called with the expected arguments
         mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
                                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return True
 
     @patch('subprocess.run')
     def test_clone_failed(self, mock_subprocess_run):
@@ -110,6 +113,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Ensure that subprocess.run was called with the expected arguments
         mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
                                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        return False
 
     @patch('requests.post')
     def test_create_repo_success(self, mock_post):
@@ -137,6 +141,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'auto_init': True
             }
         )
+        return True
 
     @patch('requests.post')
     def test_create_repo_failure(self, mock_post):
@@ -163,6 +168,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'auto_init': True
             }
         )
+        return False
 
     @patch('requests.delete')
     def test_delete_repo_success(self, mock_delete):
@@ -183,6 +189,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
+        return True
 
     @patch('requests.delete')
     def test_delete_repo_failure(self, mock_delete):
@@ -203,6 +210,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
+        return False
 
     @patch('requests.post')
     def test_fork_repo_success(self, mock_post):
@@ -223,6 +231,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
+        return True
 
     @patch('requests.post')
     def test_fork_repo_failure(self, mock_post):
@@ -243,6 +252,7 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
+        return False
 
 
 if __name__ == '__main__':
