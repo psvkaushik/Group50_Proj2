@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Image and Form Example</title>
+  <title>GIITS Homepage</title>
 
   <style>
     body {
@@ -24,6 +24,7 @@
     #form-container-create,
     #form-container-clone,
     #form-container-pull,
+    #form-container-fork,
     #form-container-delete {
       display: none;
     }
@@ -46,13 +47,16 @@
 
   <label for="option">Select an option:</label>
   <br>
+
   <select id="option" onchange="toggleForm(this)">
     <option value="hidden">-- Select --</option>
     <option value="create_repo">Create Repo</option>
     <option value="clone_repo">Clone Repo</option>
     <option value="delete_repo">Delete Repo</option>
     <option value="pull_repo">Pull Repo</option>
+    <option value="fork_repo">Fork Repo</option>
   </select>
+
   <br>
   <div id="form-container-create">
     <form action="/create_repo" method="post">
@@ -86,6 +90,18 @@
     </form>
   </div>
 
+  <div id="form-container-fork">
+    <form action="/fork_repo" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
   <div id="form-container-pull">
     <form action="/pull_repo" method="post">
       <label for="repoOwner">Repo Owner:</label>
@@ -109,6 +125,7 @@
       document.getElementById('form-container-create').style.display = 'none';
       document.getElementById('form-container-clone').style.display = 'none';
       document.getElementById('form-container-pull').style.display = 'none';
+      document.getElementById('form-container-fork').style.display = 'none';
       document.getElementById('form-container-delete').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
@@ -119,6 +136,8 @@
         document.getElementById('form-container-delete').style.display = 'block';
       } else if (selectElement.value === 'pull_repo') {
         document.getElementById('form-container-pull').style.display = 'block';
+      } else if (selectElement.value === 'fork_repo') {
+        document.getElementById('form-container-fork').style.display = 'block';
       }
     }
   </script>
