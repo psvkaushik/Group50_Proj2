@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches:
-    - VaishnaviNaik96-patch1
+    - master
 
 jobs:
   prettier:
