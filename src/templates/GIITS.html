@@ -1,102 +1,166 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Image and Form Example</title>
-    <style>
-        body {
-            background-color: #666666; /* Lighter grey background color */
-            color: white; /* Text color is set to white for visibility on a light background */
-            text-align: center; /* Center-align text */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Align content to the top */
-            align-items: center;
-            height: 100vh;
-            margin: 0; /* Remove default margin */
-            margin-top: 20px; /* Add margin to the top */
-        }
-        h1 {
-            font-size: 24px; /* Increase the font size by 2 sizes (e.g., from 16px to 24px) */
-        }
-        /* Decrease the font size by 1 for all elements inside the form-container */
-        #form-container * {
-            font-size: 16px; /* Decrease the font size by 1 size (e.g., from 17px to 16px) */
-        }
-        /* Increase the font size for the dropdown label text by 2 and add a space */
-        #form-container label[for="option"] {
-            font-size: 18px; /* Increase the font size by 2 sizes (e.g., from 16px to 18px) */
-        }
-        /* Increase the font size for the dropdown itself by 1 */
-        #option {
-            font-size: 17px; /* Increase the font size by 1 size for the dropdown itself (e.g., from 16px to 17px) */
-        }
-        /* Initially hide the form elements */
-        #form-container {
-            display: none;
-        }
-        /* Adjust the spacing for form elements */
-        #form-container label,
-        #form-container input[type="text"],
-        #form-container input[type="submit"] {
-            margin-bottom: 10px; /* Add spacing between elements */
-        }
-        /* Center-align the input fields and the submit button */
-        #form-container form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        /* Set labels and input fields as inline-block elements to display on the same line */
-        #form-container label,
-        #form-container input[type="text"] {
-            display: inline-block;
-        }
-    </style>
+  <title>GIITS Homepage</title>
+
+  <style>
+    body {
+      background-color: #666666;
+      color: white;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    #form-container-create,
+    #form-container-clone,
+    #form-container-pull,
+    #form-container-fork,
+    #form-container-check_branch,
+    #form-container-delete {
+      display: none;
+    }
+
+  </style>
+
 </head>
+
 <body>
-    <h1>GIITS Homepage</h1>
 
-    <!-- Container for center-aligning the image -->
-    <div id="image-container">
-        <img src="{{ url_for('static', filename='image.gif') }}" alt="Animated GIF" width="450" height="300">
-    </div>
+  <h1>GIITS Homepage</h1>
 
-    <!-- Add a line break for proper spacing -->
-    <br>
+  <!-- Image container -->
 
-    <!-- Dropdown to control the visibility of form elements -->
-    <label for="option">Select an option to continue:</label>
-    <br> <!-- Add a line break for proper spacing -->
+  <div id="image-container">
+      <img src="{{ url_for('static', filename='image.gif') }}" alt="Animated GIF" width="450" height="300">
+  </div>
 
-    <select id="option" onchange="toggleForm(this)">
-        <option value="hidden">-- Select --</option>
-        <option value="visible">Create Repo</option>
-    </select>
+  <br>
 
-    <br> <!-- Add a line break for proper spacing -->
+  <label for="option">Select an option:</label>
+  <br>
 
-    <!-- Form container with input fields and submit button -->
-    <div id="form-container">
-        <form action="/create_repo" method="post">
-            <label for="repoName">Repo Name:</label>
-            <input type="text" id="repoName" name="repoName" required>
+  <select id="option" onchange="toggleForm(this)">
+    <option value="hidden">-- Select --</option>
+    <option value="create_repo">Create Repo</option>
+    <option value="clone_repo">Clone Repo</option>
+    <option value="delete_repo">Delete Repo</option>
+    <option value="pull_repo">Pull Repo</option>
+    <option value="fork_repo">Fork Repo</option>
+    <option value="check_branch">Check Branch</option>
+  </select>
 
-            <label for="token">Token:</label>
-            <input type="text" id="token" name="token" required>
+  <br>
+  <div id="form-container-create">
+    <form action="/create_repo" method="post">
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+      <input type="submit" value="Submit">
+    </form>
+  </div>
 
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+  <div id="form-container-clone">
+    <form action="/clone_repo" method="post">
+      <label for="repoURL">Repository URL:</label>
+      <input type="text" id="repoURL" name="repoURL" required><br> <br>
 
-    <script>
-        function toggleForm(selectElement) {
-            var formContainer = document.getElementById('form-container');
-            if (selectElement.value === 'visible') {
-                formContainer.style.display = 'block';
-            } else {
-                formContainer.style.display = 'none';
-            }
-        }
-    </script>
+      <label for="destinationPath">Destination Path:</label>
+      <input type="text" id="destinationPath" name="destinationPath" required><br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-delete">
+    <form action="/delete_repo" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-fork">
+    <form action="/fork_repo" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-check_branch">
+    <form action="/check_branch" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="branchName">Branch Name:</label>
+      <input type="text" id="branchName" name="branchName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-pull">
+    <form action="/pull_repo" method="post">
+      <label for="repoOwner">Repo Owner:</label>
+      <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="filename">Filename:</label>
+      <input type="text" id="filename" name="filename" required> <br> <br>
+
+      <label for="localPath">Local FilePath:</label>
+      <input type="text" id="localPath" name="localPath" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <script>
+    function toggleForm(selectElement) {
+      document.getElementById('form-container-create').style.display = 'none';
+      document.getElementById('form-container-clone').style.display = 'none';
+      document.getElementById('form-container-pull').style.display = 'none';
+      document.getElementById('form-container-fork').style.display = 'none';
+      document.getElementById('form-container-delete').style.display = 'none';
+      document.getElementById('form-container-check_branch').style.display = 'none';
+
+      if (selectElement.value === 'create_repo') {
+        document.getElementById('form-container-create').style.display = 'block';
+      } else if (selectElement.value === 'clone_repo') {
+        document.getElementById('form-container-clone').style.display = 'block';
+      } else if (selectElement.value === 'delete_repo') {
+        document.getElementById('form-container-delete').style.display = 'block';
+      } else if (selectElement.value === 'pull_repo') {
+        document.getElementById('form-container-pull').style.display = 'block';
+      } else if (selectElement.value === 'fork_repo') {
+        document.getElementById('form-container-fork').style.display = 'block';
+      } else if (selectElement.value === 'check_branch') {
+        document.getElementById('form-container-check_branch').style.display = 'block';
+      }
+    }
+  </script>
+
 </body>
 </html>
