@@ -3,6 +3,7 @@ import create_repo # Import your Python script
 import delete_repo
 import clone_repo
 import gits_pull
+import fork
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
@@ -54,6 +55,18 @@ def delete_repository():
     else:
         return f"Error deleting repository. Error message: {result.json()}"
 
+@app.route('/fork_repo', methods=['POST'])
+def fork_repository():
+    user_name = request.form['userName']
+    repo_name = request.form['repoName']
+    # Call your fork_repo function here and handle the response
+    # For example, you can return a success or error message
+    result = fork.fork_repo(user_name, repo_name, token)
+    if result.returncode == 0:
+        return "Repository forked successfully!"
+    else:
+        return f"Error deleting repository. Error message: {result.stderr}"
+
 @app.route('/pull_repo', methods=['POST'])
 def pull_repository():
     repo_owner = request.form['repoOwner']
@@ -65,6 +78,8 @@ def pull_repository():
         return (f"File '{filename}' successfully pulled to '{local_filepath}'")
     else:
         return (f"Error pulling the file. Status code: {result.status_code}. /n {result.text}")
+
+
 
 if __name__ == '__main__':
     app.run(debug= True, port=5020)
