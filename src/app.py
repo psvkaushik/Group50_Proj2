@@ -4,6 +4,7 @@ import delete_repo
 import clone_repo
 import gits_pull
 import fork
+import check_branch
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
@@ -65,7 +66,20 @@ def fork_repository():
     if result.returncode == 0:
         return "Repository forked successfully!"
     else:
-        return f"Error deleting repository. Error message: {result.stderr}"
+        return f"Error forking repository. Error message: {result.stderr}"
+
+@app.route('/check_branch', methods=['POST'])
+def check_branch():
+    user_name = request.form['userName']
+    repo_name = request.form['repoName']
+    branch_name = request.form['branchName']
+    # Call your fork_repo function here and handle the response
+    # For example, you can return a success or error message
+    result = check_branch.check_branch_exists(token, user_name, repo_name, branch_name)
+    if result.status_code == 200:
+        return f"Branch {branch_name} in the {repo_name} exists!"
+    else:
+        return f"Error!! Branch does not exist."
 
 @app.route('/pull_repo', methods=['POST'])
 def pull_repository():
