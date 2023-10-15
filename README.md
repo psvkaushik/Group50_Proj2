@@ -19,6 +19,6 @@
 [![Style Checker and Prettify Code](https://github.com/psvkaushik/Group50_Proj2/actions/workflows//Style_Checker_and_Prettify_Code.yml/badge.svg?branch=VaishnaviNaik96-patch-3)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows//Style_Checker_and_Prettify_Code.yml)
 ![version](https://img.shields.io/badge/version-1.0-blue)
 [![Greetings](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/greetings.yml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/greetings.yml)
-[![Close as a feature](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/close_as_a_feature.yml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/close_as_a_feature.yml)
+[![Close as a feature](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/close_as_a_feature.yml/badge.svg?branch=VaishnaviNaik96-patch-3)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/close_as_a_feature.yml)
 ![GitHub contributors](https://img.shields.io/github/contributors/psvkaushik/Group50_Proj2)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/psvkaushik/Group50_Proj2)
