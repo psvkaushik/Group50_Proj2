@@ -1,34 +1,44 @@
 import requests
+import os
+import zipfile
 
-def pull_file_from_github(token, repo_owner, repo_name, filename, local_filepath):
+def download_github_repo(token, repo_owner, repo_name, local_dir):
     headers = {
         'Authorization': f'token {token}',
-        'Accept': 'application/vnd.github.v3.raw'  # Request raw content
+        'Accept': 'application/vnd.github.v3.raw'
     }
 
-    file_url = f'https://raw.githubusercontent.com/{repo_owner}/{repo_name}/main/{filename}'
+    # Create a ZIP archive URL for the GitHub repository
+    repo_url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/zipball/main'
 
-    response = requests.get(file_url, headers=headers)
+    response = requests.get(repo_url, headers=headers)
 
     if response.status_code == 200:
-        with open(local_filepath, 'w') as local_file:
-            local_file.write(response.text)
-        print(f"File '{filename}' successfully pulled to '{local_filepath}'")
+        zip_filename = os.path.join(local_dir, f'{repo_name}_main.zip')
+
+        with open(zip_filename, 'wb') as zip_file:
+            zip_file.write(response.content)
+
+        # Extract the ZIP archive to the local directory
+        with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
+            zip_ref.extractall(local_dir)
+
+        # Clean up the ZIP file
+        os.remove(zip_filename)
+
+        print(f"Repository '{repo_name}' successfully downloaded and extracted to '{local_dir}'")
     else:
-        print(f"Error pulling the file. Status code: {response.status_code}")
+        print(f"Error downloading the repository. Status code: {response.status_code}")
         print(response.text)
 
 # Replace with your GitHub Personal Access Token
-# github_token = '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'
+github_token = ' '   ###enter github token
 
 # Replace with the repository owner and name
-repo_owner = 'VaishnaviNaik96'
-repo_name = 'test_510'
+repo_owner = ' '   ### username of the owner
+repo_name = '  '   ### Repository name
 
-# Replace with the name of the text file you want to pull
-filename = 'testing'
+# Replace with the local directory where you want to save the repository
+local_dir = '   '   ###local directory to save the repo
 
-# Replace with the local path where you want to save the file
-local_filepath = 'local_example.txt'
-
-pull_file_from_github(github_token, repo_owner, repo_name, filename, local_filepath)
+download_github_repo(github_token, repo_owner, repo_name, local_dir)
