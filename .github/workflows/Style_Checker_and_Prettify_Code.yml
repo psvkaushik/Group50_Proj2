@@ -1,0 +1,24 @@
+name: Style Checker and Prettify Code
+on:
+  pull_request:
+  push:
+    branches:
+    - master
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install npm v8
+      run: npm i -g npm@8
+      
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Prettify code
+      uses: creyD/prettier_action@v4.0
+      with:
+        prettier_options: --write **/*.{js,md}
