@@ -1,5 +1,5 @@
-from create_repo import create_github_repo
-from delete_repo import delete_github_repo
+from gits_createrepo import create_github_repo
+from gits_delete import delete_github_repo
 import os
 
 github_token = os.environ['GITS_GITHUB_TOKEN']

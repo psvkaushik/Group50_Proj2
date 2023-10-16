@@ -1,5 +1,5 @@
 import subprocess
-from check_branch import check_branch_exists
+from gits_checkbranch import check_branch_exists
 
 def create_pr(PAT, user_name, repo_name, dir_path,  branch_name='main', file_path='.', commit_message='user forgot to add message'):
     result = []
