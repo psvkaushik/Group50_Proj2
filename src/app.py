@@ -78,7 +78,7 @@ def check_branch():
     branch_name = request.form['branchName']
     # Call your fork_repo function here and handle the response
     # For example, you can return a success or error message
-    result = check_branch_exists(token, user_name, repo_name, branch_name)
+    result = gits_checkbranch.check_branch_exists(token, user_name, repo_name, branch_name)
     if result.status_code == 200:
         return f"Branch {branch_name} in the {repo_name} exists!"
     else:
