@@ -1,4 +1,4 @@
-# Group50_Proj2 - GITS3.1 - Sometimes a REQUEST is all it Takes!!!!
+# Group50_Proj2 - GITS3.1 - Sometimes all you need to do is make a REQUEST!!!!
 
 
 
