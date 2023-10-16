@@ -1,15 +1,15 @@
 from flask import Flask, request, render_template
-import create_repo # Import your Python script
+import create_repo
 import delete_repo
 import clone_repo
 import gits_pull
 import fork
-import check_branch
+from check_branch import check_branch_exists
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
-token = "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"
+token = "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"
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -75,11 +75,11 @@ def check_branch():
     branch_name = request.form['branchName']
     # Call your fork_repo function here and handle the response
     # For example, you can return a success or error message
-    result = check_branch.check_branch_exists(token, user_name, repo_name, branch_name)
+    result = check_branch_exists(token, user_name, repo_name, branch_name)
     if result.status_code == 200:
         return f"Branch {branch_name} in the {repo_name} exists!"
     else:
-        return f"Error!! Branch does not exist."
+        return f"Error!! Error message: {result.json()}"
 
 @app.route('/pull_repo', methods=['POST'])
 def pull_repository():
