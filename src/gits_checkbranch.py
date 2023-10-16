@@ -17,5 +17,5 @@ def check_branch_exists(PAT, user_name, repo_name, branch_name):
     response = requests.get(url=url, headers=headers)
     return response
 
-print(check_branch_exists('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', 'GITSSE23', 'test2', 'mai'))
+print(check_branch_exists('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', 'GITSSE23', 'test2', 'main'))
 

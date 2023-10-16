@@ -1,10 +1,10 @@
 from flask import Flask, request, render_template
-import create_repo # Import your Python script
-import delete_repo
-import clone_repo
+import gits_createrepo # Import your Python script
+import gits_delete
+import gits_clone
 import gits_pull
-import fork
-import check_branch
+import gits_fork
+import gits_checkbranch
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
@@ -25,7 +25,7 @@ def create_github_repo():
     #token = request.form['token']
 
     # Call your create_github_repo function from your Python script
-    response = create_repo.create_github_repo(token, repo_name)
+    response = gits_createrepo.create_github_repo(token, repo_name)
     print(response)
 
     # Handle the response as needed (e.g., return a success message)
@@ -38,7 +38,7 @@ def create_github_repo():
 def clone_repository():
     repo_url = request.form['repoURL']
     destination_path = request.form['destinationPath']
-    result = clone_repo.clone_repository(repo_url, destination_path)
+    result = gits_clone.clone_repository(repo_url, destination_path)
     if result.returncode == 0:
         return "Repository cloned successfully!"
     else:
@@ -50,7 +50,7 @@ def delete_repository():
     repo_name = request.form['repoName']
     # Call your delete_repo function here and handle the response
     # For example, you can return a success or error message
-    result = delete_repo.delete_github_repo(token,user_name, repo_name)
+    result = gits_delete.delete_github_repo(token,user_name, repo_name)
     if result.status_code == 204:
         return "Repository deleted successfully!"
     else:
@@ -62,7 +62,7 @@ def fork_repository():
     repo_name = request.form['repoName']
     # Call your fork_repo function here and handle the response
     # For example, you can return a success or error message
-    result = fork.fork_repo(user_name, repo_name, token)
+    result = gits_fork.fork_repo(user_name, repo_name, token)
     if result.returncode == 0:
         return "Repository forked successfully!"
     else:
