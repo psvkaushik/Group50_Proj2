@@ -29,7 +29,8 @@
     #form-container-branch,
     #form-container-commit_count,
     #form-container-merge_branch,
-    #form-container-delete {
+    #form-container-commit_diff
+    #form-container-delete, {
       display: none;
     }
 
@@ -63,6 +64,7 @@
     <option value="get_branches">Get Branches</option>
     <option value="commit_count">Get Commit Count</option>
     <option value="merge_branch">Merge Branch to Main</option>
+    <option value="commit_diff">Commit diff</option>
 
   </select>
 
@@ -179,6 +181,21 @@
 
   <div id="form-container-merge_branch">
     <form action="/merge_branch" method="post">
+      <label for="repoOwner">Repo Owner:</label>
+      <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="branchName">Branch Name:</label>
+      <input type="text" id="branchName" name="branchName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-commit_diff">
+    <form action="/commit_diff" method="post">
       <label for="repoOwner">Repo Owner:</label>
       <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
 

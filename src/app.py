@@ -9,6 +9,7 @@ import gits_checkbranch
 import gits_branch
 import gits_countcommit
 import gits_merge
+import gits_diff
 
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
@@ -93,7 +94,7 @@ def pull_repository():
     repo_name = request.form['repoName']
     filename = request.form['filename']
     local_filepath = request.form['localPath']
-    result = gits_pull.pull_file_from_github(token, repo_owner, repo_name, filename, local_filepath)
+    result = gits_pull.download_github_repo(token, repo_owner, repo_name, filename, local_filepath)
     if result.status_code == 200:
         return (f"File '{filename}' successfully pulled to '{local_filepath}'")
     else:
@@ -112,7 +113,7 @@ def get_branches():
 @app.route('/commit_count', methods=['POST'])
 def get_commit_count():
     repo_url = request.form['repoURL']
-    result = gits_countcommit.count_commits_in_github_repo(repo_url, destination_path)
+    result = gits_countcommit.count_commits_in_github_repo(repo_url)
     return result
 
 @app.route('/merge_branch', methods=['POST'])
@@ -120,7 +121,15 @@ def merge_branch():
     repo_owner = request.form['repoOwner']
     repo_name = request.form['repoName']
     branch_name = request.form['branchName']
-    result = gits_merge.merge_github_branch(repo_owner,repo_name,branch_name, token)
+    result = gits_merge.merge_github_branch(repo_owner, repo_name, branch_name, token)
+    return result
+
+@app.route('/commit_diff', methods=['POST'])
+def commit_diff():
+    repo_owner = request.form['repoOwner']
+    repo_name = request.form['repoName']
+    branch_name = request.form['branchName']
+    result = gits_diff.get_github_commit_diff(repo_owner, repo_name, branch_name, token)
     return result
 
 if __name__ == '__main__':
