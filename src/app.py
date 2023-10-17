@@ -15,7 +15,7 @@ import gits_diff
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
-token = "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"
+token = "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"
 
 
 app = Flask(__name__, static_url_path='/static')

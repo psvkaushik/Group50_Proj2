@@ -1,8 +1,22 @@
 import unittest
 from unittest.mock import Mock, patch
+import subprocess
+
 from gits_createrepo import create_github_repo
+from gits_branch import get_github_branches
+from gits_checkbranch import check_branch_exists
+from gits_delete import delete_github_repo
+from gits_diff import get_github_commit_diff
+from gits_fork import fork_repo
+from gits_merge import merge_github_branch
+from gits_pull import download_github_repo
+from read_token import  username
+from gits_clone import clone_repository
+
 import os
-github_token = os.environ['GITS_GITHUB_TOKEN']
+# github_token = os.environ["GITS_GITHUB_TOKEN"]
+
+github_token = "jfjyYVpBmGnGdueNlhEH6skTDKaUbH2hP5xC"
 
 class TestCreateGithubRepo(unittest.TestCase):
 
@@ -50,13 +64,13 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_get.return_value.text = 'Test content'
 
         # Call the function with mock data
-        pull_file_from_github('your_token', 'owner', 'repo', 'file.txt', 'local.txt')
+        #pull_file_from_github('your_token', 'owner', 'repo', 'file.txt', 'local.txt')
 
         # Assertions
         mock_get.assert_called_with(
             'https://raw.githubusercontent.com/owner/repo/main/file.txt',
             headers={
-                'Authorization': 'token '+ github_token,
+                'Authorization': f'token + {github_token}',
                 'Accept': 'application/vnd.github.v3.raw'
             }
         )
@@ -68,13 +82,13 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_get.return_value.text = 'Not Found'
 
         # Call the function with mock data
-        pull_file_from_github('your_token', 'owner', 'repo', 'file.txt', 'local.txt')
+        #pull_file_from_github('your_token', 'owner', 'repo', 'file.txt', 'local.txt')
 
         # Assertions
         mock_get.assert_called_with(
             'https://raw.githubusercontent.com/owner/repo/main/file.txt',
             headers={
-                'Authorization': 'token '+ github_token,
+                'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3.raw'
             }
         )
@@ -132,7 +146,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_post.assert_called_with(
             'https://api.github.com/user/repos',
             headers={
-                'Authorization': github_token,
+                'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             },
             json={
@@ -159,7 +173,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_post.assert_called_with(
             'https://api.github.com/user/repos',
             headers={
-                'Authorization': 'token + github_token,
+                'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             },
             json={
@@ -185,7 +199,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_delete.assert_called_with(
             f'https://api.github.com/repos/username/repo-to-delete',
             headers={
-                'Authorization': 'token '+ github_token,
+                'Authorization': f'token  {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -206,7 +220,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_delete.assert_called_with(
             f'https://api.github.com/repos/username/repo-to-delete',
             headers={
-                'Authorization': github_token,
+                'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -227,7 +241,7 @@ class TestCreateGithubRepo(unittest.TestCase):
         mock_post.assert_called_with(
             'https://api.github.com/repos/target_user/target_repo/forks',
             headers={
-                'Authorization': 'token '+github_token,
+                'Authorization': f'token +{github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -246,9 +260,9 @@ class TestCreateGithubRepo(unittest.TestCase):
 
         # Ensure that requests.post was called with the expected arguments
         mock_post.assert_called_with(
-            'https://api.github.com/repos/target_user/target_repo/forks',
+            f'https://api.github.com/repos/target_user/target_repo/forks',
             headers={
-                'Authorization': 'token '+github_token,
+                'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
