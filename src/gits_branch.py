@@ -1,10 +1,10 @@
 import requests
 
-def get_github_branches(owner, repo):
+def get_github_branches(owner, repo, github_token):
     try:
         # Replace 'YOUR_GITHUB_TOKEN' with your GitHub personal access token or use other authentication methods.
         headers = {
-            'Authorization': '  ',
+            'Authorization': f'token {github_token}',
         }
 
         # Define the API URL to list branches.
@@ -12,8 +12,8 @@ def get_github_branches(owner, repo):
 
         # Send a GET request to the GitHub API.
         response = requests.get(api_url, headers=headers)
-
-        if response.status_code == 200:
+        return response
+        /*if response.status_code == 200:
             branches = response.json()
             branch_name = []
             for branch in branches:
@@ -23,7 +23,7 @@ def get_github_branches(owner, repo):
         else:
             print(f"Error: Unable to fetch branches - Status Code {response.status_code}")
             print(response.text)
-            return False
+            return False*/
 
     except Exception as e:
         print("ERROR: gits branch command caught an exception")
@@ -36,4 +36,5 @@ def get_github_branches(owner, repo):
 if __name__ == "__main__":
     owner = '  '  # Replace with the GitHub username or organization name.
     repo = '  '  # Replace with the name of the GitHub repository.
-    get_github_branches(owner, repo)
+    github_token = '  ' #Enter token here
+    get_github_branches(owner, repo, token)
