@@ -1,12 +1,12 @@
 import requests
 
 #Inputs to the code:
-repository_owner = 'VaishnaviNaik96'
-repository_name = 'test_510'
-branch_name = 'test'
+repository_owner = ' ' ##OWNER NAME
+repository_name = '  ' ##REPO NAME
+branch_name = ' ' ##BRANCH YOU WANT TO MERGE
 
 #Personal Access Token - Generate one in your GitHub account with the "repo" scope
-access_token = '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'
+access_token = ' ' ##TOKEN
 
 # API endpoint for merging a branch
 url = f'https://api.github.com/repos/{repository_owner}/{repository_name}/merges'
