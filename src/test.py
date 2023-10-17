@@ -1,7 +1,8 @@
 from gits_createrepo import create_github_repo
 from gits_delete import delete_github_repo
 from gits_fork import fork_repo
-from gits_branch import 
+from gits_checkbranch import check_branch_exists
+
 import os
 
 github_token = os.environ['GITS_GITHUB_TOKEN']
@@ -23,7 +24,7 @@ def test_create_repo() -> bool:
         print(response.json())
     return True
     
-test_create_repo()
+
 def test_delete_repo() -> bool:
     repo_name = 'test'
     response = delete_github_repo(github_token, github_user, repo_name)
@@ -45,4 +46,16 @@ def test_fork() -> bool:
         print(response.json())
     return True
 
+def test_check_branch() -> bool:
+    branch_name = 'main'
+    username = 'GITSSE23'
+    reponame = 'test2'
+    branch_name = 'newb'
+    response = check_branch_exists(github_token, username, reponame, branch_name)
+    if response.status_code == 200:
+        print('The branch {branchname} exists.')
+    else:
+        print(f"Error deleting repository. Status code: {response.status_code}")
+        print(response.json())
+    return True
 

@@ -23,20 +23,23 @@ def get_github_commit_diff(owner, repo, branch, github_token):
 
             # Send a GET request to the GitHub API to retrieve the difference.
             response = requests.get(diff_api_url, headers=headers)
-            return response
-            #if response.status_code == 200:
+            #return response
+            if response.status_code == 200:
+                diff_data = response.json()
+                return (diff_data['files'])
             #    diff_data = response.json()
             #    print("Difference since the last commit:")
             #    print(diff_data['files'])
-            #else:
+            else:
+                return (response.text)
             #    print(f"Error: Unable to fetch the difference - Status Code {response.status_code}")
             #    print(response.text)
             #    return False
         else:
-            #print(f"Error: Unable to fetch the latest commit - Status Code {response.status_code}")
-            #print(response.text)
+            return (f"Error: Unable to fetch the latest commit - Status Code {response.status_code}")
+            
             #return False
-            return response
+            #return response
 
     except Exception as e:
         print("ERROR: gits diff command caught an exception")
