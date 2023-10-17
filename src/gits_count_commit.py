@@ -27,7 +27,7 @@ def count_commits_in_github_repo(repo_url): #function to extract the owner and r
             page += 1
             
         except requests.exceptions.RequestException as e:
-            print(f"Error: {e}")
+            #print(f"Error: {e}")
             return None
 
     return commit_count
