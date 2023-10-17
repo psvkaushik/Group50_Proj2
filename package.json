@@ -1,0 +1,8 @@
+{
+    "devDependencies": {
+      "codecov.io": "^0.1.6"
+    },
+    "scripts" : {
+        "report-coverage" : "cat ./coverage/lcov.info | codecov"
+    }
+  }
