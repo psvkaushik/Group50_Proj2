@@ -30,7 +30,8 @@
     #form-container-commit_count,
     #form-container-merge_branch,
     #form-container-commit_diff,
-    #form-container-delete, {
+    #form-container-get_branches,
+    #form-container-delete {
       display: none;
     }
 
@@ -221,6 +222,7 @@
       document.getElementById('form-container-commit_count').style.display = 'none';
       document.getElementById('form-container-merge_branch').style.display = 'none';
       document.getElementById('form-container-pull').style.display = 'none';
+      document.getElementById('form-container-commit_diff').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
         document.getElementById('form-container-create').style.display = 'block';
@@ -240,6 +242,8 @@
         document.getElementById('form-container-commit_count').style.display = 'block';
       } else if (selectElement.value === 'merge_branch') {
         document.getElementById('form-container-merge_branch').style.display = 'block';
+      } else if (selectElement.value === 'commit_diff') {
+        document.getElementById('form-container-commit_diff').style.display = 'block';
       }
     }
   </script>
