@@ -19,4 +19,4 @@ jobs:
     - name: Prettify code
       uses: creyD/prettier_action@v4.0
       with:
-        prettier_options: '--write "src/**/*.{js,md}"'
+        prettier_options: '--write "**/*.{js,md}"'
