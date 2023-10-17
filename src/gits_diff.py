@@ -31,8 +31,7 @@ def get_github_commit_diff(owner, repo, branch, github_token):
             #    print("Difference since the last commit:")
             #    print(diff_data['files'])
             else:
-                return (response.text)
-            #    print(f"Error: Unable to fetch the difference - Status Code {response.status_code}")
+                 return(f"Error: Unable to fetch the difference - Status Code {response.status_code}")
             #    print(response.text)
             #    return False
         else:
