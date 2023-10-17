@@ -6,6 +6,7 @@ import gits_clone
 import gits_pull
 import gits_fork
 import gits_checkbranch
+import gits_branch
 
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
@@ -96,6 +97,15 @@ def pull_repository():
     else:
         return (f"Error pulling the file. Status code: {result.status_code}. /n {result.text}")
 
+@app.route('/get_branches', methods=['POST'])
+def get_branches():
+    repo_owner = request.form['repoOwner']
+    repo_name = request.form['repoName']
+    result = gits_branch.get_github_branches(repo_owner, repo_name, token)
+    if result.status_code == 200:
+        return [branch for branch in result.json()]
+    else:
+        return(f"Error: Unable to fetch branches - Status Code {result.status_code}")
 
 
 if __name__ == '__main__':
