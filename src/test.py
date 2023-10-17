@@ -1,5 +1,7 @@
 from gits_createrepo import create_github_repo
 from gits_delete import delete_github_repo
+from gits_fork import fork_repo
+from gits_branch import 
 import os
 
 github_token = os.environ['GITS_GITHUB_TOKEN']
@@ -32,3 +34,15 @@ def test_delete_repo() -> bool:
         print(response.json())
     return True
   
+def test_fork() -> bool:
+    repo_name = 'slash'
+    user_name = 'TommasU'
+    response = fork_repo(user_name, repo_name, github_token)
+    if response.status_code == 202:
+        print(f"Repository '{user_name}/{repo_name}' forked successfully!")
+    else:
+        print(f"Error deleting repository. Status code: {response.status_code}")
+        print(response.json())
+    return True
+
+
