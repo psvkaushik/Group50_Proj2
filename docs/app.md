@@ -56,6 +56,7 @@ To run the Flask app, follow these steps:
 Replace the `token` variable with your GitHub Personal Access Token to enable GitHub API interactions.
 Run the Flask app with the following command:
 `python app.py`
+
 Access the web application by opening a web browser and navigating to `http://localhost:5020/`.
 
 Please note that the application is primarily a front-end for GitHub-related actions and depends on the external Python scripts for interacting with the GitHub API.
