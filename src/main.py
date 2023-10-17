@@ -1,5 +1,5 @@
 import sys
-from test import test_create_repo, test_delete_repo
+from test import test_create_repo, test_delete_repo, test_fork, test_check_branch
 from test_runner import TestRunner
 
 global_options = {}
