@@ -15,7 +15,7 @@ import gits_diff
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
-token = "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"
+token = "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"
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -106,7 +106,7 @@ def get_branches():
     repo_name = request.form['repoName']
     result = gits_branch.get_github_branches(repo_owner, repo_name, token)
     if result.status_code == 200:
-        return [branch for branch in result.json()]
+        return [branch['name'] for branch in result.json()]
     else:
         return(f"Error: Unable to fetch branches - Status Code {result.status_code}")
 
