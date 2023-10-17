@@ -7,6 +7,7 @@ import gits_pull
 import gits_fork
 import gits_checkbranch
 import gits_branch
+import gits_count_commit
 
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
@@ -106,6 +107,15 @@ def get_branches():
         return [branch for branch in result.json()]
     else:
         return(f"Error: Unable to fetch branches - Status Code {result.status_code}")
+
+@app.route('/commit_count', methods=['POST'])
+def get_commit_count():
+    repo_url = request.form['repoURL']
+    result = gits_count_commit.count_commits_in_github_repo(repo_url, destination_path)
+    if result.returncode == 0:
+        return ""
+    else:
+        return f"Error cloning repository. Error message: {result.stderr}"
 
 
 if __name__ == '__main__':
