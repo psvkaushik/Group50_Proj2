@@ -28,6 +28,7 @@
     #form-container-check_branch,
     #form-container-branch,
     #form-container-commit_count,
+    #form-container-merge_branch,
     #form-container-delete {
       display: none;
     }
@@ -61,6 +62,8 @@
     <option value="check_branch">Check Branch</option>
     <option value="get_branch">Get Branches</option>
     <option value="commit_count">Get Commit Count</option>
+    <option value="merge_branch">Merge Branch to Main</option>
+
   </select>
 
   <br>
@@ -174,6 +177,21 @@
     </form>
   </div>
 
+  <div id="form-container-merge_branch">
+    <form action="/merge_branch" method="post">
+      <label for="repoOwner">Repo Owner:</label>
+      <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="branchName">Branch Name:</label>
+      <input type="text" id="branchName" name="branchName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
   <script>
     function toggleForm(selectElement) {
       document.getElementById('form-container-create').style.display = 'none';
@@ -184,6 +202,8 @@
       document.getElementById('form-container-check_branch').style.display = 'none';
       document.getElementById('form-container-branch').style.display = 'none';
       document.getElementById('form-container-commit_count').style.display = 'none';
+      document.getElementById('form-container-merge_branch').style.display = 'none';
+      document.getElementById('form-container-pull').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
         document.getElementById('form-container-create').style.display = 'block';
@@ -201,6 +221,8 @@
         document.getElementById('form-container-branch').style.display = 'block';
       } else if (selectElement.value === 'commit_count') {
         document.getElementById('form-container-commit_count').style.display = 'block';
+      } else if (selectElement.value === 'merge_branch') {
+        document.getElementById('form-container-merge_branch').style.display = 'block';
       }
     }
   </script>
