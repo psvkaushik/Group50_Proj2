@@ -6,8 +6,8 @@ def count_commits_in_github_repo(repo_url): #function to extract the owner and r
     repo_name = parts[-1]
 
     #commit_count = 0
-    #page = 1
-    #per_page = 100
+    page = 1
+    per_page = 100
 
     #while True:
     api_url = f'https://api.github.com/repos/{owner}/{repo_name}/commits'
