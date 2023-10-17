@@ -13,17 +13,17 @@ def get_github_branches(owner, repo, github_token):
         # Send a GET request to the GitHub API.
         response = requests.get(api_url, headers=headers)
         return response
-        /*if response.status_code == 200:
-            branches = response.json()
-            branch_name = []
-            for branch in branches:
-                #print(branch['name'])
-                branch_name.append(branch)
-            return branch_name
-        else:
-            print(f"Error: Unable to fetch branches - Status Code {response.status_code}")
-            print(response.text)
-            return False*/
+        #if response.status_code == 200:
+        #    branches = response.json()
+        #    branch_name = []
+        #    for branch in branches:
+        #        #print(branch['name'])
+        #        branch_name.append(branch)
+        #    return branch_name
+        #else:
+        #    print(f"Error: Unable to fetch branches - Status Code {response.status_code}")
+        #    print(response.text)
+        #   return False
 
     except Exception as e:
         print("ERROR: gits branch command caught an exception")
