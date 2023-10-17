@@ -60,7 +60,7 @@
     <option value="pull_repo">Pull Repo</option>
     <option value="fork_repo">Fork Repo</option>
     <option value="check_branch">Check Branch</option>
-    <option value="get_branch">Get Branches</option>
+    <option value="get_branches">Get Branches</option>
     <option value="commit_count">Get Commit Count</option>
     <option value="merge_branch">Merge Branch to Main</option>
 
@@ -120,8 +120,8 @@
     </form>
   </div>
 
-  <div id="form-container-branch">
-    <form action="/get_branch" method="post">
+  <div id="form-container-get_branches">
+    <form action="/get_branches" method="post">
       <label for="userName">User Name:</label>
       <input type="text" id="userName" name="userName" required> <br> <br>
 
@@ -200,7 +200,7 @@
       document.getElementById('form-container-fork').style.display = 'none';
       document.getElementById('form-container-delete').style.display = 'none';
       document.getElementById('form-container-check_branch').style.display = 'none';
-      document.getElementById('form-container-branch').style.display = 'none';
+      document.getElementById('form-container-get_branches').style.display = 'none';
       document.getElementById('form-container-commit_count').style.display = 'none';
       document.getElementById('form-container-merge_branch').style.display = 'none';
       document.getElementById('form-container-pull').style.display = 'none';
@@ -217,8 +217,8 @@
         document.getElementById('form-container-fork').style.display = 'block';
       } else if (selectElement.value === 'check_branch') {
         document.getElementById('form-container-check_branch').style.display = 'block';
-      } else if (selectElement.value === 'get_branch') {
-        document.getElementById('form-container-branch').style.display = 'block';
+      } else if (selectElement.value === 'get_branches') {
+        document.getElementById('form-container-get_branches').style.display = 'block';
       } else if (selectElement.value === 'commit_count') {
         document.getElementById('form-container-commit_count').style.display = 'block';
       } else if (selectElement.value === 'merge_branch') {
