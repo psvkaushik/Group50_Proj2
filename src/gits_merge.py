@@ -3,7 +3,7 @@ import requests
 #Inputs to the code:
 repository_owner = ' ' ##OWNER NAME
 repository_name = '  ' ##REPO NAME
-branch_name = ' ' ##BRANCH YOU WANT TO MERGE
+branch_name = ' ' ##BRANCH YOU WANT TO MERGE INTO MAIN
 
 #Personal Access Token - Generate one in your GitHub account with the "repo" scope
 access_token = ' ' ##TOKEN
@@ -24,7 +24,7 @@ def merge_github_branch(repository_owner, repository_name, branch_name, access_t
         latest_commit_sha = response.json()['object']['sha']
         # Data for the merge request
         data = {
-            'base': 'main',  #target branch to merge into
+            'base': 'main',  #target is the main branch
             'head': latest_commit_sha,  #SHA of 'test' branch
             'commit_message': 'Merge branch'  #commit message for the merge
         }
