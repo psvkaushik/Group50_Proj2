@@ -8,6 +8,7 @@ import gits_fork
 import gits_checkbranch
 import gits_branch
 import gits_countcommit
+import gits_merge
 
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
@@ -112,6 +113,14 @@ def get_branches():
 def get_commit_count():
     repo_url = request.form['repoURL']
     result = gits_countcommit.count_commits_in_github_repo(repo_url, destination_path)
+    return result
+
+@app.route('/merge_branch', methods=['POST'])
+def merge_branch():
+    repo_owner = request.form['repoOwner']
+    repo_name = request.form['repoName']
+    branch_name = request.form['branchName']
+    result = gits_merge.merge_github_branch(repo_owner,repo_name,branch_name, token)
     return result
 
 if __name__ == '__main__':
