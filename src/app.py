@@ -70,7 +70,7 @@ def fork_repository():
     # For example, you can return a success or error message
 
     result = gits_fork.fork_repo(user_name, repo_name, token)
-    if result.returncode == 0:
+    if result.status_code == 202:
         return "Repository forked successfully!"
     else:
         return f"Error forking repository. Error message: {result.json()}"
