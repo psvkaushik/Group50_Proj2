@@ -5,7 +5,7 @@
 # The Demo Video:
 
 
-### GITS2.1 - I.R.I.S (Ideal ReposItory for Software projects)
+### GITS3.1 - I.R.I.S (Ideal ReposItory for Software projects)
 
 ![GitHub](https://img.shields.io/github/license/psvkaushik/Group50_Proj2)
 [![codecov](https://codecov.io/gh/psvkaushik/Group50_Proj2/branch/master/graph/badge.svg?token=I3KHGTAQLU)](https://codecov.io/gh/psvkaushik/Group50_Proj2)
