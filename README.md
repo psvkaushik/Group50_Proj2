@@ -6,7 +6,7 @@
 
 ![GitHub](https://img.shields.io/github/license/psvkaushik/Group50_Proj2)
 [![codecov](https://codecov.io/gh/psvkaushik/Group50_Proj2/branch/master/graph/badge.svg?token=I3KHGTAQLU)](https://codecov.io/gh/psvkaushik/Group50_Proj2)
-[![DOI](https://zenodo.org/badge/428784754.svg)](https://zenodo.org/badge/latestdoi/428784754)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10015846.svg)](https://doi.org/10.5281/zenodo.10015846)
 [![GitHub issues](https://img.shields.io/github/issues/psvkaushik/Group50_Proj2)](https://github.com/psvkaushik/Group50_Proj2/issues?q=is%3Aopen+is%3Aissue)
 [![GitHub closed issues](https://img.shields.io/github/issues-closed/psvkaushik/Group50_Proj2)](https://github.com/psvkaushik/Group50_Proj2/issues?q=is%3Aissue+is%3Aclosed)
 [![](https://tokei.rs/b1/github/psvkaushik/Group50_Proj2)](https://github.com/psvkaushik/Group50_Proj2).
