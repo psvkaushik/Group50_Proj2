@@ -114,7 +114,5 @@ def get_commit_count():
     result = gits_countcommit.count_commits_in_github_repo(repo_url, destination_path)
     return result
 
-
-
 if __name__ == '__main__':
     app.run(debug= True, port=5020)
