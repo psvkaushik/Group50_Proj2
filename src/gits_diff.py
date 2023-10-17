@@ -26,18 +26,18 @@ def get_github_commit_diff(owner, repo, branch, github_token):
             #return response
             if response.status_code == 200:
                 diff_data = response.json()
-                print(diff_data['files'])
+                return (diff_data['files'])
             #    diff_data = response.json()
             #    print("Difference since the last commit:")
             #    print(diff_data['files'])
             else:
-                print(response.text)
+                return (response.text)
             #    print(f"Error: Unable to fetch the difference - Status Code {response.status_code}")
             #    print(response.text)
             #    return False
         else:
-            #print(f"Error: Unable to fetch the latest commit - Status Code {response.status_code}")
-            print(response.text)
+            return (f"Error: Unable to fetch the latest commit - Status Code {response.status_code}")
+            
             #return False
             #return response
 
