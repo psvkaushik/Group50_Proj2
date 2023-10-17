@@ -26,6 +26,7 @@
     #form-container-pull,
     #form-container-fork,
     #form-container-check_branch,
+    #form-container-branch,
     #form-container-delete {
       display: none;
     }
@@ -57,6 +58,7 @@
     <option value="pull_repo">Pull Repo</option>
     <option value="fork_repo">Fork Repo</option>
     <option value="check_branch">Check Branch</option>
+    <option value="get_branch">Get Branches</option>
   </select>
 
   <br>
@@ -82,6 +84,18 @@
 
   <div id="form-container-delete">
     <form action="/delete_repo" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-branch">
+    <form action="/get_branch" method="post">
       <label for="userName">User Name:</label>
       <input type="text" id="userName" name="userName" required> <br> <br>
 
@@ -145,6 +159,7 @@
       document.getElementById('form-container-fork').style.display = 'none';
       document.getElementById('form-container-delete').style.display = 'none';
       document.getElementById('form-container-check_branch').style.display = 'none';
+      document.getElementById('form-container-branch').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
         document.getElementById('form-container-create').style.display = 'block';
@@ -158,6 +173,8 @@
         document.getElementById('form-container-fork').style.display = 'block';
       } else if (selectElement.value === 'check_branch') {
         document.getElementById('form-container-check_branch').style.display = 'block';
+      } else if (selectElement.value === 'get_branch') {
+        document.getElementById('form-container-branch').style.display = 'block';
       }
     }
   </script>
