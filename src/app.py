@@ -173,7 +173,7 @@ def diff():
 
 
 @app.route('/merge_branch', methods=['POST'])
-def diff():
+def merge_branch():
     repo_owner = request.form['repoOwner']
     repo_name = request.form['repoName']
     branch_name = request.form['branchName']
