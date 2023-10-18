@@ -25,11 +25,4 @@ def get_github_branches(owner, repo, github_token):
         print("ERROR: {}".format(str(e)))
         return False
 
-    return True
 
-
-if __name__ == "__main__":
-    owner = '  '
-    repo = '  '
-    github_token = '  ' 
-    get_github_branches(owner, repo, token)
