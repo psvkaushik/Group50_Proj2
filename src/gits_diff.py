@@ -18,27 +18,18 @@ def get_github_commit_diff(owner, repo, branch, github_token):
             commit = response.json()
             commit_sha = commit['sha']
 
-            # Define the API URL to get the difference between the latest commit and the current state.
             diff_api_url = f'https://api.github.com/repos/{owner}/{repo}/compare/{commit_sha}...{branch}'
 
-            # Send a GET request to the GitHub API to retrieve the difference.
             response = requests.get(diff_api_url, headers=headers)
-            #return response
             if response.status_code == 200:
                 diff_data = response.json()
                 return (diff_data['files'])
-            #    diff_data = response.json()
-            #    print("Difference since the last commit:")
-            #    print(diff_data['files'])
             else:
                  return(f"Error: Unable to fetch the difference - Status Code {response.status_code}")
-            #    print(response.text)
-            #    return False
+
         else:
             return (f"Error: Unable to fetch the latest commit - Status Code {response.status_code}")
-            
-            #return False
-            #return response
+        
 
     except Exception as e:
         print("ERROR: gits diff command caught an exception")
@@ -49,9 +40,9 @@ def get_github_commit_diff(owner, repo, branch, github_token):
 
 
 if __name__ == "__main__":
-    owner = ' '  # Replace with your GitHub username or organization name.
-    repo = ' '  # Replace with the name of the GitHub repository.
-    branch = ' '  # Specify the branch you want to compare with the last commit.
-    github_token = '  '  # Enter token 
+    owner = ' ' 
+    repo = ' ' 
+    branch = ' ' 
+    github_token = '  '
 
     get_github_commit_diff(owner, repo, branch)
