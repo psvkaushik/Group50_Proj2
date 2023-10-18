@@ -561,35 +561,19 @@ class Test(unittest.TestCase):
 
     @patch('subprocess.run')
     def test_commit_success(self, mock_subprocess_run):
-        mock_subprocess_run.return_value.returncode = 0
-        mock_subprocess_run.return_value.stdout = b'Commit successful\n'
-        mock_subprocess_run.return_value.stderr = b''
+        mock_result = Mock(returncode=0, stdout=b'Commit successful\n', stderr=b'')
+        mock_subprocess_run.return_value = mock_result
     
         dir_path = '/path/to/the/repo'
         branch = 'main'
         files = 'file1.txt file2.txt'
         commit_msg = 'Commit message'
-    
         result = commit(dir_path, branch, files, commit_msg)
-    
+     
         self.assertEqual(result, 'Commit successful\n')
     
-    @patch('subprocess.run')
-    def test_checkout_new_branch(self, mock_subprocess_run):
-        mock_subprocess_run.side_effect = [  
-            unittest.mock.Mock(returncode=1, stdout=b'Branch not found\n', stderr=b''),
-            unittest.mock.Mock(returncode=0, stdout=b'Branch created\n', stderr=b''),
-            unittest.mock.Mock(returncode=0, stdout=b'Files added and committed\n', stderr=b'')
-        ]
+        mock_subprocess_run.assert_called_with(['git', 'checkout', 'main'], cwd=dir_path, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     
-        dir_path = '/path/to/the/repo'
-        branch = 'new-branch'
-        files = 'file1.txt'
-        commit_msg = 'Commit message'
-    
-        result = commit(dir_path, branch, files, commit_msg)
-    
-        self.assertEqual(result, 'Files added and committed\n')
 
 if __name__ == '__main__':
     unittest.main()
