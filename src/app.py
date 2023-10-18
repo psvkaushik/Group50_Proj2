@@ -172,8 +172,8 @@ def push():
     return result
 
 
-@app.route('/merge_branch', methods=['POST'])
-def merge_branch():
+@app.route('/diff', methods=['POST'])
+def diff():
     repo_owner = request.form['repoOwner']
     repo_name = request.form['repoName']
     branch_name = request.form['branchName']
