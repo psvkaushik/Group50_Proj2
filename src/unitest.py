@@ -10,16 +10,20 @@ from gits_diff import get_github_commit_diff
 from gits_fork import fork_repo
 from gits_merge import merge_github_branch
 from gits_pull import download_github_repo
-#from read_token import  username
+# from read_token import  username
 from gits_clone import clone_repository
 from gits_createbranch import create_branch
+import app
+from flask import Flask
 
 import os
+
 # github_token = os.environ["GITS_GITHUB_TOKEN"]
 # github_username = os.environ["GITS_USERNAME"]
 
 github_token = "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"
 username = 'GITSSE23'
+
 
 class Test(unittest.TestCase):
 
@@ -42,11 +46,11 @@ class Test(unittest.TestCase):
                 'Authorization': f'token {token}',
                 'Accept': 'application/vnd.github.v3+json'
             },
-            json = {
-        'name': repo_name,
-        'license_template': 'mit',
-        'auto_init': True  # This will initialize the repository with a README.
-    }
+            json={
+                'name': repo_name,
+                'license_template': 'mit',
+                'auto_init': True
+            }
         )
 
     @patch('gits_createrepo.requests.post')
@@ -65,20 +69,19 @@ class Test(unittest.TestCase):
 
         # Assert
         self.assertEqual(response.status_code, 422)
-        #self.assertTrue(mock_post.called)
+        # self.assertTrue(mock_post.called)
         mock_post.assert_called_once_with(
             f'https://api.github.com/user/repos',
             headers={
                 'Authorization': f'token {token}',
                 'Accept': 'application/vnd.github.v3+json'
             },
-            json = {
-        'name': repo_name,
-        'license_template': 'mit',
-        'auto_init': True  # This will initialize the repository with a README.
-    }
+            json={
+                'name': repo_name,
+                'license_template': 'mit',
+                'auto_init': True
+            }
         )
-        
 
     @patch('gits_createbranch.check_branch_exists')
     @patch('gits_createbranch.requests.post')
@@ -96,9 +99,9 @@ class Test(unittest.TestCase):
         # Call the function with mock values
         result = create_branch('user', 'repo', 'main', 'feature', 'your-PAT')
         headers = {
-        "Accept": 'application/vnd.github.v3+json',
-        "Authorization" : f'token your-PAT'
-    }
+            "Accept": 'application/vnd.github.v3+json',
+            "Authorization": f'token your-PAT'
+        }
         data = {
             "ref": f"refs/heads/feature",
             "sha": 'abcdef1234567890'
@@ -126,8 +129,8 @@ class Test(unittest.TestCase):
         self.assertEqual(result.stdout, b"Cloning into 'destination'...")
 
         # Ensure that subprocess.run was called with the expected arguments
-        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
-                                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'], stdout=subprocess.PIPE,
+                                               stderr=subprocess.PIPE)
 
     @patch('subprocess.run')
     def test_clone_failed(self, mock_subprocess_run):
@@ -143,21 +146,17 @@ class Test(unittest.TestCase):
         self.assertEqual(result.stderr, b"Error: Repository not found")
 
         # Ensure that subprocess.run was called with the expected arguments
-        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
-                                              stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-
+        mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'], stdout=subprocess.PIPE,
+                                               stderr=subprocess.PIPE)
 
     @patch('gits_delete.requests.delete')
     def test_delete_repo_sucess(self, mock_delete):
-        
         mock_response = Mock()
-        mock_response.status_code = 204 # implies successful delete
-        mock_delete.return_value = mock_response 
+        mock_response.status_code = 204  # implies successful delete
+        mock_delete.return_value = mock_response
 
         # Call the function with mock data
         response = delete_github_repo('github_token', 'user', 'test_repo')
-
 
         # Assertions
         self.assertEqual(response.status_code, 204)
@@ -242,19 +241,73 @@ class Test(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
         headers = {
-        "Accept": 'application/vnd.github.v3+json',
-        "Authorization" : f'token PAT'
-    }
+            "Accept": 'application/vnd.github.v3+json',
+            "Authorization": f'token PAT'
+        }
 
         url = f'https://api.github.com/repos/user_name/repo_name/branches/branch_name'
         # Asserting with mock call
         mock_get.assert_called_once_with(url=url, headers=headers)
 
+    @patch('app.token', 'token')
+    @patch('gits_createrepo.create_github_repo')
+    def test_app_create_github_repo_success(self, mock_create_github_repo):
+        # Configure the mock objects
+        mock_create_github_repo.return_value.status_code = 201
+        test_app = Flask(__name__)
 
-    
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo'}):
+            # Call the Flask route function within the request context
+            response = app.create_github_repo()
 
+        # Verify the results
+        self.assertEqual(response, 'Repository created successfully!')
+        mock_create_github_repo.assert_called_with('token', 'my-repo')
+
+    @patch('app.token', 'token')
+    @patch('gits_createrepo.create_github_repo')
+    def test_app_create_github_repo_failure(self, mock_create_github_repo):
+        # Configure the mock objects
+        mock_create_github_repo.return_value.status_code = 404
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo'}):
+            # Call the Flask route function within the request context
+            response = app.create_github_repo()
+
+        # Verify the results
+        self.assertEqual(response, "Error creating repository. Status code: 404")
+        mock_create_github_repo.assert_called_with('token', 'my-repo')
+
+    @patch('gits_clone.clone_repository')
+    def test_clone_repository_success(self, mock_clone_repository):
+        # Configure the mock objects
+        mock_clone_repository.return_value.returncode = 0
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoURL': 'https://github.com/owner/repo', 'destinationPath': '/path/to/clone'}):
+            # Call the Flask route function within the request context
+            response = app.clone_repository()
+
+        # Verify the results
+        self.assertEqual(response, 'Repository cloned successfully!')
+        mock_clone_repository.assert_called_with('https://github.com/owner/repo',"/path/to/clone")
+
+    @patch('gits_clone.clone_repository')
+    def test_clone_repository_failure(self, mock_clone_repository):
+        # Configure the mock objects
+        mock_clone_repository.return_value.returncode = 1  # Simulate a failed clone
+        mock_clone_repository.return_value.stderr = 'Error message for failed clone'
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoURL': 'https://github.com/owner/repo', 'destinationPath': '/path/to/clone'}):
+            # Call the Flask route function within the request context
+            response = app.clone_repository()
+
+        # Verify the results
+        self.assertEqual(response, 'Error cloning repository. Error message: Error message for failed clone')
+        mock_clone_repository.assert_called_with('https://github.com/owner/repo', "/path/to/clone")
 
 
 if __name__ == '__main__':
     unittest.main()
-
