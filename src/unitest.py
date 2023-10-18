@@ -403,5 +403,20 @@ class Test(unittest.TestCase):
         self.assertEqual(response, "Repository 'repoName' successfully downloaded and extracted to 'localPath'")
         mock_pull_github_repo.assert_called_with( 'token', "repoOwner", 'repoName', 'localPath')
 
+    @patch('app.token', 'token')
+    @patch('gits_branch.get_github_branches')
+    def test_app_get_branch_github_repo(self, mock_get_branch_github_repo):
+        # Configure the mock objects
+        mock_get_branch_github_repo.return_value.status_code = 200
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName'}):
+            # Call the Flask route function within the request context
+            response = app.get_branches()
+
+        # Verify the results
+        self.assertEqual(response, [])
+        mock_get_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'token')
+
 if __name__ == '__main__':
     unittest.main()
