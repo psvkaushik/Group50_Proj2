@@ -280,7 +280,7 @@ class Test(unittest.TestCase):
         mock_create_github_repo.assert_called_with('token', 'my-repo')
 
     @patch('gits_clone.clone_repository')
-    def test_clone_repository_success(self, mock_clone_repository):
+    def test_app_clone_repository_success(self, mock_clone_repository):
         # Configure the mock objects
         mock_clone_repository.return_value.returncode = 0
         test_app = Flask(__name__)
@@ -294,7 +294,7 @@ class Test(unittest.TestCase):
         mock_clone_repository.assert_called_with('https://github.com/owner/repo', "/path/to/clone")
 
     @patch('gits_clone.clone_repository')
-    def test_clone_repository_failure(self, mock_clone_repository):
+    def test_app_clone_repository_failure(self, mock_clone_repository):
         # Configure the mock objects
         mock_clone_repository.return_value.returncode = 1  # Simulate a failed clone
         mock_clone_repository.return_value.stderr = 'Error message for failed clone'
@@ -417,6 +417,37 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, [])
         mock_get_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'token')
+
+    @patch('gits_countcommit.count_commits_in_github_repo')
+    def test_app_commit_count(self, mock_clone_commit_count):
+        mock_clone_commit_count.return_value = '100'
+        # Configure the mock objects
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoURL': 'https://github.com/owner/repo'}):
+            # Call the Flask route function within the request context
+            response = app.get_commit_count()
+
+        # Verify the results
+        self.assertEqual(response, 'The total number of commits in the given repo is 100')
+        mock_clone_commit_count.assert_called_with('https://github.com/owner/repo')
+
+    @patch('app.token', 'token')
+    @patch('gits_merge.merge_github_branch')
+    def test_app_merge_branch_github_repo(self, mock_merge_branch_github_repo):
+        # Configure the mock objects
+        mock_merge_branch_github_repo.return_value = "Merged Successfully!"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
+                                                                     'branchName': 'branchName'}):
+            # Call the Flask route function within the request context
+            response = app.merge_branch()
+
+        # Verify the results
+        self.assertEqual(response, "Merged Successfully!")
+        mock_merge_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
+
 
 if __name__ == '__main__':
     unittest.main()
