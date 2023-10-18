@@ -159,5 +159,14 @@ def commit_diff():
     return result
 
 
+@app.route('/merge_branch', methods=['POST'])
+def diff():
+    repo_owner = request.form['repoOwner']
+    repo_name = request.form['repoName']
+    branch_name = request.form['branchName']
+    result = gits_diff.get_github_diff(repo_owner, repo_name, branch_name, token)
+    return result
+
+
 if __name__ == '__main__':
     app.run(debug=True, port=5020)

@@ -41,6 +41,7 @@ this file. If not, please write to: gits3.1project@gmail.com
     #form-container-commit_diff,
     #form-container-get_branches,
     #form-container-create_branch,
+    #form-container-diff,
     #form-container-delete {
       display: none;
     }
@@ -77,6 +78,7 @@ this file. If not, please write to: gits3.1project@gmail.com
     <option value="merge_branch">Merge Branch to Main</option>
     <option value="commit_diff">Commit diff</option>
     <option value="create_branch">Create Branch</option>
+    <option value="diff">View Diff</option>
 
   </select>
 
@@ -226,7 +228,6 @@ this file. If not, please write to: gits3.1project@gmail.com
   </div>
 
   <div id="form-container-commit_diff">
-
     <form action="/commit_diff" method="post">
       <label for="localPath">Working Directory:</label>
       <input type="text" id="localPath" name="localPath" required> <br> <br>
@@ -239,6 +240,21 @@ this file. If not, please write to: gits3.1project@gmail.com
 
       <label for="commit_msg">Commit Message:</label>
       <input type="text" id="commit_msg" name="commit_msg" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div id="form-container-diff">
+    <form action="/diff" method="post">
+      <label for="repoOwner">Repo Owner:</label>
+      <input type="text" id="repoOwner" name="repoOwner" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="branchName">Branch Name:</label>
+      <input type="text" id="branchName" name="branchName" required> <br> <br>
 
       <input type="submit" value="Submit">
     </form>
@@ -258,6 +274,7 @@ this file. If not, please write to: gits3.1project@gmail.com
       document.getElementById('form-container-pull').style.display = 'none';
       document.getElementById('form-container-commit_diff').style.display = 'none';
       document.getElementById('form-container-create_branch').style.display = 'none';
+      document.getElementById('form-container-diff').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
         document.getElementById('form-container-create').style.display = 'block';
@@ -281,6 +298,8 @@ this file. If not, please write to: gits3.1project@gmail.com
         document.getElementById('form-container-commit_diff').style.display = 'block';
       } else if (selectElement.value === 'create_branch') {
         document.getElementById('form-container-create_branch').style.display = 'block';
+      } else if (selectElement.value === 'diff') {
+        document.getElementById('form-container-diff').style.display = 'block';
       }
     }
   </script>

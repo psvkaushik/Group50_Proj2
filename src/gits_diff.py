@@ -10,7 +10,7 @@ this file. If not, please write to: gits3.1project@gmail.com
 import requests
 
 
-def get_github_commit_diff(owner, repo, branch, github_token):
+def get_github_diff(owner, repo, branch, github_token):
     try:
         # Replace 'YOUR_GITHUB_TOKEN' with your GitHub personal access token or use other authentication methods.
         headers = {
@@ -50,4 +50,4 @@ if __name__ == "__main__":
     branch = ' '
     github_token = '  '
 
-    get_github_commit_diff(owner, repo, branch)
+    get_github_diff(owner, repo, branch)
