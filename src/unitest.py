@@ -324,18 +324,19 @@ class Test(unittest.TestCase):
         mock_delete_github_repo.assert_called_with('token', "userName", 'my-repo')
 
     @patch('app.token', 'token')
-    @patch('gits_delete.delete_github_repo')
-    def test_app_delete_github_repo_failure(self, mock_delete_github_repo):
+    @patch('gits_fork.fork_repo')
+    def test_app_fork_github_repo_success(self, mock_fork_github_repo):
         # Configure the mock objects
-        mock_delete_github_repo.return_value.status_code = 404
+        mock_fork_github_repo.return_value.status_code = 202
         test_app = Flask(__name__)
 
         with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName'}):
             # Call the Flask route function within the request context
-            app.delete_repository()
+            response = app.fork_repository()
 
         # Verify the results
-        mock_delete_github_repo.assert_called_with('token', "userName", 'my-repo')
+        self.assertEqual(response, 'Repository forked successfully!')
+        mock_fork_github_repo.assert_called_with("userName", 'my-repo', 'token')
 
 
 if __name__ == '__main__':
