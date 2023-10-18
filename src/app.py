@@ -20,6 +20,7 @@ import gits_countcommit
 import gits_merge
 import gits_diff
 import gits_createbranch
+import gits_commit
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
@@ -150,10 +151,11 @@ def merge_branch():
 
 @app.route('/commit_diff', methods=['POST'])
 def commit_diff():
-    repo_owner = request.form['repoOwner']
-    repo_name = request.form['repoName']
+    local_path = request.form['localPath']
     branch_name = request.form['branchName']
-    result = gits_diff.get_github_commit_diff(repo_owner, repo_name, branch_name, token)
+    filename = request.form['filename']
+    commit_msg = request.form['commit_msg']
+    result = gits_commit.commit(local_path, branch_name, filename, commit_msg)
     return result
 
 
