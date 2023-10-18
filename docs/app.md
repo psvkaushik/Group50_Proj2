@@ -4,7 +4,7 @@ This documentation provides an overview of the Flask web application, App.py, wh
 
 ## Code Description
 
-The App.py code is organized into several routes, each of which handles a specific GitHub-related action. The following sections describe the routes and their corresponding functions:
+The App.py [code](/src/app.py) is organized into several routes, each of which handles a specific GitHub-related action. The following sections describe the routes and their corresponding functions:
 
 ### Index Route
 - **Route**: `/`
