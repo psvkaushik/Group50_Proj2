@@ -488,5 +488,21 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, "Branch 'test-branch' merged successfully.")
 
+    @patch('requests.get')
+    def test_get_commit_sha_failure(self, mock_get):
+        commit_sha_response = Mock()
+        commit_sha_response.status_code = 404
+        commit_sha_response.text = "Commit SHA not found"
+        mock_get.return_value = commit_sha_response
+
+        repository_owner = 'owner'
+        repository_name = 'repo'
+        branch_name = 'test-branch'
+        access_token = 'test_access_token'
+
+        result = merge_github_branch(repository_owner, repository_name, branch_name, access_token)
+        print(result)
+        self.assertEqual(result, "Failed to get the latest commit SHA. Status code: 404\nCommit SHA not found")
+
 if __name__ == '__main__':
     unittest.main()
