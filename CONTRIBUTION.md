@@ -46,6 +46,7 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
+
    ```python
    import requests
 
@@ -78,7 +79,6 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
 
        main(owner, repo, branch, github_token)
 
+   ```
 
-3. Add the following entries in _PROJECT HOME_/code/gits.py   ==>  HTML 
-
- 
+3. Add the following entries in _PROJECT HOME_/code/gits.py ==> HTML
