@@ -88,6 +88,22 @@ def check_branch():
     else:
         return f"Error!! Error message: {result.json()}"
 
+@app.route('/create_branch', methods=['POST'])
+def create_branch():
+    user_name = request.form['userName']
+    repo_name = request.form['repoName']
+    base_branch = request.form['baseBranch']
+    new_branch = request.form['newBranch']
+    # Call your fork_repo function here and handle the response
+    # For example, you can return a success or error message
+    result = gits_checkbranch.create_branch(user_name, repo_name, base_branch, new_branch, token)
+    if result.status_code == 422:
+        return f"Branch {branch_name} in the repo {repo_name} already exists!"
+    elif result.status_code == 201:
+        return f"Branch {branch_name} in the repo {repo_name} created successfully!"
+    else:
+        return f"Error!! Error message: {result.json()}"
+
 @app.route('/pull_repo', methods=['POST'])
 def pull_repository():
     repo_owner = request.form['repoOwner']
