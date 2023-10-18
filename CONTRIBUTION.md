@@ -46,28 +46,29 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
+   ```python
    import requests
 
    def main(owner, repo, branch, github_token):
-    try:
-        # Define the API URL or additional parameters here.
-        url = "  "
-        # Set up the request headers with the provided GitHub token for authentication.
-        headers = {
-            'Authorization': f'token {github_token}',
-        }
+       try:
+           # Define the API URL or additional parameters here.
+           url = "  "
+           # Set up the request headers with the provided GitHub token for authentication.
+           headers = {
+               'Authorization': f'token {github_token}',
+           }
 
-        # Send an HTTP request to the GitHub API and process the response.
+           # Send an HTTP request to the GitHub API and process the response.
 
-        # You can insert the logic to perform specific GitHub actions here.
-        # For example, getting the latest commit SHA or comparing branches.
+           # You can insert the logic to perform specific GitHub actions here.
+           # For example, getting the latest commit SHA or comparing branches.
 
-    except Exception as e:
-        print("ERROR: An exception occurred")
-        print("ERROR: {}".format(str(e)))
-        return False
+       except Exception as e:
+           print("ERROR: An exception occurred")
+           print("ERROR: {}".format(str(e)))
+           return False
 
-    return True
+       return True
 
    if __name__ == "__main__":
        owner = 'YourGitHubUsername'  # Replace with your GitHub username or organization name.
