@@ -353,6 +353,70 @@ class Test(unittest.TestCase):
         self.assertEqual(response, 'Branch my-branch in the my-repo exists!')
         mock_check_branch_github_repo.assert_called_with('token', "userName", 'my-repo', 'my-branch')
 
+    @patch('app.token', 'token')
+    @patch('gits_createbranch.create_branch')
+    def test_app_create_branch_exists(self, mock_create_branch_github_repo):
+        # Configure the mock objects
+        mock_create_branch_github_repo.return_value.status_code = 422
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName',
+                                                                     'baseBranch': 'baseBranch', 'newBranch':
+                                                                         'newBranch'}):
+            # Call the Flask route function within the request context
+            response = app.create_branch()
+
+        # Verify the results
+        self.assertEqual(response, 'Branch newBranch in the repo my-repo already exists!')
+        mock_create_branch_github_repo.assert_called_with("userName", 'my-repo', 'baseBranch', 'newBranch', 'token')
+
+    @patch('app.token', 'token')
+    @patch('gits_createbranch.create_branch')
+    def test_app_create_branch_new(self, mock_create_branch_github_repo):
+        # Configure the mock objects
+        mock_create_branch_github_repo.return_value.status_code = 201
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName',
+                                                                     'baseBranch': 'baseBranch', 'newBranch':
+                                                                         'newBranch'}):
+            # Call the Flask route function within the request context
+            response = app.create_branch()
+
+        # Verify the results
+        self.assertEqual(response, 'Branch newBranch in the repo my-repo created successfully!')
+        mock_create_branch_github_repo.assert_called_with("userName", 'my-repo', 'baseBranch', 'newBranch', 'token')
+
+    @patch('app.token', 'token')
+    @patch('gits_pull.download_github_repo')
+    def test_app_pull_github_repo(self, mock_pull_github_repo):
+        # Configure the mock objects
+        mock_pull_github_repo.return_value.status_code = 200
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
+                                                                     'localPath': 'localPath'}):
+            # Call the Flask route function within the request context
+            response = app.pull_repository()
+
+        # Verify the results
+        self.assertEqual(response, "Repository 'repoName' successfully downloaded and extracted to 'localPath'")
+        mock_pull_github_repo.assert_called_with( 'token', "repoOwner", 'repoName', 'localPath')
+
+    @patch('app.token', 'token')
+    @patch('gits_branch.get_github_branches')
+    def test_app_get_branch_github_repo(self, mock_get_branch_github_repo):
+        # Configure the mock objects
+        mock_get_branch_github_repo.return_value.status_code = 200
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName'}):
+            # Call the Flask route function within the request context
+            response = app.get_branches()
+
+        # Verify the results
+        self.assertEqual(response, [])
+        mock_get_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'token')
 
 if __name__ == '__main__':
     unittest.main()
