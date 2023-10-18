@@ -37,7 +37,7 @@ The `GIITS.html` template has a simple HTML structure that includes a title, a s
 
 The `GIITS.html` file serves as the user interface for interacting with the GITS Flask application. To use the interface:
 
-1. Open the web application by running the Flask application, as described in the "How to Run the Code" section of the `App.py` documentation.
+1. Open the web application by running the Flask application, as described in the "How to Run the Code" section of the `App.py` documentation listed [here](./app.md).
 
 2. Access the web interface by navigating to `http://localhost:5020/` in a web browser.
 
