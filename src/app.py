@@ -21,6 +21,7 @@ import gits_merge
 import gits_diff
 import gits_createbranch
 import gits_commit
+import gits_push
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
@@ -159,12 +160,26 @@ def commit_diff():
     return result
 
 
+@app.route('/push', methods=['POST'])
+def commit_diff():
+    local_path = request.form['localPath']
+    branch_name = request.form['branchName']
+    filename = request.form['filename']
+    commit_msg = request.form['commit_msg']
+    result = gits_commit.commit(local_path, branch_name, filename, commit_msg)
+    return result
+
+
 @app.route('/merge_branch', methods=['POST'])
 def diff():
-    repo_owner = request.form['repoOwner']
+    user_name = request.form['userName']
+    local_path = request.form['localPath']
     repo_name = request.form['repoName']
+    repo_owner = request.form['repoOwner']
     branch_name = request.form['branchName']
-    result = gits_diff.get_github_diff(repo_owner, repo_name, branch_name, token)
+    filename = request.form['filename']
+    commit_msg = request.form['commit_msg']
+    result = gits_push.push(token, user_name, local_path, repo_name,repo_owner, branch_name, filename, commit_msg )
     return result
 
 
