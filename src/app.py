@@ -31,11 +31,9 @@ def create_github_repo():
     repo_name = request.form['repoName']
     # token = request.form['token']
 
-    # Call your create_github_repo function from your Python script
     response = gits_createrepo.create_github_repo(token, repo_name)
     print(response)
 
-    # Handle the response as needed (e.g., return a success message)
     if response.status_code == 201:
         return "Repository created successfully!"
     else:
@@ -57,8 +55,6 @@ def clone_repository():
 def delete_repository():
     user_name = request.form['userName']
     repo_name = request.form['repoName']
-    # Call your delete_repo function here and handle the response
-    # For example, you can return a success or error message
     result = gits_delete.delete_github_repo(token, user_name, repo_name)
     if result.status_code == 204:
         return "Repository deleted successfully!"
@@ -70,9 +66,6 @@ def delete_repository():
 def fork_repository():
     user_name = request.form['userName']
     repo_name = request.form['repoName']
-    # Call your fork_repo function here and handle the response
-    # For example, you can return a success or error message
-
     result = gits_fork.fork_repo(user_name, repo_name, token)
     if result.status_code == 202:
         return "Repository forked successfully!"
@@ -85,8 +78,6 @@ def check_branch():
     user_name = request.form['userName']
     repo_name = request.form['repoName']
     branch_name = request.form['branchName']
-    # Call your fork_repo function here and handle the response
-    # For example, you can return a success or error message
     result = gits_checkbranch.check_branch_exists(token, user_name, repo_name, branch_name)
     if result.status_code == 200:
         return f"Branch {branch_name} in the {repo_name} exists!"
@@ -100,8 +91,6 @@ def create_branch():
     repo_name = request.form['repoName']
     base_branch = request.form['baseBranch']
     new_branch = request.form['newBranch']
-    # Call your fork_repo function here and handle the response
-    # For example, you can return a success or error message
     result = gits_createbranch.create_branch(user_name, repo_name, base_branch, new_branch, token)
     if result.status_code == 422:
         return f"Branch {new_branch} in the repo {repo_name} already exists!"
