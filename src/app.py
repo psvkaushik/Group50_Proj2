@@ -98,9 +98,9 @@ def create_branch():
     # For example, you can return a success or error message
     result = gits_checkbranch.create_branch(user_name, repo_name, base_branch, new_branch, token)
     if result.status_code == 422:
-        return f"Branch {branch_name} in the repo {repo_name} already exists!"
+        return f"Branch {new_branch} in the repo {repo_name} already exists!"
     elif result.status_code == 201:
-        return f"Branch {branch_name} in the repo {repo_name} created successfully!"
+        return f"Branch {new_branch} in the repo {repo_name} created successfully!"
     else:
         return f"Error!! Error message: {result.json()}"
 
