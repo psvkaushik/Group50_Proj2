@@ -16,7 +16,7 @@ The App.py code is organized into several routes, each of which handles a specif
 
 ### Clone GitHub Repository Route
 - **Route**: `/clone_repo`
-- **Description**: This route allows users to clone an existing GitHub repository by providing the repository URL and destination path. It calls the `gits_clone.clone_repository` function and returns a success or error message based on the result.
+- **Description**: This route allows users to clone an existing GitHub repository by providing the repository URL and destination path. It calls the `clone_repository` function from the library [gits_clone](/src/gits_clone.py) and returns a success or error message based on the result.
 
 ### Delete GitHub Repository Route
 - **Route**: `/delete_repo`
