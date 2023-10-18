@@ -10,13 +10,14 @@ from gits_diff import get_github_commit_diff
 from gits_fork import fork_repo
 from gits_merge import merge_github_branch
 from gits_pull import download_github_repo
-from read_token import  username
+#from read_token import  username
 from gits_clone import clone_repository
 
 import os
 # github_token = os.environ["GITS_GITHUB_TOKEN"]
 
 github_token = "jfjyYVpBmGnGdueNlhEH6skTDKaUbH2hP5xC"
+username = 'GITSSE23'
 
 class TestCreateGithubRepo(unittest.TestCase):
 
