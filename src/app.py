@@ -161,7 +161,7 @@ def commit_diff():
 
 
 @app.route('/push', methods=['POST'])
-def diff():
+def push():
     user_name = request.form['userName']
     local_path = request.form['localPath']
     repo_name = request.form['repoName']
