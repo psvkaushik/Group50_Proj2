@@ -481,6 +481,23 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, "sample diff!")
         mock_commit_diff.assert_called_with("localPath", 'branchName', 'filename', 'commit_msg')
+
+    @patch('app.token', 'token')
+    @patch('gits_push.push')
+    def test_app_push(self, mock_push):
+        # Configure the mock objects
+        mock_push.return_value = "sample push!"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'userName': 'userName', 'localPath': 'localPath',
+                                                                     'repoName': 'repoName', 'branchName': 'branchName',
+                                                                     'filename': 'filename', 'commit_msg': 'commit_msg'}):
+            # Call the Flask route function within the request context
+            response = app.push()
+
+        # Verify the results
+        self.assertEqual(response, "sample push!")
+        mock_push.assert_called_with('token', "userName", "localPath", 'repoName', 'branchName', 'filename', 'commit_msg')
     
     @patch('requests.get')
     def test_count_commits_good(self, mock_get):
