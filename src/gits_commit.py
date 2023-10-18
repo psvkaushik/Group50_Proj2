@@ -9,7 +9,7 @@ this file. If not, please write to: secheaper@gmail.com
 
 import subprocess
 
-def commit(dir_path, change_branch = False, new_branch = 'main', files = '.', commit_msg = 'commiting through UI'):
+def commit(dir_path, new_branch = 'main', files = '.', commit_msg = 'commiting through UI'):
     """
     Function which commits code to local branches
     change_branch : boolen - Decides whether to stay on the current branch or switch
@@ -19,7 +19,7 @@ def commit(dir_path, change_branch = False, new_branch = 'main', files = '.', co
     commit_msg - The commit message
     files - files the user wants to commit
     """
-    if change_branch:
+    if new_branch != 'main':
         command = ['git', 'checkout', new_branch]
         result = subprocess.run(command,  cwd=dir_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         if result.returncode == 1:
