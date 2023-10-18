@@ -8,47 +8,47 @@ The App.py code is organized into several routes, each of which handles a specif
 
 ### Index Route
 - **Route**: `/`
-- **Description**: This route renders an HTML template (`GIITS.html`) when the user visits the root URL.
+- **Description**: This route renders an [HTML](/src/templates/GIITS.html) template (`GIITS.html`) when the user visits the root URL.
 
 ### Create GitHub Repository Route
 - **Route**: `/create_repo`
-- **Description**: This route allows users to create a new GitHub repository by providing a repository name. It calls the `create_github_repo` function from the library [gits_createrepo](/src/gits_createrepo.py)  and handles the response accordingly.
+- **Description**: This route allows users to create a new GitHub repository by providing a repository name. It calls the `create_github_repo` function from this [library](/src/gits_createrepo.py)  and handles the response accordingly.
 
 ### Clone GitHub Repository Route
 - **Route**: `/clone_repo`
-- **Description**: This route allows users to clone an existing GitHub repository by providing the repository URL and destination path. It calls the `clone_repository` function from the library [gits_clone](/src/gits_clone.py) and returns a success or error message based on the result.
+- **Description**: This route allows users to clone an existing GitHub repository by providing the repository URL and destination path. It calls the `clone_repository` function from this [library](/src/gits_clone.py) and returns a success or error message based on the result.
 
 ### Delete GitHub Repository Route
 - **Route**: `/delete_repo`
-- **Description**: Users can delete a GitHub repository by providing their GitHub username and the repository name. It calls the `gits_delete.delete_github_repo` function and returns a success or error message based on the result.
+- **Description**: Users can delete a GitHub repository by providing their GitHub username and the repository name. It calls the `delete_github_repo` function from this [library](/src/gits_delete.py) and returns a success or error message based on the result.
 
 ### Fork GitHub Repository Route
 - **Route**: `/fork_repo`
-- **Description**: This route allows users to fork an existing GitHub repository by providing their GitHub username and the repository name. It calls the `gits_fork.fork_repo` function and returns a success or error message based on the result.
+- **Description**: This route allows users to fork an existing GitHub repository by providing their GitHub username and the repository name. It calls the `fork_repo` function from this [library](/src/gits_fork.py) and returns a success or error message based on the result.
 
 ### Check Branch Route
 - **Route**: `/check_branch`
-- **Description**: Users can check if a specific branch exists in a GitHub repository. It calls the `gits_checkbranch.check_branch_exists` function and returns a success or error message based on the result.
+- **Description**: Users can check if a specific branch exists in a GitHub repository. It calls the `check_branch_exists` function from this [library](/src/gits_checkbranch.py) and returns a success or error message based on the result.
 
 ### Pull GitHub Repository Route
 - **Route**: `/pull_repo`
-- **Description**: Users can pull a specific file from a GitHub repository by providing the repository owner, repository name, filename, and local path. It calls the `gits_pull.download_github_repo` function and returns a success or error message based on the result.
+- **Description**: Users can pull a specific file from a GitHub repository by providing the repository owner, repository name, filename, and local path. It calls the `download_github_repo` function from this [library](/src/gits_pull.py) and returns a success or error message based on the result.
 
 ### Get Branches Route
 - **Route**: `/get_branches`
-- **Description**: This route allows users to fetch the branches of a GitHub repository. It calls the `gits_branch.get_github_branches` function and returns a list of branch names or an error message.
+- **Description**: This route allows users to fetch the branches of a GitHub repository. It calls the `get_github_branches` function from this [library](/src/gits_branch.py) and returns a list of branch names or an error message.
 
 ### Commit Count Route
 - **Route**: `/commit_count`
-- **Description**: This route fetches the total number of commits in a GitHub repository by providing the repository URL. It calls the `gits_countcommit.count_commits_in_github_repo` function and returns the commit count.
+- **Description**: This route fetches the total number of commits in a GitHub repository by providing the repository URL. It calls the `count_commits_in_github_repo` function from this [library](/src/gits_countcommit.py) and returns the commit count.
 
 ### Merge Branch Route
 - **Route**: `/merge_branch`
-- **Description**: Users can merge a specific branch in a GitHub repository by providing the repository owner, repository name, and branch name. It calls the `gits_merge.merge_github_branch` function and returns the result of the merge operation.
+- **Description**: Users can merge a specific branch in a GitHub repository by providing the repository owner, repository name, and branch name. It calls the `merge_github_branch` function from this [library](/src/gits_merge.py) and returns the result of the merge operation.
 
 ### Commit Difference Route
 - **Route**: `/commit_diff`
-- **Description**: This route allows users to view the differences between commits in a GitHub repository's branch by providing the repository owner, repository name, and branch name. It calls the `gits_diff.get_github_commit_diff` function and returns the commit differences.
+- **Description**: This route allows users to view the differences between commits in a GitHub repository's branch by providing the repository owner, repository name, and branch name. It calls the `get_github_commit_diff` function from this [library](/src/gits_diff.py) and returns the commit differences.
 
 ## How to Run the Code
 
