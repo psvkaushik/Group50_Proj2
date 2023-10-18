@@ -581,6 +581,7 @@ class Test(unittest.TestCase):
             unittest.mock.Mock(returncode=0, stdout=b'Branch created\n', stderr=b''),
             unittest.mock.Mock(returncode=0, stdout=b'Files added and committed\n', stderr=b'')
         ]
+    
         dir_path = '/path/to/the/repo'
         branch = 'new-branch'
         files = 'file1.txt'
