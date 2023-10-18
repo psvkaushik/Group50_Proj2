@@ -12,7 +12,7 @@ The App.py code is organized into several routes, each of which handles a specif
 
 ### Create GitHub Repository Route
 - **Route**: `/create_repo`
-- **Description**: This route allows users to create a new GitHub repository by providing a repository name. It calls the `gits_createrepo.create_github_repo` function and handles the response accordingly.
+- **Description**: This route allows users to create a new GitHub repository by providing a repository name. It calls the `create_github_repo` function from the library [gits_createrepo](/src/gits_createrepo.py)  and handles the response accordingly.
 
 ### Clone GitHub Repository Route
 - **Route**: `/clone_repo`
