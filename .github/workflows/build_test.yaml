@@ -15,7 +15,7 @@ jobs:
       matrix:
         # Do not use python versions below 3.9 since type annotations are only supported in Python >= 3.9
         python-version: ["3.9", "3.10"]
-        script: ["src/unitest.py -t all"]
+        script: ["src/unitest.py"]
 
     steps:
       - uses: actions/checkout@v3
