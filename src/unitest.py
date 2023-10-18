@@ -7,7 +7,7 @@ from gits_createrepo import create_github_repo
 from gits_branch import get_github_branches
 from gits_checkbranch import check_branch_exists
 from gits_delete import delete_github_repo
-from gits_diff import get_github_commit_diff
+from gits_diff import get_github_diff
 from gits_fork import fork_repo
 from gits_merge import merge_github_branch
 from gits_pull import download_github_repo
@@ -449,6 +449,22 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, "Merged Successfully!")
         mock_merge_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
+
+    @patch('app.token', 'token')
+    @patch('gits_diff.get_github_diff')
+    def test_app_diff(self, mock_diff):
+        # Configure the mock objects
+        mock_diff.return_value = "Message"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
+                                                                     'branchName': 'branchName'}):
+            # Call the Flask route function within the request context
+            response = app.diff()
+
+        # Verify the results
+        self.assertEqual(response, "Message")
+        mock_diff.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
 
     @patch('app.token', 'token')
     @patch('gits_commit.commit')
