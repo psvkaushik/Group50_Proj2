@@ -44,41 +44,40 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
 
 ## Adding new command
 
-1. Create a new file in _PROJECT HOME_/code/gits\_<command name>.py
+1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
-   _text_ with appropriate values
+   import requests
 
-   ```
-   from subprocess import Popen, PIPE
-   import gits_logging
+   def main(owner, repo, branch, github_token):
+    try:
+        # Define the API URL or additional parameters here.
+        url = "  "
+        # Set up the request headers with the provided GitHub token for authentication.
+        headers = {
+            'Authorization': f'token {github_token}',
+        }
 
-   def gits__command name_(args):
-       try:
-           #Repeat the following code to execute multiple commands
-           command = "_command to be executed_"
-           process_commands = command.split()
-           process = Popen(process_commands, stdout=PIPE, stderr=PIPE)
-           stdout, stderr = process.communicate()
-       except Exception as e:
-           gits_logging.gits_logger.error("gits _command name_ command caught an "
-               + "exception")
-           gits_logging.gits_logger.error("{}".format(str(e)))
-           print("ERROR: gits _command name_ command caught an exception")
-           print("ERROR: {}".format(str(e)))
-           return False
-       return True
-   ```
+        # Send an HTTP request to the GitHub API and process the response.
 
-3. Add the following entries in _PROJECT HOME_/code/gits.py
+        # You can insert the logic to perform specific GitHub actions here.
+        # For example, getting the latest commit SHA or comparing branches.
 
-   ```
-   from gits__command name_ import gits__command name_
-   .
-   .
-   gits__command name__subparser = subparsers.add_parser("_command name_")
-   gits__command name__subparser.add_argument("<argument variable1>", help = "_description of the variable_")
-   gits__command name__subparser.add_argument("<argument variable2>", help = "_description of the variable_")
-   .
-   .
-   gits__command name__subparser.set_defaults(func=gits__command name_)
-   ```
+    except Exception as e:
+        print("ERROR: An exception occurred")
+        print("ERROR: {}".format(str(e)))
+        return False
+
+    return True
+
+   if __name__ == "__main__":
+       owner = 'YourGitHubUsername'  # Replace with your GitHub username or organization name.
+       repo = 'YourRepositoryName'  # Replace with the name of the GitHub repository.
+       branch = 'main'  # Specify the branch or additional parameters needed.
+       github_token = 'YourGitHubToken'  # Replace with your GitHub personal access token.
+
+       main(owner, repo, branch, github_token)
+
+
+3. Add the following entries in _PROJECT HOME_/code/gits.py   ==>  HTML 
+
+ 
