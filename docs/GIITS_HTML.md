@@ -3,7 +3,7 @@
 This documentation provides an overview of the `GIITS.html` file, which serves as the HTML template for the GITS (GitHub Interaction and Tracking System) Flask web application. The HTML template is used to create the front-end user interface for interacting with various GitHub-related functions provided by the Flask application.
 
 ## Location of the code:
-The code that implements the above-mentioned HTML functionality is located [here](./src/templates/GIITS.html).
+The code that implements the above-mentioned HTML functionality is located [here](/src/templates/GIITS.html).
 
 ## HTML Structure
 
