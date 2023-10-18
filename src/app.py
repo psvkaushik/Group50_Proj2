@@ -160,6 +160,18 @@ def commit_diff():
     return result
 
 
+@app.route('/push', methods=['POST'])
+def diff():
+    user_name = request.form['userName']
+    local_path = request.form['localPath']
+    repo_name = request.form['repoName']
+    branch_name = request.form['branchName']
+    filename = request.form['filename']
+    commit_msg = request.form['commit_msg']
+    result = gits_push.push(token,user_name, local_path, repo_name, branch_name, filename, commit_msg)
+    return result
+
+
 @app.route('/merge_branch', methods=['POST'])
 def diff():
     repo_owner = request.form['repoOwner']
