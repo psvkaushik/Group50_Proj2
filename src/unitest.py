@@ -448,7 +448,23 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, "Merged Successfully!")
         mock_merge_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
+    
+    @patch('requests.get')
+    def test_count_commits_good(self, mock_get):
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = [{"sha": "commit1"}, {"sha": "commit2"}]
+        mock_get.return_value = mock_response
+        repo_url = "https://github.com/owner/repo"
+        commit_count = count_commits_in_github_repo(repo_url)
+        self.assertEqual(commit_count, "2")
 
+    @patch('requests.get')
+    def test_count_commits_request_bad(self, mock_get):
+        mock_get.side_effect = requests.exceptions.RequestException("Request failed")
+        repo_url = "https://github.com/owner/repo"
+        commit_count = count_commits_in_github_repo(repo_url)
+        self.assertEqual(commit_count, "Error fetching commit count")
 
 if __name__ == '__main__':
     unittest.main()
