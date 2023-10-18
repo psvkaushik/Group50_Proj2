@@ -10,6 +10,7 @@ from gits_diff import get_github_commit_diff
 from gits_fork import fork_repo
 from gits_merge import merge_github_branch
 from gits_pull import download_github_repo
+from gits_countcommit import count_commits_in_github_repo
 # from read_token import  username
 from gits_clone import clone_repository
 from gits_createbranch import create_branch
