@@ -542,6 +542,6 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, "Failed to merge branch 'test-branch'. Status code: 400\nMerge failed")
 
-        
+
 if __name__ == '__main__':
     unittest.main()
