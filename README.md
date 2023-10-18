@@ -43,6 +43,7 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
    % bash setup.sh
    ```
    Enter the details: Username and Auth token
+3. ###NEED TO ADD SCREENSHOTS HERE
 
 # Documentation
 
