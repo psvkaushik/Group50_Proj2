@@ -310,7 +310,7 @@ class Test(unittest.TestCase):
 
     @patch('app.token', 'token')
     @patch('gits_delete.delete_github_repo')
-    def test_app_delete_github_repo_success(self, mock_delete_github_repo):
+    def test_app_delete_github_repo(self, mock_delete_github_repo):
         # Configure the mock objects
         mock_delete_github_repo.return_value.status_code = 204
         test_app = Flask(__name__)
@@ -325,7 +325,7 @@ class Test(unittest.TestCase):
 
     @patch('app.token', 'token')
     @patch('gits_fork.fork_repo')
-    def test_app_fork_github_repo_success(self, mock_fork_github_repo):
+    def test_app_fork_github_repo(self, mock_fork_github_repo):
         # Configure the mock objects
         mock_fork_github_repo.return_value.status_code = 202
         test_app = Flask(__name__)
@@ -337,6 +337,21 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, 'Repository forked successfully!')
         mock_fork_github_repo.assert_called_with("userName", 'my-repo', 'token')
+
+    @patch('app.token', 'token')
+    @patch('gits_checkbranch.check_branch_exists')
+    def test_app_check_branch(self, mock_check_branch_github_repo):
+        # Configure the mock objects
+        mock_check_branch_github_repo.return_value.status_code = 200
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName', 'branchName': 'my-branch'}):
+            # Call the Flask route function within the request context
+            response = app.check_branch()
+
+        # Verify the results
+        self.assertEqual(response, 'Branch my-branch in the my-repo exists!')
+        mock_check_branch_github_repo.assert_called_with('token', "userName", 'my-repo', 'my-branch')
 
 
 if __name__ == '__main__':
