@@ -129,4 +129,8 @@ __pycache__/
 autoRun.bat
 .gits/
 
+bogus
+src/args_checking.py
 
+src/test.py
+src/test_runner.py
