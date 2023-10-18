@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-import gits_createrepo 
+import gits_createrepo
 import gits_delete
 import gits_clone
 import gits_pull
@@ -12,12 +12,10 @@ import gits_merge
 import gits_diff
 import gits_createbranch
 
-
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
 # with open(file_path, 'r') as file:
 #     data = yaml.safe_load(file)
 token = "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"
-
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -31,7 +29,7 @@ def index():
 def create_github_repo():
     # Get the repo name and token from the form
     repo_name = request.form['repoName']
-    #token = request.form['token']
+    # token = request.form['token']
 
     # Call your create_github_repo function from your Python script
     response = gits_createrepo.create_github_repo(token, repo_name)
@@ -61,7 +59,7 @@ def delete_repository():
     repo_name = request.form['repoName']
     # Call your delete_repo function here and handle the response
     # For example, you can return a success or error message
-    result = gits_delete.delete_github_repo(token,user_name, repo_name)
+    result = gits_delete.delete_github_repo(token, user_name, repo_name)
     if result.status_code == 204:
         return "Repository deleted successfully!"
     else:
@@ -117,7 +115,6 @@ def create_branch():
 def pull_repository():
     repo_owner = request.form['repoOwner']
     repo_name = request.form['repoName']
-    filename = request.form['filename']
     local_filepath = request.form['localPath']
     result = gits_pull.download_github_repo(token, repo_owner, repo_name, local_filepath)
     if result.status_code == 200:
@@ -163,4 +160,4 @@ def commit_diff():
 
 
 if __name__ == '__main__':
-    app.run(debug= True, port=5020)
+    app.run(debug=True, port=5020)
