@@ -21,3 +21,22 @@
 [![Style Checker and Prettify Code](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/Style_Checker_and_Prettify_Code.yml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/Style_Checker_and_Prettify_Code.yml)
 [![GitHub Actions](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/build_test.yaml)
 [![Running Code Coverage](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/codecov.yml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/codecov.yml)
+
+# About GITS3.1
+"Your repo is your resume. But what is a good looking repo?"
+
+So you want to start a Project on Github. Do CLI commands scare you?? Don't worry we got you! Introducing GITS3.1 ( Let me tell you a secret: It is platform independent )
+
+`` bash setup.sh
+
+GITS3.1 simplifies the organization of your repository according to Software Engineering Standards, ensuring it adheres to the required structure for a "Well-Structured Repository."
+
+Think of GITS3.1 as a foundational repository that helps align your project repository with these standards.
+
+# Installation Setup
+
+1. Clone repository
+2. Open cmd and enter command
+   `` bash setup.sh
+   Enter the details, it asks
+   
