@@ -432,6 +432,22 @@ class Test(unittest.TestCase):
         self.assertEqual(response, 'The total number of commits in the given repo is 100')
         mock_clone_commit_count.assert_called_with('https://github.com/owner/repo')
 
+    @patch('app.token', 'token')
+    @patch('gits_merge.merge_github_branch')
+    def test_app_merge_branch_github_repo(self, mock_merge_branch_github_repo):
+        # Configure the mock objects
+        mock_merge_branch_github_repo.return_value = "Merged Successfully!"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
+                                                                     'branchName': 'branchName'}):
+            # Call the Flask route function within the request context
+            response = app.merge_branch()
+
+        # Verify the results
+        self.assertEqual(response, "Merged Successfully!")
+        mock_merge_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
+
 
 if __name__ == '__main__':
     unittest.main()
