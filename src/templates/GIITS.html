@@ -31,6 +31,7 @@
     #form-container-merge_branch,
     #form-container-commit_diff,
     #form-container-get_branches,
+    #form-container-create_branch,
     #form-container-delete {
       display: none;
     }
@@ -66,6 +67,7 @@
     <option value="commit_count">Get Commit Count</option>
     <option value="merge_branch">Merge Branch to Main</option>
     <option value="commit_diff">Commit diff</option>
+    <option value="create_branch">Create Branch</option>
 
   </select>
 
@@ -163,6 +165,24 @@
     </form>
   </div>
 
+  <div id="form-container-create_branch">
+    <form action="/create_branch" method="post">
+      <label for="userName">User Name:</label>
+      <input type="text" id="userName" name="userName" required> <br> <br>
+
+      <label for="repoName">Repo Name:</label>
+      <input type="text" id="repoName" name="repoName" required> <br> <br>
+
+      <label for="baseBranch">Base Branch:</label>
+      <input type="text" id="baseBranch" name="baseBranch" required> <br> <br>
+
+      <label for="newBranch">New Branch:</label>
+      <input type="text" id="newBranch" name="newBranch" required> <br> <br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
   <div id="form-container-pull">
     <form action="/pull_repo" method="post">
       <label for="repoOwner">Repo Owner:</label>
@@ -224,6 +244,7 @@
       document.getElementById('form-container-merge_branch').style.display = 'none';
       document.getElementById('form-container-pull').style.display = 'none';
       document.getElementById('form-container-commit_diff').style.display = 'none';
+      document.getElementById('form-container-create_branch').style.display = 'none';
 
       if (selectElement.value === 'create_repo') {
         document.getElementById('form-container-create').style.display = 'block';
@@ -245,6 +266,8 @@
         document.getElementById('form-container-merge_branch').style.display = 'block';
       } else if (selectElement.value === 'commit_diff') {
         document.getElementById('form-container-commit_diff').style.display = 'block';
+      } else if (selectElement.value === 'create_branch') {
+        document.getElementById('form-container-create_branch').style.display = 'block';
       }
     }
   </script>
