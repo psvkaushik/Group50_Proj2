@@ -449,6 +449,22 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, "Merged Successfully!")
         mock_merge_branch_github_repo.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
+
+    @patch('app.token', 'token')
+    @patch('gits_diff.get_github_commit_diff')
+    def test_app_diff(self, mock_diff):
+        # Configure the mock objects
+        mock_diff.return_value = "sample diff!"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
+                                                                     'branchName': 'branchName'}):
+            # Call the Flask route function within the request context
+            response = app.commit_diff()
+
+        # Verify the results
+        self.assertEqual(response, "sample diff!")
+        mock_diff.assert_called_with("repoOwner", 'repoName', 'branchName', 'token')
     
     @patch('requests.get')
     def test_count_commits_good(self, mock_get):

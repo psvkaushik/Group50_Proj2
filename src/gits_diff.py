@@ -43,10 +43,9 @@ def get_github_commit_diff(owner, repo, branch, github_token):
 
     except Exception as e:
         print("ERROR: gits diff command caught an exception")
-        print("ERROR: {}".format(str(e)))
-        return False
+        return ("ERROR: {}".format(str(e)))
 
-    return True
+
 
 
 if __name__ == "__main__":
