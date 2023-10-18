@@ -17,12 +17,12 @@ import os
 # github_token = os.environ["GITS_GITHUB_TOKEN"]
 # github_username = os.environ["GITS_USERNAME"]
 
-github_token = "jfjyYVpBmGnGdueNlhEH6skTDKaUbH2hP5xC"
+github_token = "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"
 username = 'GITSSE23'
 
-class TestCreateGithubRepo(unittest.TestCase):
+class Test(unittest.TestCase):
 
-    @patch('requests.post')
+    @patch('gits_createrepo.requests.post')
     def test_successful_repo_creation(self, mock_post):
         # Arrange
         mock_response = Mock()
@@ -38,26 +38,36 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Assert
         self.assertEqual(response.status_code, 201)
         self.assertTrue(mock_post.called)
-        return True
 
-    @patch('requests.post')
+    @patch('gits_createrepo.requests.post')
     def test_failed_repo_creation(self, mock_post):
-        # Arrange
+        # Create a mock response
         mock_response = Mock()
-        mock_response.status_code = 400  # Simulating an error status code
+        mock_response.status_code = 422  # Simulating an error status code
         mock_response.json.return_value = {'message': 'Repository already exists'}
         mock_post.return_value = mock_response
 
         token = github_token
-        repo_name = 'existing_repo'
+        repo_name = 'test_repo'
 
         # Act
         response = create_github_repo(token, repo_name)
 
         # Assert
-        self.assertEqual(response.status_code, 400)
-        self.assertTrue(mock_post.called)
-        return False
+        self.assertEqual(response.status_code, 422)
+        #self.assertTrue(mock_post.called)
+        mock_post.assert_called_once_with(
+            f'https://api.github.com/user/repos',
+            headers={
+                'Authorization': f'token {github_token}',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            json = {
+        'name': repo_name,
+        'license_template': 'mit',
+        'auto_init': True  # This will initialize the repository with a README.
+    }
+        )
         
     
 
@@ -78,7 +88,6 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Ensure that subprocess.run was called with the expected arguments
         mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
                                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return True
 
     @patch('subprocess.run')
     def test_clone_failed(self, mock_subprocess_run):
@@ -96,35 +105,31 @@ class TestCreateGithubRepo(unittest.TestCase):
         # Ensure that subprocess.run was called with the expected arguments
         mock_subprocess_run.assert_called_with(['git', 'clone', 'repo_url', 'destination'],
                                               stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        return False
 
-    @patch('requests.post')
-    def test_create_repo_success(self, mock_post):
-        # Mock the requests.post method to return a successful response
-        mock_post.return_value.status_code = 201  # HTTP status code for created
-        mock_post.return_value.json.return_value = {'name': 'new-repo-name', 'html_url': 'https://github.com/user/new-repo-name'}
+
+
+    @patch('gits_delete.requests.delete')
+    def test_delete_repo_sucess(self, mock_delete):
+        
+        mock_response = Mock()
+        mock_response.status_code = 204 # implies successful delete
+        mock_delete.return_value = mock_response 
 
         # Call the function with mock data
-        response = create_github_repo(github_token, 'new-repo-name', 'mit')
+        response = delete_github_repo(github_token, 'GITSSE23', 'test_repo')
+
 
         # Assertions
-        self.assertEqual(response.status_code, 201)
-        self.assertEqual(response.json(), {'name': 'new-repo-name', 'html_url': 'https://github.com/user/new-repo-name'})
+        self.assertEqual(response.status_code, 204)
 
-        # Ensure that requests.post was called with the expected arguments
-        mock_post.assert_called_with(
-            'https://api.github.com/user/repos',
+        # Ensure that requests.delete was called with the expected arguments
+        mock_delete.assert_called_once_with(
+            f'https://api.github.com/repos/GITSSE23/test_repo',
             headers={
                 'Authorization': f'token {github_token}',
                 'Accept': 'application/vnd.github.v3+json'
-            },
-            json={
-                'name': 'new-repo-name',
-                'license_template': 'mit',
-                'auto_init': True
             }
         )
-        return True
 
     @patch('requests.delete')
     def test_delete_repo_failure(self, mock_delete):
@@ -145,7 +150,6 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
-        return False
 
     @patch('requests.post')
     def test_fork_repo_success(self, mock_post):
@@ -166,7 +170,6 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
-        return True
 
     @patch('requests.post')
     def test_fork_repo_failure(self, mock_post):
@@ -187,7 +190,6 @@ class TestCreateGithubRepo(unittest.TestCase):
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
-        return False
 
 
 if __name__ == '__main__':
