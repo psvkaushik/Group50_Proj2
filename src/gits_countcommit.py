@@ -36,6 +36,3 @@ def count_commits_in_github_repo(repo_url):
     except requests.exceptions.RequestException as e:
          return f"Error fetching commit count"
 
-if __name__ == '__main__':
-    repo_url = input("Enter the public GitHub repository URL: ")
-    commit_count = str(count_commits_in_github_repo(repo_url))
