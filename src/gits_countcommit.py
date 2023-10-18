@@ -1,7 +1,7 @@
 import requests
 
 
-def count_commits_in_github_repo(repo_url):  # function to extract the owner and repo name from the GitHub URL
+def count_commits_in_github_repo(repo_url):
     global response
     parts = repo_url.rstrip('/').split('/')
     owner = parts[-2]
@@ -15,11 +15,11 @@ def count_commits_in_github_repo(repo_url):  # function to extract the owner and
         while True:
             api_url = f'https://api.github.com/repos/{owner}/{repo_name}/commits'
             params = {'page': page, 'per_page': per_page}
-            response = requests.get(api_url, params=params)  # send a GET request to the GitHub API
-            response.raise_for_status()  #raise an exception for bad responses
-            commits = response.json() #get the JSON response
-            commit_count += len(commits) #add the number of commits on this page to the count
-            if len(commits) < per_page: #check if there are more pages to retrieve
+            response = requests.get(api_url, params=params) 
+            response.raise_for_status() 
+            commits = response.json() 
+            commit_count += len(commits) 
+            if len(commits) < per_page:
                 break
             page += 1
         return str(commit_count)
