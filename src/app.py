@@ -10,6 +10,7 @@ import gits_branch
 import gits_countcommit
 import gits_merge
 import gits_diff
+import gits_createbranch
 
 
 # file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
@@ -96,7 +97,7 @@ def create_branch():
     new_branch = request.form['newBranch']
     # Call your fork_repo function here and handle the response
     # For example, you can return a success or error message
-    result = gits_checkbranch.create_branch(user_name, repo_name, base_branch, new_branch, token)
+    result = gits_createbranch.create_branch(user_name, repo_name, base_branch, new_branch, token)
     if result.status_code == 422:
         return f"Branch {new_branch} in the repo {repo_name} already exists!"
     elif result.status_code == 201:
