@@ -32,13 +32,13 @@ def download_github_repo(token, repo_owner, repo_name, local_dir):
         print(response.text)
 
 # Replace with your GitHub Personal Access Token
-github_token = ' '   ###enter github token
+github_token = ' ' 
 
 # Replace with the repository owner and name
-repo_owner = ' '   ### username of the owner
-repo_name = '  '   ### Repository name
+repo_owner = ' '
+repo_name = '  '
 
 # Replace with the local directory where you want to save the repository
-local_dir = '   '   ###local directory to save the repo
+local_dir = '   '
 
 download_github_repo(github_token, repo_owner, repo_name, local_dir)
