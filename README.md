@@ -28,7 +28,6 @@
 So you want to start a Project on Github <br><br>
 Do CLI commands scare you?? <br><br>
 Do platform dependencies of softwares available annoy you?? <br><br>
-
 Don't worry we got you! Introducing GITS3.1
 
 GITS3.1 simplifies the organization of your repository according to Software Engineering Standards, ensuring it adheres to the required structure for a "Well-Structured Repository."
