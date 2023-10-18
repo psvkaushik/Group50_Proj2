@@ -21,9 +21,11 @@ token = "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"
 
 app = Flask(__name__, static_url_path='/static')
 
+
 @app.route('/')
 def index():
     return render_template('GIITS.html')
+
 
 @app.route('/create_repo', methods=['POST'])
 def create_github_repo():
@@ -41,6 +43,7 @@ def create_github_repo():
     else:
         return f"Error creating repository. Status code: {response.status_code}"
 
+
 @app.route('/clone_repo', methods=['POST'])
 def clone_repository():
     repo_url = request.form['repoURL']
@@ -50,6 +53,7 @@ def clone_repository():
         return "Repository cloned successfully!"
     else:
         return f"Error cloning repository. Error message: {result.stderr}"
+
 
 @app.route('/delete_repo', methods=['POST'])
 def delete_repository():
@@ -62,6 +66,7 @@ def delete_repository():
         return "Repository deleted successfully!"
     else:
         return f"Error deleting repository. Error message: {result.json()}"
+
 
 @app.route('/fork_repo', methods=['POST'])
 def fork_repository():
@@ -76,6 +81,7 @@ def fork_repository():
     else:
         return f"Error forking repository. Error message: {result.json()}"
 
+
 @app.route('/check_branch', methods=['POST'])
 def check_branch():
     user_name = request.form['userName']
@@ -88,6 +94,7 @@ def check_branch():
         return f"Branch {branch_name} in the {repo_name} exists!"
     else:
         return f"Error!! Error message: {result.json()}"
+
 
 @app.route('/create_branch', methods=['POST'])
 def create_branch():
@@ -105,17 +112,19 @@ def create_branch():
     else:
         return f"Error!! Error message: {result.json()}"
 
+
 @app.route('/pull_repo', methods=['POST'])
 def pull_repository():
     repo_owner = request.form['repoOwner']
     repo_name = request.form['repoName']
     filename = request.form['filename']
     local_filepath = request.form['localPath']
-    result = gits_pull.download_github_repo(token, repo_owner, repo_name, filename, local_filepath)
+    result = gits_pull.download_github_repo(token, repo_owner, repo_name, local_filepath)
     if result.status_code == 200:
-        return (f"File '{filename}' successfully pulled to '{local_filepath}'")
+        return f"Repository '{repo_name}' successfully downloaded and extracted to '{local_filepath}'"
     else:
-        return (f"Error pulling the file. Status code: {result.status_code}. /n {result.text}")
+        return f"Error downloading the repository. Status code: {result.json()}"
+
 
 @app.route('/get_branches', methods=['POST'])
 def get_branches():
@@ -125,13 +134,15 @@ def get_branches():
     if result.status_code == 200:
         return [branch['name'] for branch in result.json()]
     else:
-        return(f"Error: Unable to fetch branches - Status Code {result.status_code}")
+        return f"Error: Unable to fetch branches - Status Code {result.status_code}"
+
 
 @app.route('/commit_count', methods=['POST'])
 def get_commit_count():
     repo_url = request.form['repoURL']
     result = gits_countcommit.count_commits_in_github_repo(repo_url)
     return f"The total number of commits in the given repo is {result}"
+
 
 @app.route('/merge_branch', methods=['POST'])
 def merge_branch():
@@ -141,6 +152,7 @@ def merge_branch():
     result = gits_merge.merge_github_branch(repo_owner, repo_name, branch_name, token)
     return result
 
+
 @app.route('/commit_diff', methods=['POST'])
 def commit_diff():
     repo_owner = request.form['repoOwner']
@@ -148,6 +160,7 @@ def commit_diff():
     branch_name = request.form['branchName']
     result = gits_diff.get_github_commit_diff(repo_owner, repo_name, branch_name, token)
     return result
+
 
 if __name__ == '__main__':
     app.run(debug= True, port=5020)
