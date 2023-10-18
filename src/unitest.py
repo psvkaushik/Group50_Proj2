@@ -561,16 +561,17 @@ class Test(unittest.TestCase):
 
     @patch('subprocess.run')
     def test_commit_success(self, mock_subprocess_run):
-        mock_result = Mock(returncode=0, stdout=b'Commit successful\n', stderr=b'')
-        mock_subprocess_run.return_value = mock_result
-    
+        mock_subprocess_run.return_value.returncode = 0
+        mock_subprocess_run.return_value.stdout = b'Commit successful\n'
+        
         dir_path = '/path/to/the/repo'
         branch = 'main'
         files = 'file1.txt file2.txt'
         commit_msg = 'Commit message'
         result = commit(dir_path, branch, files, commit_msg)
      
-        self.assertEqual(result, 'Commit successful\n')
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(result.stdout, b'Commit successful\n')
     
         mock_subprocess_run.assert_called_with(['git', 'checkout', 'main'], cwd=dir_path, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     
