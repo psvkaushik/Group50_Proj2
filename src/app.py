@@ -114,7 +114,7 @@ def get_branches():
 def get_commit_count():
     repo_url = request.form['repoURL']
     result = gits_countcommit.count_commits_in_github_repo(repo_url)
-    return result
+    return f"The total number of commits in the given repo is {result}"
 
 @app.route('/merge_branch', methods=['POST'])
 def merge_branch():
