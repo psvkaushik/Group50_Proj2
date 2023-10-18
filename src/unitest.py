@@ -541,6 +541,7 @@ class Test(unittest.TestCase):
         result = merge_github_branch(repository_owner, repository_name, branch_name, access_token)
 
         self.assertEqual(result, "Failed to merge branch 'test-branch'. Status code: 400\nMerge failed")
+
         
 if __name__ == '__main__':
     unittest.main()
