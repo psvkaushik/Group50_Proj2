@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
 import subprocess
-
+import json
 from gits_createrepo import create_github_repo
 from gits_branch import get_github_branches
 from gits_checkbranch import check_branch_exists
@@ -291,7 +291,7 @@ class Test(unittest.TestCase):
 
         # Verify the results
         self.assertEqual(response, 'Repository cloned successfully!')
-        mock_clone_repository.assert_called_with('https://github.com/owner/repo',"/path/to/clone")
+        mock_clone_repository.assert_called_with('https://github.com/owner/repo', "/path/to/clone")
 
     @patch('gits_clone.clone_repository')
     def test_clone_repository_failure(self, mock_clone_repository):
@@ -307,6 +307,35 @@ class Test(unittest.TestCase):
         # Verify the results
         self.assertEqual(response, 'Error cloning repository. Error message: Error message for failed clone')
         mock_clone_repository.assert_called_with('https://github.com/owner/repo', "/path/to/clone")
+
+    @patch('app.token', 'token')
+    @patch('gits_delete.delete_github_repo')
+    def test_app_delete_github_repo_success(self, mock_delete_github_repo):
+        # Configure the mock objects
+        mock_delete_github_repo.return_value.status_code = 204
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName'}):
+            # Call the Flask route function within the request context
+            response = app.delete_repository()
+
+        # Verify the results
+        self.assertEqual(response, 'Repository deleted successfully!')
+        mock_delete_github_repo.assert_called_with('token', "userName", 'my-repo')
+
+    @patch('app.token', 'token')
+    @patch('gits_delete.delete_github_repo')
+    def test_app_delete_github_repo_failure(self, mock_delete_github_repo):
+        # Configure the mock objects
+        mock_delete_github_repo.return_value.status_code = 404
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'repoName': 'my-repo', 'userName': 'userName'}):
+            # Call the Flask route function within the request context
+            app.delete_repository()
+
+        # Verify the results
+        mock_delete_github_repo.assert_called_with('token', "userName", 'my-repo')
 
 
 if __name__ == '__main__':
