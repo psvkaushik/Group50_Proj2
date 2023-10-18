@@ -27,4 +27,4 @@ def commit(dir_path, branch = 'main', files = '.', commit_msg = 'commiting throu
     result = subprocess.run(command, cwd=dir_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     command = ['git', 'commit', '-m', commit_msg]
     result = subprocess.run(command, cwd=dir_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return result
+    return result.stdout.decode('utf-8')

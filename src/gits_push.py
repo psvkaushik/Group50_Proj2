@@ -28,4 +28,4 @@ def push(PAT, user_name, dir_path, repo_name, branch='main', file_path='.', comm
     
     command = ['git', 'push', f'https://{PAT}@github.com/{user_name}/{repo_name}.git']
     push_response = subprocess.run(command, cwd=dir_path,  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    return commit_response, push_response
+    return push_response
