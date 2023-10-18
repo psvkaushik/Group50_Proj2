@@ -15,6 +15,7 @@ from gits_clone import clone_repository
 
 import os
 # github_token = os.environ["GITS_GITHUB_TOKEN"]
+# github_username = os.environ["GITS_USERNAME"]
 
 github_token = "jfjyYVpBmGnGdueNlhEH6skTDKaUbH2hP5xC"
 username = 'GITSSE23'
@@ -124,27 +125,6 @@ class TestCreateGithubRepo(unittest.TestCase):
             }
         )
         return True
-
-    # @patch('requests.delete')
-    # def test_delete_repo_success(self, mock_delete):
-    #     # Mock the requests.delete method to return a successful response
-    #     mock_delete.return_value.status_code = 204  # HTTP status code for successful deletion
-
-    #     # Call the function with mock data
-    #     response = delete_github_repo(github_token, 'username', 'repo-to-delete')
-
-    #     # Assertions
-    #     self.assertEqual(response.status_code, 204)
-
-    #     # Ensure that requests.delete was called with the expected arguments
-    #     mock_delete.assert_called_with(
-    #         f'https://api.github.com/repos/username/repo-to-delete',
-    #         headers={
-    #             'Authorization': f'token  {github_token}',
-    #             'Accept': 'application/vnd.github.v3+json'
-    #         }
-    #     )
-    #     return True
 
     @patch('requests.delete')
     def test_delete_repo_failure(self, mock_delete):
