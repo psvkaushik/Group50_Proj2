@@ -3,6 +3,7 @@ from unittest.mock import Mock, patch
 import subprocess
 import json
 import requests
+from gits_commit import commit
 from gits_createrepo import create_github_repo
 from gits_branch import get_github_branches
 from gits_checkbranch import check_branch_exists
@@ -558,6 +559,36 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, "Failed to merge branch 'test-branch'. Status code: 400\nMerge failed")
 
+    @patch('subprocess.run')
+    def test_commit_success(self, mock_subprocess_run):
+        mock_subprocess_run.return_value.returncode = 0
+        mock_subprocess_run.return_value.stdout = b'Commit successful\n'
+        mock_subprocess_run.return_value.stderr = b''
+    
+        dir_path = '/path/to/the/repo'
+        branch = 'main'
+        files = 'file1.txt file2.txt'
+        commit_msg = 'Commit message'
+    
+        result = commit(dir_path, branch, files, commit_msg)
+    
+        self.assertEqual(result, 'Commit successful\n')
+    
+    @patch('subprocess.run')
+    def test_checkout_new_branch(self, mock_subprocess_run):
+        mock_subprocess_run.side_effect = [  
+            unittest.mock.Mock(returncode=1, stdout=b'Branch not found\n', stderr=b''),
+            unittest.mock.Mock(returncode=0, stdout=b'Branch created\n', stderr=b''),
+            unittest.mock.Mock(returncode=0, stdout=b'Files added and committed\n', stderr=b'')
+        ]
+        dir_path = '/path/to/the/repo'
+        branch = 'new-branch'
+        files = 'file1.txt'
+        commit_msg = 'Commit message'
+    
+        result = commit(dir_path, branch, files, commit_msg)
+    
+        self.assertEqual(result, 'Files added and committed\n')
 
 if __name__ == '__main__':
     unittest.main()
