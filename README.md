@@ -48,12 +48,13 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
 
 
 # Task list
-- [ ] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
-- [ ] Also made an executable to setup the project on command line for ease of use for the user
-- [ ] Implemented a UI
+- [X] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
+- [X] Also made an executable to setup the project on command line for ease of use for the user
+- [X] Implemented a UI
+- [ ] Provided feature to add custom commands and included instaructions on using template to create corressponding code
 
 # Contact us
-For any questions and contribution please contact: gits3_1@gmail.com
+For any questions and contribution please contact: gits3.1project@gmail.com
 
 Made with ❤️ on GitHub.
    
