@@ -25,10 +25,11 @@
 # About GITS3.1
 "Your repo is your resume. But what is a good looking repo?"
 
-So you want to start a Project on Github. Do CLI commands scare you?? Don't worry we got you! Introducing GITS3.1 ( Let me tell you a secret: It is platform independent )
-```
-% bash setup.sh
-```
+So you want to start a Project on Github. 
+Do CLI commands scare you?? 
+Do platform dependencies of softwares available annoy you??
+
+Don't worry we got you! Introducing GITS3.1 ( Let me tell you a secret: It is platform independent )
 
 GITS3.1 simplifies the organization of your repository according to Software Engineering Standards, ensuring it adheres to the required structure for a "Well-Structured Repository."
 
@@ -38,6 +39,21 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
 
 1. Clone repository
 2. Open cmd and enter command
-   `` bash setup.sh
-   Enter the details, it asks
+   ```
+   % bash setup.sh
+   ```
+   Enter the details: Username and Auth token
+
+# Documentation
+
+
+# Task list
+- [ ] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
+- [ ] Also made an executable to setup the project on command line for ease of use for the user
+- [ ] Implemented a UI
+
+# Contact us
+For any questions and contribution please contact: gits3_1@gmail.com
+
+Made with ❤️ on GitHub.
    
