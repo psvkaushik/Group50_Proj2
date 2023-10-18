@@ -27,7 +27,7 @@
 
 So you want to start a Project on Github. Do CLI commands scare you?? Don't worry we got you! Introducing GITS3.1 ( Let me tell you a secret: It is platform independent )
 ```
-$ bash setup.sh
+% bash setup.sh
 ```
 
 GITS3.1 simplifies the organization of your repository according to Software Engineering Standards, ensuring it adheres to the required structure for a "Well-Structured Repository."
