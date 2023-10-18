@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import Mock, patch
 import subprocess
 import json
+import requests
 from gits_createrepo import create_github_repo
 from gits_branch import get_github_branches
 from gits_checkbranch import check_branch_exists
