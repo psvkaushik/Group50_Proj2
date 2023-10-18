@@ -10,6 +10,7 @@ def create_branch(username, repo_name, base_branch, new_branch, PAT):
     new_branch: name of the new branch to be created
     PAT: The PAT of the user
     """
+
     url = f"https://api.github.com/repos/{username}/{repo_name}/git/refs"
     headers = {
         "Accept": "application/vnd.github.v3+json",
@@ -17,29 +18,15 @@ def create_branch(username, repo_name, base_branch, new_branch, PAT):
     }
 
     # Check if the base branch exists before trying to branch off of it
-    response = check_branch_exists(PAT, username, repo_name, base_branch_name)
+    response = check_branch_exists(PAT, username, repo_name, base_branch)
     if response.status_code == 200:
         base_branch_url = f"https://api.github.com/repos/{username}/{repo_name}/branches/{base_branch}"
         base_branch_response = requests.get(base_branch_url, headers=headers).json()
         sha = base_branch_response['commit']['sha']
-        payload = {
+        data = {
             "ref": f"refs/heads/{new_branch}",
             "sha": sha
         }
 
-        response = requests.post(url, headers=headers, json=payload)
+        response = requests.post(url, headers=headers, json=data)
     return response
-
-    if response.status_code == 201:
-        print(f"Branch '{new_branch}' created successfully on {base_branch}.")
-    else:
-        print(f"Error creating branch. Status code: {response.status_code}, Message: {response.text}")
-
-# Replace these values with your GitHub information
-github_username = "GITSSE23"
-github_repository = "test2"
-base_branch_name = "mai"
-new_branch_name = "feature-branch"
-github_token = "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"
-
-create_branch(github_username, github_repository, base_branch_name, new_branch_name, github_token)

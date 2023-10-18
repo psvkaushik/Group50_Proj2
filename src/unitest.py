@@ -12,6 +12,7 @@ from gits_merge import merge_github_branch
 from gits_pull import download_github_repo
 #from read_token import  username
 from gits_clone import clone_repository
+from gits_createbranch import create_branch
 
 import os
 # github_token = os.environ["GITS_GITHUB_TOKEN"]
@@ -29,15 +30,24 @@ class Test(unittest.TestCase):
         mock_response.status_code = 201
         mock_post.return_value = mock_response
 
-        token = github_token
+        token = 'github_token'
         repo_name = 'test_repo'
 
         # Act
         response = create_github_repo(token, repo_name)
-
-        # Assert
         self.assertEqual(response.status_code, 201)
-        self.assertTrue(mock_post.called)
+        mock_post.assert_called_once_with(
+            f'https://api.github.com/user/repos',
+            headers={
+                'Authorization': f'token {token}',
+                'Accept': 'application/vnd.github.v3+json'
+            },
+            json = {
+        'name': repo_name,
+        'license_template': 'mit',
+        'auto_init': True  # This will initialize the repository with a README.
+    }
+        )
 
     @patch('gits_createrepo.requests.post')
     def test_failed_repo_creation(self, mock_post):
@@ -47,7 +57,7 @@ class Test(unittest.TestCase):
         mock_response.json.return_value = {'message': 'Repository already exists'}
         mock_post.return_value = mock_response
 
-        token = github_token
+        token = 'github_token'
         repo_name = 'test_repo'
 
         # Act
@@ -59,7 +69,7 @@ class Test(unittest.TestCase):
         mock_post.assert_called_once_with(
             f'https://api.github.com/user/repos',
             headers={
-                'Authorization': f'token {github_token}',
+                'Authorization': f'token {token}',
                 'Accept': 'application/vnd.github.v3+json'
             },
             json = {
@@ -69,8 +79,38 @@ class Test(unittest.TestCase):
     }
         )
         
-    
 
+    @patch('gits_createbranch.check_branch_exists')
+    @patch('gits_createbranch.requests.post')
+    @patch('gits_createbranch.requests.get')
+    def test_create_branch_success(self, mock_get, mock_post, mock_check_branch_exists):
+        # Mock the response of the method check_branch_exists
+        mock_check_branch_exists.return_value.status_code = 200
+
+        # Mock the response of a get request 
+        mock_get.return_value.json.return_value = {'commit': {'sha': 'abcdef1234567890'}}
+
+        # Mock the response of post request
+        mock_post.return_value.status_code = 201
+
+        # Call the function with mock values
+        result = create_branch('user', 'repo', 'main', 'feature', 'your-PAT')
+        headers = {
+        "Accept": 'application/vnd.github.v3+json',
+        "Authorization" : f'token your-PAT'
+    }
+        data = {
+            "ref": f"refs/heads/feature",
+            "sha": 'abcdef1234567890'
+        }
+
+        # Assert that the expected calls were made, this follows the same order in the gits_createbranch.py
+        mock_check_branch_exists.assert_called_once_with('your-PAT', 'user', 'repo', 'main')
+        mock_get.assert_called_once_with('https://api.github.com/repos/user/repo/branches/main', headers=headers)
+        mock_post.assert_called_once_with('https://api.github.com/repos/user/repo/git/refs', headers=headers, json=data)
+
+        # Assert the result
+        self.assertEqual(result.status_code, 201)
 
     @patch('subprocess.run')
     def test_clone_successful(self, mock_subprocess_run):
@@ -116,7 +156,7 @@ class Test(unittest.TestCase):
         mock_delete.return_value = mock_response 
 
         # Call the function with mock data
-        response = delete_github_repo(github_token, 'GITSSE23', 'test_repo')
+        response = delete_github_repo('github_token', 'user', 'test_repo')
 
 
         # Assertions
@@ -124,9 +164,9 @@ class Test(unittest.TestCase):
 
         # Ensure that requests.delete was called with the expected arguments
         mock_delete.assert_called_once_with(
-            f'https://api.github.com/repos/GITSSE23/test_repo',
+            f'https://api.github.com/repos/user/test_repo',
             headers={
-                'Authorization': f'token {github_token}',
+                'Authorization': f'token github_token',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -137,7 +177,7 @@ class Test(unittest.TestCase):
         mock_delete.return_value.status_code = 404  # Simulate a not found error
 
         # Call the function with mock data
-        response = delete_github_repo(github_token, 'username', 'repo-to-delete')
+        response = delete_github_repo('github_token', 'username', 'repo-to-delete')
 
         # Assertions
         self.assertEqual(response.status_code, 404)
@@ -146,7 +186,7 @@ class Test(unittest.TestCase):
         mock_delete.assert_called_with(
             f'https://api.github.com/repos/username/repo-to-delete',
             headers={
-                'Authorization': f'token {github_token}',
+                'Authorization': f'token github_token',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -157,7 +197,7 @@ class Test(unittest.TestCase):
         mock_post.return_value.status_code = 202  # HTTP status code for accepted (accepted for asynchronous processing)
 
         # Call the function with mock data
-        response = fork_repo('TommasU', 'slash', github_token)
+        response = fork_repo('TommasU', 'slash', 'github_token')
 
         # Assertions
         self.assertEqual(response.status_code, 202)
@@ -166,7 +206,7 @@ class Test(unittest.TestCase):
         mock_post.assert_called_with(
             'https://api.github.com/repos/TommasU/slash/forks',
             headers={
-                'Authorization': f'token {github_token}',
+                'Authorization': f'token github_token',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
@@ -177,7 +217,7 @@ class Test(unittest.TestCase):
         mock_post.return_value.status_code = 404  # Simulate a not found error
 
         # Call the function with mock data
-        response = fork_repo('target_user', 'target_repo', github_token)
+        response = fork_repo('target_user', 'target_repo', 'github_token')
 
         # Assertions
         self.assertEqual(response.status_code, 404)
@@ -186,10 +226,33 @@ class Test(unittest.TestCase):
         mock_post.assert_called_with(
             f'https://api.github.com/repos/target_user/target_repo/forks',
             headers={
-                'Authorization': f'token {github_token}',
+                'Authorization': f'token github_token',
                 'Accept': 'application/vnd.github.v3+json'
             }
         )
+
+    @patch('gits_checkbranch.requests.get')
+    def test_checkbranch_success(self, mock_get):
+        # mocking the get response
+        mock_response = Mock()
+        mock_response.status_code = 200
+        mock_get.return_value = mock_response
+        # using actual function on mock values
+        response = check_branch_exists('PAT', 'user_name', 'repo_name', 'branch_name')
+        self.assertEqual(response.status_code, 200)
+
+        headers = {
+        "Accept": 'application/vnd.github.v3+json',
+        "Authorization" : f'token PAT'
+    }
+
+        url = f'https://api.github.com/repos/user_name/repo_name/branches/branch_name'
+        # Asserting with mock call
+        mock_get.assert_called_once_with(url=url, headers=headers)
+
+
+    
+
 
 
 if __name__ == '__main__':
