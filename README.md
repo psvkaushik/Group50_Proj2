@@ -45,7 +45,7 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
    Enter the details: Username and Auth token
 
 # Documentation
-
+The primary goal of this project is to simplify the tasks of developers as they collaborate on their project repositories. GITS3.1 streamlines their workflow, enhances efficiency, and minimizes time spent by offering essential default files in the proper structure. This approach allows naive users/developers to concentrate on improving their projects without the burden of repository management.
 
 # Task list
 - [X] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
