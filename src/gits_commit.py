@@ -16,7 +16,7 @@ def commit(dir_path, branch = 'main', files = '.', commit_msg = 'commiting throu
                 default is set to main.
     dir_path - path to where the repo is hosted locally
     commit_msg - The commit message
-    files - files the user wants to commit
+    files - files the user wants to commit, separated by spaces
     """
     command = ['git', 'checkout', branch]
     result = subprocess.run(command,  cwd=dir_path, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
