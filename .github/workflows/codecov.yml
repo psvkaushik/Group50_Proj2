@@ -25,8 +25,8 @@ jobs:
         echo requirements installed
     - name: Run the tests
       run: |
-          cd src
-          pytest --cov=./unitest.py ./unitest.py
+          pytest --cov=src src/unitest.py 
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
