@@ -25,11 +25,11 @@
 # About GITS3.1
 "Your repo is your resume. But what is a good looking repo?"
 
-So you want to start a Project on Github. 
-Do CLI commands scare you?? 
-Do platform dependencies of softwares available annoy you??
+So you want to start a Project on Github <br><br>
+Do CLI commands scare you?? <br><br>
+Do platform dependencies of softwares available annoy you?? <br><br>
 
-Don't worry we got you! Introducing GITS3.1 ( Let me tell you a secret: It is platform independent )
+Don't worry we got you! Introducing GITS3.1
 
 GITS3.1 simplifies the organization of your repository according to Software Engineering Standards, ensuring it adheres to the required structure for a "Well-Structured Repository."
 
