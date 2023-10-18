@@ -152,8 +152,8 @@ def merge_branch():
 @app.route('/commit_diff', methods=['POST'])
 def commit_diff():
     local_path = request.form['localPath']
-    filename = request.form['filename']
     branch_name = request.form['branchName']
+    filename = request.form['filename']
     commit_msg = request.form['commit_msg']
     result = gits_commit.commit(local_path, branch_name, filename, commit_msg)
     return result
