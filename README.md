@@ -23,6 +23,7 @@
 [![Running Code Coverage](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/codecov.yml/badge.svg)](https://github.com/psvkaushik/Group50_Proj2/actions/workflows/codecov.yml)
 
 # About GITS3.1
+
 "Your repo is your resume. But what is a good looking repo?"
 
 So you want to start a Project on Github <br><br>
@@ -44,16 +45,18 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
    Enter the details: Username and Auth token
 
 # Documentation
+
 The primary goal of this project is to simplify the tasks of developers as they collaborate on their project repositories. GITS3.1 streamlines their workflow, enhances efficiency, and minimizes time spent by offering essential default files in the proper structure. This approach allows naive users/developers to concentrate on improving their projects without the burden of repository management.
 
 # Task list
-- [X] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
-- [X] Also made an executable to setup the project on command line for ease of use for the user
-- [X] Implemented a UI
+
+- [x] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
+- [x] Also made an executable to setup the project on command line for ease of use for the user
+- [x] Implemented a UI
 - [ ] Provided feature to add custom commands and included instaructions on using template to create corressponding code
 
 # Contact us
+
 For any questions and contribution please contact: gits3.1project@gmail.com
 
 Made with ❤️ on GitHub.
-   
