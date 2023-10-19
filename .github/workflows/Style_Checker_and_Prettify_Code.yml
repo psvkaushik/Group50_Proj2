@@ -19,5 +19,5 @@ jobs:
     - name: Prettify code
       uses: creyD/prettier_action@v4.0
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        env: ${{ secrets.GITHUB_TOKEN }}
         prettier_options: --write **/*.md
