@@ -8,4 +8,7 @@ The code that implements this functionality is [here](https://github.com/psvkaus
 
 # Code Description
 
-This function takes repository URL from the user, whose commits needs to be counted.
+<img width="307" alt="image" src="https://github.com/psvkaushik/Group50_Proj2/assets/144864099/b6472978-db3c-4d88-ad6c-98d4be2f7b4d">\
+This function takes repository URL from the userand counts the total number of commits in that repository.\
+Input Description:\
+Repository URL: A GitHub repository URL
