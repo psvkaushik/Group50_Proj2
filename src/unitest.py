@@ -590,7 +590,7 @@ class Test(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertEqual(result.stdout, b'Commit successful\n')
     
-        mock_subprocess_run.assert_called_with(['git', 'checkout', 'main'], cwd=dir_path, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        mock_subprocess_run.assert_called_with(['git', 'commit', '-m', commit_msg], cwd=dir_path, stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     
 
 if __name__ == '__main__':
