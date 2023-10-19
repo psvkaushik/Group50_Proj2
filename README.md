@@ -42,8 +42,10 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
    ```
    % bash setup.sh
    ```
-   Enter the details: Username and Auth token of your account (make sure to allow everything in token) Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-3. ###NEED TO ADD SCREENSHOTS HERE
+   Enter the details: Username and Auth token of your account (make sure to allow everything in token)
+   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/af3ac6a9-8d4d-45bb-bd87-60b05524acac)
+   Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+4. ###NEED TO ADD SCREENSHOTS HERE
 
 # Documentation
 
