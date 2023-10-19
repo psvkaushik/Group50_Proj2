@@ -54,6 +54,7 @@ Thank you for considering contributing to the GITS Homepage project. Your contri
 - [Adding New Functionality](#adding-new-functionality)
 - [Testing](#testing)
 - [Submitting a Pull Request](#submitting-a-pull-request)
+- [Template on how to contribute](#Template-on-how-to-contribute)
 
 ## Getting Started
 
@@ -75,7 +76,7 @@ git clone https://github.com/your-username/gits-homepage.git
 cd gits-homepage
 ```
 
-# Template on how to contribute.
+## Template on how to contribute
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
