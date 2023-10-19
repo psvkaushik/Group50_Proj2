@@ -176,3 +176,8 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
    ```
 
 3. Add the following entries in _PROJECT HOME_/code/gits.py ==> HTML
+
+   ```html
+   <select id="option" onchange="toggleForm(this)">
+    <option value="function">Option_Name</option>
+   ```
