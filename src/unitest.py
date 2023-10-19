@@ -622,8 +622,6 @@ class Test(unittest.TestCase):
         self.assertFalse(response)
 
     @patch('requests.get')
-
-    @patch('requests.get')
     def test_get_github_diff_success(self, mock_get):
         mock_commit_response = Mock()
         mock_commit_response.status_code = 200
