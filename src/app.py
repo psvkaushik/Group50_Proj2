@@ -150,7 +150,7 @@ def commit_diff():
     if result.returncode == 0:
         return "Given files committed successfully!"
     else:
-        return f"Error cloning repository. Error message: {result.stderr}"
+        return f"Error commiting files. Error message: {result.stderr}"
 
 
 @app.route('/push', methods=['POST'])
@@ -162,7 +162,10 @@ def push():
     filename = request.form['filename']
     commit_msg = request.form['commit_msg']
     result = gits_push.push(token,user_name, local_path, repo_name, branch_name, filename, commit_msg)
-    return result
+    if result.returncode == 0:
+        return "Code pushed to the repository successfully!"
+    else:
+        return f"Error pushing code to the repository. Error message: {result.stderr}"
 
 
 @app.route('/diff', methods=['POST'])
