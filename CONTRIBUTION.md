@@ -75,10 +75,13 @@ To ensure a smooth and efficient contribution process, please follow these guide
 git clone https://github.com/your-username/gits-homepage.git
 cd gits-homepage
 ```
+
 - Create a new branch for your feature or bug fix:
+
 ```bash
 git checkout -b feature/your-feature-name
 ```
+
 - Make your changes to the HTML file as needed.
 - Add and commit your changes:
 ```bash
