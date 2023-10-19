@@ -646,5 +646,18 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, ['file1', 'file2'])
 
+    @patch('requests.get')
+    def test_get_github_diff_exception(self, mock_get):
+        mock_get.side_effect = Exception("Test exception")
+
+        owner = 'testowner'
+        repo = 'testrepo'
+        branch = 'main'
+        github_token = 'test_token'
+
+        result = get_github_diff(owner, repo, branch, github_token)
+
+        self.assertEqual(result, "ERROR: Test exception")
+
 if __name__ == '__main__':
     unittest.main()
