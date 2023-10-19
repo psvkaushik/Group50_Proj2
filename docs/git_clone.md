@@ -12,4 +12,4 @@ The functionality of the code can be found [here](https://github.com/psvkaushik/
 The function takes inputs as the Repository URL and the Destination path where the repo needs to be cloned.\
 Input Description:\
 Repository URL: A GitHub repository URL\
-Destination Path: A path on your local machine where the repo needs to be cloned to.\
+Destination Path: A path on your local machine where the repo needs to be cloned to.
