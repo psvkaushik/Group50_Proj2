@@ -43,9 +43,13 @@ Here are few motivation points to come up with this idea
 # Installation Setup
 
 1. Open terminal (Git bash etc) and clone repository
-2. Navigate to the directory anf enter following command
+2. Navigate to the directory and enter following command for linux or mac os  
    ```
    % bash setup.sh
+   ```
+   Navigate to the directory and enter following command for windows
+   ```
+   % windows_setup
    ```
    Enter the details: Username and Auth token of your account (make sure to allow everything in token)
    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/af3ac6a9-8d4d-45bb-bd87-60b05524acac)
