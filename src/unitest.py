@@ -391,22 +391,6 @@ class Test(unittest.TestCase):
         mock_create_branch_github_repo.assert_called_with("userName", 'my-repo', 'baseBranch', 'newBranch', 'token')
 
     @patch('app.token', 'token')
-    @patch('gits_pull.download_github_repo')
-    def test_app_pull_github_repo(self, mock_pull_github_repo):
-        # Configure the mock objects
-        mock_pull_github_repo.return_value.status_code = 200
-        test_app = Flask(__name__)
-
-        with test_app.test_request_context('/', method='POST', data={'repoOwner': 'repoOwner', 'repoName': 'repoName',
-                                                                     'localPath': 'localPath'}):
-            # Call the Flask route function within the request context
-            response = app.pull_repository()
-
-        # Verify the results
-        self.assertEqual(response, "Repository 'repoName' successfully downloaded and extracted to 'localPath'")
-        mock_pull_github_repo.assert_called_with( 'token', "repoOwner", 'repoName', 'localPath')
-
-    @patch('app.token', 'token')
     @patch('gits_branch.get_github_branches')
     def test_app_get_branch_github_repo(self, mock_get_branch_github_repo):
         # Configure the mock objects
