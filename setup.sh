@@ -2,8 +2,8 @@
 
 #Ask for input from user
 
-read -p "Enter username please: " Username
-read -p "Enter your auth token please: " Token
+#read -p "Enter username please: " Username
+#read -p "Enter your auth token please: " Token
 
 
 # Check if pip is installed
