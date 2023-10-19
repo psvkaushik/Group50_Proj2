@@ -98,6 +98,21 @@ The GITS Homepage provides a dynamic form for different GitHub actions. If you w
 - Make sure to include proper validation and error handling for user inputs.
 - Test your new feature locally to ensure it works as expected.
 
+## Testing
+Before you submit a pull request, it's essential to test your changes thoroughly. You can test your new feature by following these steps:
+
+1. Run the GITS Homepage locally using a web server:
+   
+```bash
+python app.py
+```
+
+2. Open your web browser and access the GITS Homepage at http://localhost:5020 (or another port if specified).
+
+3. Test the new functionality by selecting the corresponding option in the dropdown menu and filling out the form. Ensure it works as expected and handles errors gracefully.
+
+4. If you encounter issues or errors, make the necessary adjustments and retest.
+
 ## Template on how to contribute
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
