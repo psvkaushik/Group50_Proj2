@@ -12,7 +12,6 @@ from flask import Flask, request, render_template
 import gits_createrepo
 import gits_delete
 import gits_clone
-import gits_pull
 import gits_fork
 import gits_checkbranch
 import gits_branch
