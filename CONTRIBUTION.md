@@ -68,12 +68,12 @@ Before you start contributing, please make sure you have the following prerequis
 
 To ensure a smooth and efficient contribution process, please follow these guidelines:
 
-- Fork the [GITS Homepage repository](https://github.com/your-username/gits-homepage) on GitHub to your own account.
+- Fork the [GITS Homepage repository](https://github.com/psvkaushik/Group50_Proj2) on GitHub to your own account.
 - Clone your fork to your local development environment:
 
 ```bash
-git clone https://github.com/your-username/gits-homepage.git
-cd gits-homepage
+git clone https://github.com/psvkaushik/Group50_Proj2
+cd Group50_Proj2
 ```
 
 - Create a new branch for your feature or bug fix:
