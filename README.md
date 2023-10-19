@@ -35,7 +35,8 @@ GITS3.1 simplifies the organization of your repository according to Software Eng
 
 Think of GITS3.1 as a foundational repository that helps align your project repository with these standards.
 
-Here are few motivation points to come up with this idea  
+Here are few motivation points to come up with this idea
+
 1. When dealing with various files and branches, there often arises a need to update multiple commands in a particular sequence, which can become cumbersome. Employing a custom command that can execute multiple commands simultaneously in a predefined order is a time-saving and developer-friendly solution.
 2. While tackling an assignment for the course, we discovered a shortage of project repositories that follow a standardized structure.
 3. Developers might struggle to create projects that are easily transferable.
@@ -43,7 +44,7 @@ Here are few motivation points to come up with this idea
 # Installation Setup
 
 1. Open terminal (Git bash etc) and clone repository
-2. Navigate to the directory and enter following command on terminal for linux or mac os  
+2. Navigate to the directory and enter following command on terminal for linux or mac os
    ```
    % bash setup.sh
    ```
@@ -57,7 +58,7 @@ Here are few motivation points to come up with this idea
 
 Quick start guide can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Quick_start_guide.md)  
 Case studies can be found [here]  
-Troubleshooting steps can be found [here]  
+Troubleshooting steps can be found [here]
 
 # Documentation
 
@@ -71,14 +72,17 @@ The primary goal of this project is to simplify the tasks of developers as they 
 - [x] Provided feature to add custom commands and included instaructions on using template to create corressponding code
 
 # Third Party Dependencies
+
 ####NEED TO FILL UP
+
 <!---placeholder--->
 
 # Road-map ahead
-- [ ] Containerize the application and test cases 
-- [ ] Website issue needs to be resolved in next 1 month  
-- [ ] Custom commands can be added without template  
-- [ ] Host application on cloud  
+
+- [ ] Containerize the application and test cases
+- [ ] Website issue needs to be resolved in next 1 month
+- [ ] Custom commands can be added without template
+- [ ] Host application on cloud
 
 # Contact us
 
