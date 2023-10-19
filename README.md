@@ -49,7 +49,7 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
 
 # Documentation
 
-The primary goal of this project is to simplify the tasks of developers as they collaborate on their project repositories. GITS3.1 streamlines their workflow, enhances efficiency, and minimizes time spent by offering essential default files in the proper structure. This approach allows naive users/developers to concentrate on improving their projects without the burden of repository management.
+The primary goal of this project is to simplify the tasks of developers as they collaborate on their project repositories. GITS3.1 streamlines their workflow, enhances efficiency, and minimizes time spent by offering essential default files in the proper structure. This approach allows naive users/developers to concentrate on improving their projects without the burden of repository management. Functional code details can be found [here](https://github.com/psvkaushik/Group50_Proj2/tree/main/docs)
 
 # Task list
 
