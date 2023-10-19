@@ -15,6 +15,7 @@ from gits_countcommit import count_commits_in_github_repo
 # from read_token import  username
 from gits_clone import clone_repository
 from gits_createbranch import create_branch
+from gits_push import push
 import app
 from flask import Flask
 
@@ -678,6 +679,29 @@ class Test(unittest.TestCase):
         result = get_github_diff(owner, repo, branch, github_token)
 
         self.assertEqual(result, "Error: Unable to fetch the difference - Status Code 404")
+
+    @patch('subprocess.run')
+    @patch('test_gits_push.commit')
+    def test_push_success(self, mock_commit, mock_subprocess_run):
+        PAT = 'tes_pat_token'
+        user_name = 'test_username'
+        dir_path = '/path/to/the/repo'
+        repo_name = 'test_repo'
+        branch = 'main'
+        files = 'file1.txt file2.txt'
+        commit_msg = 'Test commit'
+
+        expected_command = ['git', 'push', f'https://{PAT}@github.com/{user_name}/{repo_name}.git']
+
+        expected_push_response = subprocess.CompletedProcess(
+            args=expected_command,
+            returncode=0,
+            stdout=b'Push successful',
+            stderr=b''
+        )
+        mock_subprocess_run.return_value = expected_push_response
+        push_response = push(PAT, user_name, dir_path, repo_name, branch, files, commit_msg)
+        self.assertEqual(push_response, expected_push_response)
 
 if __name__ == '__main__':
     unittest.main()
