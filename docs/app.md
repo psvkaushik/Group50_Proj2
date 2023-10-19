@@ -30,6 +30,10 @@ The App.py [code](/src/app.py) is organized into several routes, each of which h
 - **Route**: `/check_branch`
 - **Description**: Users can check if a specific branch exists in a GitHub repository. It calls the `check_branch_exists` function from this [library](/src/gits_checkbranch.py) and returns a success or error message based on the result.
 
+### Create Branch Route
+- **Route**: `/create_branch`
+- **Description**: This route allows users to create a new branch in a GitHub repository by providing their GitHub username, repository name, the base branch (from which the new branch will be created), and the name of the new branch. It calls the `create_branch` function from the `gits_createbranch` library and returns a success or error message based on the result.
+
 ### Get Branches Route
 - **Route**: `/get_branches`
 - **Description**: This route allows users to fetch the branches of a GitHub repository. It calls the `get_github_branches` function from this [library](/src/gits_branch.py) and returns a list of branch names or an error message.
@@ -42,9 +46,18 @@ The App.py [code](/src/app.py) is organized into several routes, each of which h
 - **Route**: `/merge_branch`
 - **Description**: Users can merge a specific branch in a GitHub repository by providing the repository owner, repository name, and branch name. It calls the `merge_github_branch` function from this [library](/src/gits_merge.py) and returns the result of the merge operation.
 
+### Commit Route
+- **Route**: `/commit_diff`
+- **Description**: Users can commit changes to a specific branch in a GitHub repository. This route takes the local path, branch name, filename, and commit message as input. It calls the `commit` function from the `gits_commit` library and returns the result of the commit operation.
+
+### Push Route
+- **Route**: `/push`
+- **Description**: This route allows users to push changes to a specific branch in a GitHub repository. Users need to provide their GitHub username, local path, repository name, branch name, filename, and commit message. It calls the `push` function from the `gits_push` library and returns the result of the push operation.
+
 ### Difference Route
 - **Route**: `/diff`
 - **Description**: This route allows users to view the differences between commits in a GitHub repository's branch by providing the repository owner, repository name, and branch name. It calls the `get_github_commit_diff` function from this [library](/src/gits_diff.py) and returns the commit differences.
+
 
 ## How to Run the Code
 
