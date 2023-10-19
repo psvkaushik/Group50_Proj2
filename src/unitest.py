@@ -681,7 +681,7 @@ class Test(unittest.TestCase):
         self.assertEqual(result, "Error: Unable to fetch the difference - Status Code 404")
 
     @patch('subprocess.run')
-    @patch('test_gits_push.commit')
+    @patch('gits_push.commit')
     def test_push_success(self, mock_commit, mock_subprocess_run):
         PAT = 'tes_pat_token'
         user_name = 'test_username'
