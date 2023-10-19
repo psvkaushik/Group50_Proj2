@@ -1,9 +1,12 @@
 cff-version: 1.1.0
 message: "If you use this software, please cite it as below."
 authors:
-- Group: 50
-  College: NCSU
-  Dept: CSE
-title:
+- - family: College
+    given: NCSU
+  - family: Dept
+    given: CSE
+  - family: Group
+    given: 50
+title: "Your Software Title"
 version: v3.0
 date-released: 2023-10-19
