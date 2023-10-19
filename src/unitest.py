@@ -453,9 +453,9 @@ class Test(unittest.TestCase):
 
     @patch('app.token', 'token')
     @patch('gits_commit.commit')
-    def test_app_commit_diff(self, mock_commit_diff):
+    def test_app_commit_diff_success(self, mock_commit_diff):
         # Configure the mock objects
-        mock_commit_diff.return_value = "sample diff!"
+        mock_commit_diff.return_value.returncode = 0
         test_app = Flask(__name__)
 
         with test_app.test_request_context('/', method='POST', data={'localPath': 'localPath', 'branchName': 'branchName',
@@ -464,14 +464,32 @@ class Test(unittest.TestCase):
             response = app.commit_diff()
 
         # Verify the results
-        self.assertEqual(response, "sample diff!")
+        self.assertEqual(response, "Given files committed successfully!")
+        mock_commit_diff.assert_called_with("localPath", 'branchName', 'filename', 'commit_msg')
+
+    @patch('app.token', 'token')
+    @patch('gits_commit.commit')
+    def test_app_commit_diff_fail(self, mock_commit_diff):
+        # Configure the mock objects
+        mock_commit_diff.return_value.returncode = 1
+        mock_commit_diff.return_value.stderr = "error"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST',
+                                           data={'localPath': 'localPath', 'branchName': 'branchName',
+                                                 'filename': 'filename', 'commit_msg': 'commit_msg'}):
+            # Call the Flask route function within the request context
+            response = app.commit_diff()
+
+        # Verify the results
+        self.assertEqual(response, "Error commiting files. Error message: error")
         mock_commit_diff.assert_called_with("localPath", 'branchName', 'filename', 'commit_msg')
 
     @patch('app.token', 'token')
     @patch('gits_push.push')
-    def test_app_push(self, mock_push):
+    def test_app_push_success(self, mock_push):
         # Configure the mock objects
-        mock_push.return_value = "sample push!"
+        mock_push.return_value.returncode = 0
         test_app = Flask(__name__)
 
         with test_app.test_request_context('/', method='POST', data={'userName': 'userName', 'localPath': 'localPath',
@@ -481,9 +499,29 @@ class Test(unittest.TestCase):
             response = app.push()
 
         # Verify the results
-        self.assertEqual(response, "sample push!")
+        self.assertEqual(response, "Code pushed to the repository successfully!")
         mock_push.assert_called_with('token', "userName", "localPath", 'repoName', 'branchName', 'filename', 'commit_msg')
-    
+
+    @patch('app.token', 'token')
+    @patch('gits_push.push')
+    def test_app_push_fail(self, mock_push):
+        # Configure the mock objects
+        mock_push.return_value.returncode = 1
+        mock_push.return_value.stderr = "failed"
+        test_app = Flask(__name__)
+
+        with test_app.test_request_context('/', method='POST', data={'userName': 'userName', 'localPath': 'localPath',
+                                                                     'repoName': 'repoName', 'branchName': 'branchName',
+                                                                     'filename': 'filename',
+                                                                     'commit_msg': 'commit_msg'}):
+            # Call the Flask route function within the request context
+            response = app.push()
+
+        # Verify the results
+        self.assertEqual(response, "Error pushing code to the repository. Error message: failed")
+        mock_push.assert_called_with('token', "userName", "localPath", 'repoName', 'branchName', 'filename',
+                                     'commit_msg')
+
     @patch('requests.get')
     def test_count_commits_good(self, mock_get):
         mock_response = Mock()
