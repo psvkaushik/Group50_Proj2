@@ -46,8 +46,8 @@ The App.py [code](/src/app.py) is organized into several routes, each of which h
 - **Route**: `/merge_branch`
 - **Description**: Users can merge a specific branch in a GitHub repository by providing the repository owner, repository name, and branch name. It calls the `merge_github_branch` function from this [library](/src/gits_merge.py) and returns the result of the merge operation.
 
-### Commit Difference Route
-- **Route**: `/commit_diff`
+### Difference Route
+- **Route**: `/diff`
 - **Description**: This route allows users to view the differences between commits in a GitHub repository's branch by providing the repository owner, repository name, and branch name. It calls the `get_github_commit_diff` function from this [library](/src/gits_diff.py) and returns the commit differences.
 
 ## How to Run the Code
