@@ -70,10 +70,10 @@ The primary goal of this project is to simplify the tasks of developers as they 
 ####NEED TO FILL UP
 
 # Road-map ahead
-[ ] Containerize the application and test cases  
-[ ] Website issue needs to be resolved in next 1 month  
-[ ] Custom commands can be added without template  
-[ ] Host application on cloud  
+- [ ] Containerize the application and test cases 
+- [ ] Website issue needs to be resolved in next 1 month  
+- [ ] Custom commands can be added without template  
+- [ ] Host application on cloud  
 
 # Contact us
 
