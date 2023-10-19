@@ -43,11 +43,3 @@ def get_github_diff(owner, repo, branch, github_token):
         print("ERROR: gits diff command caught an exception")
         return "ERROR: {}".format(str(e))
 
-
-if __name__ == "__main__":
-    owner = ' '
-    repo = ' '
-    branch = ' '
-    github_token = '  '
-
-    get_github_diff(owner, repo, branch)
