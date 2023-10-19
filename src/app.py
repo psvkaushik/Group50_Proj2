@@ -25,11 +25,8 @@ import gits_push
 import yaml
 import os
 
-# file_path = r'./credentials.yaml'
 
-# with open(file_path, 'r') as file:
-#     data = yaml.safe_load(file)
-# token = data['GITHUB_TOKEN']
+# replace this with your token
 
 token = os.environ.get('GITS_GITHUB_TOKEN')
 
