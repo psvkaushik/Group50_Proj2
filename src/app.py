@@ -22,12 +22,13 @@ import gits_createbranch
 import gits_commit
 import gits_push
 
-import os
+import yaml
 
-# file_path = r'C:\Users\psvka\OneDrive\Desktop\fall23\CSC519\CSC-519-WS-5\vars.yaml'
-# with open(file_path, 'r') as file:
-#     data = yaml.safe_load(file)
-token = os.environ.get('GITHUB_TOKEN')
+file_path = r'replace this with path to the vars.yaml'
+
+with open(file_path, 'r') as file:
+    data = yaml.safe_load(file)
+token = data['GITHUB_TOKEN']
 
 
 app = Flask(__name__, static_url_path='/static')
