@@ -111,18 +111,6 @@ def create_branch():
         return f"Error!! Error message: {result.json()}"
 
 
-@app.route('/pull_repo', methods=['POST'])
-def pull_repository():
-    repo_owner = request.form['repoOwner']
-    repo_name = request.form['repoName']
-    local_filepath = request.form['localPath']
-    result = gits_pull.download_github_repo(token, repo_owner, repo_name, local_filepath)
-    if result.status_code == 200:
-        return f"Repository '{repo_name}' successfully downloaded and extracted to '{local_filepath}'"
-    else:
-        return f"Error downloading the repository. Status code: {result.json()}"
-
-
 @app.route('/get_branches', methods=['POST'])
 def get_branches():
     repo_owner = request.form['repoOwner']
