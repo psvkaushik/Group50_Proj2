@@ -576,6 +576,34 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, "Failed to merge branch 'test-branch'. Status code: 400\nMerge failed")
     
+    @patch('requests.get')
+    def test_get_github_branches_success(self, mock_get):
+        owner = "test_owner"
+        repo = "test_repo"
+        github_token = "test_token"
+
+        expected_response_data = [{"name": "branch1"}, {"name": "branch2"}]
+        mock_response = Mock()
+        mock_response.json.return_value = expected_response_data
+        mock_response.status_code = 200
+
+        mock_get.return_value = mock_response
+        response = get_github_branches(owner, repo, github_token)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), expected_response_data)
+
+    @patch('requests.get')
+    def test_get_github_branches_exception(self, mock_get):
+        owner = "test_owner"
+        repo = "test_repo"
+        github_token = "test_token"
+
+        mock_get.side_effect = Exception("Simulated Exception")
+
+        response = get_github_branches(owner, repo, github_token)
+
+        self.assertFalse(response)
 
 if __name__ == '__main__':
     unittest.main()
