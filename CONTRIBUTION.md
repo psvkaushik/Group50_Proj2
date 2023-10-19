@@ -42,7 +42,38 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
 4. Describe the current behavior and explain which behavior you expected to see instead and why.
 5. Explain why this enhancement would be useful to most users and isn't something that can or should be implemented as a community package.
 
-## Adding new command
+
+# Contributing to GITS Homepage
+
+Thank you for considering contributing to the GITS Homepage project. Your contributions help make this project better. This document provides guidelines on how to add further functionality to the existing HTML script.
+
+## Table of Contents
+
+- [Getting Started](#getting-started)
+- [Contributing Guidelines](#contributing-guidelines)
+- [Adding New Functionality](#adding-new-functionality)
+- [Testing](#testing)
+- [Submitting a Pull Request](#submitting-a-pull-request)
+
+## Getting Started
+
+Before you start contributing, please make sure you have the following prerequisites:
+
+1. A basic understanding of HTML and JavaScript.
+2. A basic understanding of Python and Flask framework.
+3. A local development environment set up.
+
+## Contributing Guidelines
+
+To ensure a smooth and efficient contribution process, please follow these guidelines:
+
+- Fork the [GITS Homepage repository](https://github.com/your-username/gits-homepage) on GitHub to your own account.
+- Clone your fork to your local development environment:
+
+```bash
+git clone https://github.com/your-username/gits-homepage.git
+cd gits-homepage
+
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
