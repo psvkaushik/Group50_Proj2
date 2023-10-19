@@ -659,5 +659,20 @@ class Test(unittest.TestCase):
 
         self.assertEqual(result, "ERROR: Test exception")
 
+    @patch('requests.get')
+    def test_get_github_diff_commit_error(self, mock_get):
+        mock_response = Mock()
+        mock_response.status_code = 404
+        mock_get.return_value = mock_response
+
+        owner = 'testowner'
+        repo = 'testrepo'
+        branch = 'main'
+        github_token = 'test_token'
+
+        result = get_github_diff(owner, repo, branch, github_token)
+
+        self.assertEqual(result, "Error: Unable to fetch the latest commit - Status Code 404")
+
 if __name__ == '__main__':
     unittest.main()
