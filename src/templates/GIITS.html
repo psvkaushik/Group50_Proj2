@@ -34,7 +34,6 @@ this file. If not, please write to: gits3.1project@gmail.com
     #form-container-clone,
     #form-container-fork,
     #form-container-check_branch,
-    #form-container-branch,
     #form-container-commit_count,
     #form-container-merge_branch,
     #form-container-commit_diff,
@@ -92,17 +91,6 @@ this file. If not, please write to: gits3.1project@gmail.com
     </form>
   </div>
 
-  <div id="form-container-clone">
-    <form action="/clone_repo" method="post">
-      <label for="repoURL">Repository URL:</label>
-      <input type="text" id="repoURL" name="repoURL" required><br> <br>
-
-      <label for="destinationPath">Destination Path:</label>
-      <input type="text" id="destinationPath" name="destinationPath" required><br> <br>
-
-      <input type="submit" value="Submit">
-    </form>
-  </div>
 
   <div id="form-container-commit_count">
     <form action="/commit_count" method="post">
@@ -276,7 +264,6 @@ this file. If not, please write to: gits3.1project@gmail.com
       document.getElementById('form-container-get_branches').style.display = 'none';
       document.getElementById('form-container-commit_count').style.display = 'none';
       document.getElementById('form-container-merge_branch').style.display = 'none';
-      document.getElementById('form-container-pull').style.display = 'none';
       document.getElementById('form-container-commit_diff').style.display = 'none';
       document.getElementById('form-container-create_branch').style.display = 'none';
       document.getElementById('form-container-diff').style.display = 'none';
