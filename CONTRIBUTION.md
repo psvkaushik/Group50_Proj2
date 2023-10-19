@@ -16,7 +16,7 @@ Please note we have a code of conduct (CODE_OF_CONDUCT.md), please follow it in 
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Template on how to contribute](#Template-on-how-to-contribute)
 - [Bug Reporting Process](#Bug-Reporting-Process)
-- [Enhancement suggestion process](#Enhancement-suggestion-process)
+- [Feature request Process](#Feature-request-Process)
 
 ## Getting Started
 
@@ -55,14 +55,11 @@ git checkout -b feature/your-feature-name
 
 - Make your changes to the HTML file as needed.
 - Add and commit your changes:
-
 ```bash
 git add .
 git commit -m "Added feature: your-feature-name"
 ```
-
 ## Adding New Functionality
-
 The GITS Homepage provides a dynamic form for different GitHub actions. If you want to add new functionality to this HTML script, follow these steps:
 
 - Open the files in your favorite code editor.
@@ -73,11 +70,10 @@ The GITS Homepage provides a dynamic form for different GitHub actions. If you w
 - Test your new feature locally to ensure it works as expected.
 
 ## Testing
-
 Before you submit a pull request, it's essential to test your changes thoroughly. You can test your new feature by following these steps:
 
 1. Run the GITS Homepage locally using a web server:
-
+   
 ```bash
 python app.py
 ```
@@ -89,7 +85,6 @@ python app.py
 4. If you encounter issues or errors, make the necessary adjustments and retest.
 
 ## Submitting a Pull Request
-
 Once you have completed your changes and testing, follow these steps to submit a pull request:
 
 - Commit your final changes:
@@ -155,32 +150,31 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
 
    ```html
    <style>
-     #form-container-YourFunctionName {
-       display: none;
-     }
+    #form-container-YourFunctionName {
+      display: none;
+    }
    </style>
-
+   
    <select id="option" onchange="toggleForm(this)">
-     <option value="YourFunctionRoute">YourOptionName</option>
+    <option value="YourFunctionRoute">YourOptionName</option>
 
-     <div id="form-container-YourFunctionName">
-       <form action="/YourFunctionRoute" method="post">
-         <label for="YourInput1">Input 1:</label>
-         <input type="text" id="YourInput1" name="YourInput1" required /> <br />
-         <br />
-         .. ..
-         <input type="submit" value="Submit" />
-       </form>
-     </div>
+   <div id="form-container-YourFunctionName">
+    <form action="/YourFunctionRoute" method="post">
+      <label for="YourInput1">Input 1:</label>
+      <input type="text" id="YourInput1" name="YourInput1" required> <br> <br>
+      ..
+      ..
+      <input type="submit" value="Submit">
+    </form>
+   </div>
 
-     <script>
-       function toggleForm(selectElement) {
-         document.getElementById('form-container-YourFunctionName').style.display = 'none';
+   <script>
+    function toggleForm(selectElement) {
+      document.getElementById('form-container-YourFunctionName').style.display = 'none';
 
-         if (selectElement.value === 'YourFunctionRoute') {
-           document.getElementById('form-container-YourFunctionName').style.display = 'block';
-     </script>
-   </select>
+      if (selectElement.value === 'YourFunctionRoute') {
+        document.getElementById('form-container-YourFunctionName').style.display = 'block';
+   </script>
    ```
 
 4. Add the route to the flask [app](/src/app.py) as follows:
@@ -210,7 +204,7 @@ Explain the problem and include additional details to help maintainers reproduce
 6. Explain which behavior you expected to see instead and why.
 7. Include screenshots and animated GIFs which show you following the described steps and clearly demonstrate the problem.
 
-## Enhancement suggestion process / Feature request Process
+## Feature request Process
 
 Bugs are tracked as GitHub issues. You need to create an issue and include all the following details if possible.
 
