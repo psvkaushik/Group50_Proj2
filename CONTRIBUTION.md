@@ -113,6 +113,32 @@ python app.py
 
 4. If you encounter issues or errors, make the necessary adjustments and retest.
 
+## Submitting a Pull Request
+Once you have completed your changes and testing, follow these steps to submit a pull request:
+
+Commit your final changes:
+
+```bash
+git add .
+git commit -m "Finalizing feature: your-feature-name"
+```
+
+Push your changes to your fork on GitHub:
+
+```bash
+git push origin feature/your-feature-name
+```
+
+Visit your fork on GitHub and create a new pull request.
+
+Provide a clear and concise description of your changes in the pull request.
+
+Ensure that your pull request is linked to any relevant issues if applicable.
+
+The maintainers of the GITS Homepage project will review your pull request, provide feedback, and merge it if it meets the project's guidelines.
+
+Thank you for your contribution to the GITS Homepage project! Your help is greatly appreciated.
+
 ## Template on how to contribute
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
