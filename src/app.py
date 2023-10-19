@@ -23,13 +23,15 @@ import gits_commit
 import gits_push
 
 import yaml
+import os
 
-file_path = r'replace this with path to the vars.yaml'
+file_path = r'./credentials.yaml'
 
 with open(file_path, 'r') as file:
     data = yaml.safe_load(file)
 token = data['GITHUB_TOKEN']
 
+token = os.environ.get('GITS_GITHUB_TOKEN')
 
 app = Flask(__name__, static_url_path='/static')
 
