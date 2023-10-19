@@ -139,7 +139,7 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
 ## Template on how to contribute
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
-2. Follow the template below to create a new command and update the values in
+2. Follow the template below to create a new command and link it to the front-end.
 
    ```python
    import requests
@@ -175,9 +175,46 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
 
    ```
 
-3. Add the following entries in _PROJECT HOME_/code/gits.py ==> HTML
+3. Add the following entries in ==> HTML
 
    ```html
+   <style>
+    #form-container-YourFunctionName {
+      display: none;
+    }
+   </style>
+   
    <select id="option" onchange="toggleForm(this)">
-    <option value="function">Option_Name</option>
+    <option value="YourFunctionRoute">YourOptionName</option>
+
+   <div id="form-container-YourFunctionName">
+    <form action="/YourFunctionRoute" method="post">
+      <label for="YourInput1">Input 1:</label>
+      <input type="text" id="YourInput1" name="YourInput1" required> <br> <br>
+      ..
+      ..
+      <input type="submit" value="Submit">
+    </form>
+   </div>
+
+   <script>
+    function toggleForm(selectElement) {
+      document.getElementById('form-container-YourFunctionName').style.display = 'none';
+
+      if (selectElement.value === 'YourFunctionRoute') {
+        document.getElementById('form-container-YourFunctionName').style.display = 'block';
+   </script>
+   ```
+
+4. Add the route to the flask [app](/src/app.py) as follows:
+
+   ```python
+   import func
+   @app.route('/YourFunctionRoute', methods=['POST'])
+   def function():
+   # Perform whatever processing you need to perform and return the data to be displayed
+    your_input = request.form['YourInput1']
+    response = func(token, your_input)
+    return response
+
    ```
