@@ -147,7 +147,10 @@ def commit_diff():
     filename = request.form['filename']
     commit_msg = request.form['commit_msg']
     result = gits_commit.commit(local_path, branch_name, filename, commit_msg)
-    return result
+    if result.returncode == 0:
+        return "Given files committed successfully!"
+    else:
+        return f"Error cloning repository. Error message: {result.stderr}"
 
 
 @app.route('/push', methods=['POST'])
