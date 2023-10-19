@@ -74,7 +74,8 @@ The primary goal of this project is to simplify the tasks of developers as they 
 
 # Third Party Dependencies
 
-####NEED TO FILL UP
+1. Git
+2. Python
 
 <!---placeholder--->
 
