@@ -54,7 +54,7 @@ The primary goal of this project is to simplify the tasks of developers as they 
 - [x] Initally , the software had separate implementaion for Linux, Windows or MAC . Now we have made sure the commands can be executed on all platforms without any dependancies
 - [x] Also made an executable to setup the project on command line for ease of use for the user
 - [x] Implemented a UI
-- [ ] Provided feature to add custom commands and included instaructions on using template to create corressponding code
+- [x] Provided feature to add custom commands and included instaructions on using template to create corressponding code
 
 # Contact us
 
