@@ -1,5 +1,5 @@
 # Quick start guide
-1. First clone the repository
+1. First clone the repository from [here](https://github.com/psvkaushik/Group50_Proj2/tree/main)
 
 2. Environment setup 
   For Windows:  
