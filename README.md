@@ -37,12 +37,12 @@ Think of GITS3.1 as a foundational repository that helps align your project repo
 
 # Installation Setup
 
-1. Clone repository
-2. Open cmd and enter command
+1. Open terminal (Git bash etc) and clone repository
+2. Navigate to the directory anf enter following command
    ```
    % bash setup.sh
    ```
-   Enter the details: Username and Auth token
+   Enter the details: Username and Auth token of your account (make sure to allow everything in token) Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 3. ###NEED TO ADD SCREENSHOTS HERE
 
 # Documentation
