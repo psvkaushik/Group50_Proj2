@@ -2,8 +2,8 @@
 setlocal enabledelayedexpansion
 
 :: Ask for input from the user
-set /p Username=Enter username please: 
-set /p Token=Enter your auth token please: 
+#set /p Username=Enter username please: 
+#set /p Token=Enter your auth token please: 
 
 :: Check if pip is installed
 where pip > nul 2>&1
