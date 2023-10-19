@@ -43,8 +43,9 @@ Here are few motivation points to come up with this idea
 
 # Installation Setup
 
-1. Open terminal (Git bash etc) and clone repository
-2. Navigate to the directory and enter following command on terminal for linux or mac os
+1. Install the pre-requisites Python 3.9 or above from [here](https://www.python.org/downloads/) and Git from [here](https://git-scm.com/downloads).
+2. Open terminal (Git bash etc) and clone repository
+3. Navigate to the directory and enter following command on terminal for linux or mac os
    ```
    % bash setup.sh
    ```
