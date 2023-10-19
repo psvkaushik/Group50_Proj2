@@ -88,6 +88,20 @@ git checkout -b feature/your-feature-name
 git add .
 git commit -m "Added feature: your-feature-name"
 ```
+## Adding New Functionality
+The GITS Homepage provides a dynamic form for different GitHub actions. If you want to add new functionality to this HTML script, follow these steps:
+
+Open the files in your favorite code editor.
+
+Add a new section for your feature, including HTML elements for input and a form to submit data.
+
+Implement the JavaScript function for your new feature. You can use the existing JavaScript code as a reference.
+
+Implement the function in the backend and also link it to the frontend using the flask [app](/src/app.py)
+
+Make sure to include proper validation and error handling for user inputs.
+
+Test your new feature locally to ensure it works as expected.
 
 ## Template on how to contribute
 
