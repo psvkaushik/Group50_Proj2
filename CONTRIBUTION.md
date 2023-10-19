@@ -50,7 +50,7 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
    ```python
    import requests
 
-   def main(owner, repo, branch, github_token):
+   def func(owner, repo, branch, github_token):
        try:
            # Define the API URL or additional parameters here.
            url = "  "
@@ -77,7 +77,7 @@ Bugs are tracked as GitHub issues. You need to create an issue and include all t
        branch = 'main'  # Specify the branch or additional parameters needed.
        github_token = 'YourGitHubToken'  # Replace with your GitHub personal access token.
 
-       main(owner, repo, branch, github_token)
+       func(owner, repo, branch, github_token)
 
    ```
 
