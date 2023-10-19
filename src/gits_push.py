@@ -9,10 +9,10 @@ this file. If not, please write to: gits3.1project@gmail.com
 import subprocess
 from gits_commit import commit
 
-def push(PAT, user_name, dir_path, repo_name, branch='main', files='.', commit_msg='user forgot to add message'):
+def push(github_token, user_name, dir_path, repo_name, branch='main', files='.', commit_msg='user forgot to add message'):
     """
     Function which commits code to local branches
-    PAT - The user's PAT token
+    github_token - The user's PAT token
     dir_path - local directory where the code is stored
     repo_name - name of the repo to which the code is pushed to. 
     branch - if user wants to switch branch, the name of the new branch, 
@@ -26,6 +26,6 @@ def push(PAT, user_name, dir_path, repo_name, branch='main', files='.', commit_m
     
     commit_response = commit(dir_path, branch, files, commit_msg)
     
-    command = ['git', 'push', f'https://{PAT}@github.com/{user_name}/{repo_name}.git']
+    command = ['git', 'push', f'https://{github_token}@github.com/{user_name}/{repo_name}.git']
     push_response = subprocess.run(command, cwd=dir_path,  stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     return push_response
