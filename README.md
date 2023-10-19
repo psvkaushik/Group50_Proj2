@@ -35,6 +35,11 @@ GITS3.1 simplifies the organization of your repository according to Software Eng
 
 Think of GITS3.1 as a foundational repository that helps align your project repository with these standards.
 
+Here are few motivation points to come up with this idea  
+1. When dealing with various files and branches, there often arises a need to update multiple commands in a particular sequence, which can become cumbersome. Employing a custom command that can execute multiple commands simultaneously in a predefined order is a time-saving and developer-friendly solution.
+2. While tackling an assignment for the course, we discovered a shortage of project repositories that follow a standardized structure.
+3. Developers might struggle to create projects that are easily transferable.
+
 # Installation Setup
 
 1. Open terminal (Git bash etc) and clone repository
