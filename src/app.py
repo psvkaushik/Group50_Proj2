@@ -27,8 +27,7 @@ import os
 
 
 # replace this with your token
-
-token = os.environ.get('GITS_GITHUB_TOKEN')
+token = "YourTokenGoesHere"
 
 app = Flask(__name__, static_url_path='/static')
 
