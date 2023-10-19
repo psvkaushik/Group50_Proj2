@@ -43,11 +43,11 @@ Here are few motivation points to come up with this idea
 # Installation Setup
 
 1. Open terminal (Git bash etc) and clone repository
-2. Navigate to the directory and enter following command for linux or mac os  
+2. Navigate to the directory and enter following command on terminal for linux or mac os  
    ```
    % bash setup.sh
    ```
-   Navigate to the directory and enter following command for windows
+   Navigate to the directory and enter following command on terminal for windows
    ```
    % windows_setup
    ```
