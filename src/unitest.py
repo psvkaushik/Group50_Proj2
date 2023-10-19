@@ -11,7 +11,6 @@ from gits_delete import delete_github_repo
 from gits_diff import get_github_diff
 from gits_fork import fork_repo
 from gits_merge import merge_github_branch
-from gits_pull import download_github_repo
 from gits_countcommit import count_commits_in_github_repo
 # from read_token import  username
 from gits_clone import clone_repository
