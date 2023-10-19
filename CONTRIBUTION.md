@@ -55,11 +55,14 @@ git checkout -b feature/your-feature-name
 
 - Make your changes to the HTML file as needed.
 - Add and commit your changes:
+
 ```bash
 git add .
 git commit -m "Added feature: your-feature-name"
 ```
+
 ## Adding New Functionality
+
 The GITS Homepage provides a dynamic form for different GitHub actions. If you want to add new functionality to this HTML script, follow these steps:
 
 - Open the files in your favorite code editor.
@@ -70,10 +73,11 @@ The GITS Homepage provides a dynamic form for different GitHub actions. If you w
 - Test your new feature locally to ensure it works as expected.
 
 ## Testing
+
 Before you submit a pull request, it's essential to test your changes thoroughly. You can test your new feature by following these steps:
 
 1. Run the GITS Homepage locally using a web server:
-   
+
 ```bash
 python app.py
 ```
@@ -85,6 +89,7 @@ python app.py
 4. If you encounter issues or errors, make the necessary adjustments and retest.
 
 ## Submitting a Pull Request
+
 Once you have completed your changes and testing, follow these steps to submit a pull request:
 
 - Commit your final changes:
@@ -150,31 +155,32 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
 
    ```html
    <style>
-    #form-container-YourFunctionName {
-      display: none;
-    }
+     #form-container-YourFunctionName {
+       display: none;
+     }
    </style>
-   
+
    <select id="option" onchange="toggleForm(this)">
-    <option value="YourFunctionRoute">YourOptionName</option>
+     <option value="YourFunctionRoute">YourOptionName</option>
 
-   <div id="form-container-YourFunctionName">
-    <form action="/YourFunctionRoute" method="post">
-      <label for="YourInput1">Input 1:</label>
-      <input type="text" id="YourInput1" name="YourInput1" required> <br> <br>
-      ..
-      ..
-      <input type="submit" value="Submit">
-    </form>
-   </div>
+     <div id="form-container-YourFunctionName">
+       <form action="/YourFunctionRoute" method="post">
+         <label for="YourInput1">Input 1:</label>
+         <input type="text" id="YourInput1" name="YourInput1" required /> <br />
+         <br />
+         .. ..
+         <input type="submit" value="Submit" />
+       </form>
+     </div>
 
-   <script>
-    function toggleForm(selectElement) {
-      document.getElementById('form-container-YourFunctionName').style.display = 'none';
+     <script>
+       function toggleForm(selectElement) {
+         document.getElementById('form-container-YourFunctionName').style.display = 'none';
 
-      if (selectElement.value === 'YourFunctionRoute') {
-        document.getElementById('form-container-YourFunctionName').style.display = 'block';
-   </script>
+         if (selectElement.value === 'YourFunctionRoute') {
+           document.getElementById('form-container-YourFunctionName').style.display = 'block';
+     </script>
+   </select>
    ```
 
 4. Add the route to the flask [app](/src/app.py) as follows:
