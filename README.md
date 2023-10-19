@@ -50,7 +50,10 @@ Here are few motivation points to come up with this idea
    Enter the details: Username and Auth token of your account (make sure to allow everything in token)
    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/af3ac6a9-8d4d-45bb-bd87-60b05524acac)
    Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
-4. ###NEED TO ADD SCREENSHOTS HERE
+
+Quick start guide can be found [here]
+Case studies can be found [here]
+Troubleshooting steps can be found [here]
 
 # Documentation
 
@@ -62,6 +65,15 @@ The primary goal of this project is to simplify the tasks of developers as they 
 - [x] Also made an executable to setup the project on command line for ease of use for the user
 - [x] Implemented a UI
 - [x] Provided feature to add custom commands and included instaructions on using template to create corressponding code
+
+# Third Party Dependencies
+####NEED TO FILL UP
+
+# ROAD-MAP AHEAD
+[ ] Containerize the application and test cases
+[ ] Website issue needs to be resolved in next 1 month
+[ ] Custom commands can be added without template
+[ ] Host application on cloud
 
 # Contact us
 
