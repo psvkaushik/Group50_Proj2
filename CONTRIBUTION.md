@@ -73,7 +73,9 @@ To ensure a smooth and efficient contribution process, please follow these guide
 ```bash
 git clone https://github.com/your-username/gits-homepage.git
 cd gits-homepage
+```
 
+# Template on how to contribute.
 
 1. Create a new file in _PROJECT HOME_/src/gits\_<command name>.py
 2. Follow the template below to create a new command and update the values in
