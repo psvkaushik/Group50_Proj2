@@ -30,10 +30,6 @@ The App.py [code](/src/app.py) is organized into several routes, each of which h
 - **Route**: `/check_branch`
 - **Description**: Users can check if a specific branch exists in a GitHub repository. It calls the `check_branch_exists` function from this [library](/src/gits_checkbranch.py) and returns a success or error message based on the result.
 
-### Pull GitHub Repository Route
-- **Route**: `/pull_repo`
-- **Description**: Users can pull a specific file from a GitHub repository by providing the repository owner, repository name, filename, and local path. It calls the `download_github_repo` function from this [library](/src/gits_pull.py) and returns a success or error message based on the result.
-
 ### Get Branches Route
 - **Route**: `/get_branches`
 - **Description**: This route allows users to fetch the branches of a GitHub repository. It calls the `get_github_branches` function from this [library](/src/gits_branch.py) and returns a list of branch names or an error message.
