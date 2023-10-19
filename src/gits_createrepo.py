@@ -10,17 +10,17 @@ this file. If not, please write to: gits3.1project@gmail.com
 import requests
 
 
-def create_github_repo(PAT, repo_name, git_license ='mit'):
+def create_github_repo(github_token, repo_name, git_license ='mit'):
     """
 
     Function to create a new github repo
-    PAT : user's PAT token
+    github_token : user's PAT token
     repo_name : name of the repo to be created
     git_license : the license to be used by the repo
 
     """
     headers = {
-        'Authorization': f'token {PAT}',
+        'Authorization': f'token {github_token}',
         'Accept': 'application/vnd.github.v3+json'
     }
 
