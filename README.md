@@ -69,11 +69,11 @@ The primary goal of this project is to simplify the tasks of developers as they 
 # Third Party Dependencies
 ####NEED TO FILL UP
 
-# ROAD-MAP AHEAD
-[ ] Containerize the application and test cases
-[ ] Website issue needs to be resolved in next 1 month
-[ ] Custom commands can be added without template
-[ ] Host application on cloud
+# Road-map ahead
+[ ] Containerize the application and test cases  
+[ ] Website issue needs to be resolved in next 1 month  
+[ ] Custom commands can be added without template  
+[ ] Host application on cloud  
 
 # Contact us
 
