@@ -7,45 +7,6 @@ email, or any other method with the owners of this repository before making a ch
 
 Please note we have a code of conduct (CODE_OF_CONDUCT.md), please follow it in all your interactions with the project.
 
-## Pull Request Process
-
-1. Maintain GITS3.1 project quality.
-2. Should have appropriate ISSUE linked with the Pull request.
-3. The PR should be assigned to the individual requesting a merge.
-4. The Reviewers must approve the pull request before merging the code.
-5. The description should be updated as to what has been asked in the issue.
-6. All the development code should accompany unit test cases to support the validation results.
-7. The development code should be style checked, well-formatted and syntax error free. Use of pep8, autoflake8 and flake8 tools will enable the users to get the required code quality.
-8. Commit messages should company details of the changes been made.
-
-## Bug Reporting Process
-
-Bugs are tracked as GitHub issues. You need to create an issue and include all the following details if possible.
-
-Explain the problem and include additional details to help maintainers reproduce the problem:
-
-1. Before raising a GitHub issue, make sure that you are running the latest version of the application and have all recommended OS updates / patches installed
-2. Use a clear and descriptive title for the issue to identify the problem.
-3. Describe the exact steps which reproduce the problem in as many details as possible. For example, start by explaining how you started Atom, e.g. which command exactly you used in the terminal, or how you started Atom otherwise. When listing steps, don't just say what you did, but explain how you did it. For example, if you moved the cursor to the end of a line, explain if you used the mouse, or a keyboard shortcut or an Atom command, and if so which one?
-4. Provide specific examples to demonstrate the steps. Include links to files or GitHub projects, or copy/paste-able snippets, which you use in those examples. If you're providing snippets in the issue, use Markdown code blocks.
-5. Describe the behavior you observed after following the steps and point out what exactly is the problem with that behavior.
-6. Explain which behavior you expected to see instead and why.
-7. Include screenshots and animated GIFs which show you following the described steps and clearly demonstrate the problem.
-
-## Enhancement suggestion process / Feature request Process
-
-Bugs are tracked as GitHub issues. You need to create an issue and include all the following details if possible.
-
-1. Use a clear and descriptive title for the issue to identify the suggestion.
-2. Provide a step-by-step description of the suggested enhancement in as many details as possible.
-3. Provide specific examples to demonstrate the steps.
-4. Describe the current behavior and explain which behavior you expected to see instead and why.
-5. Explain why this enhancement would be useful to most users and isn't something that can or should be implemented as a community package.
-
-# Contributing to GITS Homepage
-
-Thank you for considering contributing to the GITS Homepage project. Your contributions help make this project better. This document provides guidelines on how to add further functionality to the existing HTML script.
-
 ## Table of Contents
 
 - [Getting Started](#getting-started)
@@ -54,6 +15,8 @@ Thank you for considering contributing to the GITS Homepage project. Your contri
 - [Testing](#testing)
 - [Submitting a Pull Request](#submitting-a-pull-request)
 - [Template on how to contribute](#Template-on-how-to-contribute)
+- [Bug Reporting Process](#Bug-Reporting-Process)
+- [Enhancement suggestion process](#Enhancement-suggestion-process)
 
 ## Getting Started
 
@@ -64,6 +27,15 @@ Before you start contributing, please make sure you have the following prerequis
 3. A local development environment set up.
 
 ## Contributing Guidelines
+
+1. Maintain GITS3.1 project quality.
+2. Should have appropriate ISSUE linked with the Pull request.
+3. The PR should be assigned to the individual requesting a merge.
+4. The Reviewers must approve the pull request before merging the code.
+5. The description should be updated as to what has been asked in the issue.
+6. All the development code should accompany unit test cases to support the validation results.
+7. The development code should be style checked, well-formatted and syntax error free. Use of pep8, autoflake8 and flake8 tools will enable the users to get the required code quality.
+8. Commit messages should company details of the changes been made.
 
 To ensure a smooth and efficient contribution process, please follow these guidelines:
 
@@ -83,14 +55,11 @@ git checkout -b feature/your-feature-name
 
 - Make your changes to the HTML file as needed.
 - Add and commit your changes:
-
 ```bash
 git add .
 git commit -m "Added feature: your-feature-name"
 ```
-
 ## Adding New Functionality
-
 The GITS Homepage provides a dynamic form for different GitHub actions. If you want to add new functionality to this HTML script, follow these steps:
 
 - Open the files in your favorite code editor.
@@ -101,11 +70,10 @@ The GITS Homepage provides a dynamic form for different GitHub actions. If you w
 - Test your new feature locally to ensure it works as expected.
 
 ## Testing
-
 Before you submit a pull request, it's essential to test your changes thoroughly. You can test your new feature by following these steps:
 
 1. Run the GITS Homepage locally using a web server:
-
+   
 ```bash
 python app.py
 ```
@@ -117,7 +85,6 @@ python app.py
 4. If you encounter issues or errors, make the necessary adjustments and retest.
 
 ## Submitting a Pull Request
-
 Once you have completed your changes and testing, follow these steps to submit a pull request:
 
 - Commit your final changes:
@@ -183,32 +150,31 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
 
    ```html
    <style>
-     #form-container-YourFunctionName {
-       display: none;
-     }
+    #form-container-YourFunctionName {
+      display: none;
+    }
    </style>
-
+   
    <select id="option" onchange="toggleForm(this)">
-     <option value="YourFunctionRoute">YourOptionName</option>
+    <option value="YourFunctionRoute">YourOptionName</option>
 
-     <div id="form-container-YourFunctionName">
-       <form action="/YourFunctionRoute" method="post">
-         <label for="YourInput1">Input 1:</label>
-         <input type="text" id="YourInput1" name="YourInput1" required /> <br />
-         <br />
-         .. ..
-         <input type="submit" value="Submit" />
-       </form>
-     </div>
+   <div id="form-container-YourFunctionName">
+    <form action="/YourFunctionRoute" method="post">
+      <label for="YourInput1">Input 1:</label>
+      <input type="text" id="YourInput1" name="YourInput1" required> <br> <br>
+      ..
+      ..
+      <input type="submit" value="Submit">
+    </form>
+   </div>
 
-     <script>
-       function toggleForm(selectElement) {
-         document.getElementById('form-container-YourFunctionName').style.display = 'none';
+   <script>
+    function toggleForm(selectElement) {
+      document.getElementById('form-container-YourFunctionName').style.display = 'none';
 
-         if (selectElement.value === 'YourFunctionRoute') {
-           document.getElementById('form-container-YourFunctionName').style.display = 'block';
-     </script>
-   </select>
+      if (selectElement.value === 'YourFunctionRoute') {
+        document.getElementById('form-container-YourFunctionName').style.display = 'block';
+   </script>
    ```
 
 4. Add the route to the flask [app](/src/app.py) as follows:
@@ -223,3 +189,27 @@ Thank you for your contribution to the GITS Homepage project! Your help is great
     return response
 
    ```
+
+## Bug Reporting Process
+
+Bugs are tracked as GitHub issues. You need to create an issue and include all the following details if possible.
+
+Explain the problem and include additional details to help maintainers reproduce the problem:
+
+1. Before raising a GitHub issue, make sure that you are running the latest version of the application and have all recommended OS updates / patches installed
+2. Use a clear and descriptive title for the issue to identify the problem.
+3. Describe the exact steps which reproduce the problem in as many details as possible. For example, start by explaining how you started Atom, e.g. which command exactly you used in the terminal, or how you started Atom otherwise. When listing steps, don't just say what you did, but explain how you did it. For example, if you moved the cursor to the end of a line, explain if you used the mouse, or a keyboard shortcut or an Atom command, and if so which one?
+4. Provide specific examples to demonstrate the steps. Include links to files or GitHub projects, or copy/paste-able snippets, which you use in those examples. If you're providing snippets in the issue, use Markdown code blocks.
+5. Describe the behavior you observed after following the steps and point out what exactly is the problem with that behavior.
+6. Explain which behavior you expected to see instead and why.
+7. Include screenshots and animated GIFs which show you following the described steps and clearly demonstrate the problem.
+
+## Enhancement suggestion process / Feature request Process
+
+Bugs are tracked as GitHub issues. You need to create an issue and include all the following details if possible.
+
+1. Use a clear and descriptive title for the issue to identify the suggestion.
+2. Provide a step-by-step description of the suggested enhancement in as many details as possible.
+3. Provide specific examples to demonstrate the steps.
+4. Describe the current behavior and explain which behavior you expected to see instead and why.
+5. Explain why this enhancement would be useful to most users and isn't something that can or should be implemented as a community package.
