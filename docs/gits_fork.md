@@ -8,5 +8,8 @@ The functionality can be found [here](https://github.com/psvkaushik/Group50_Proj
 
 # Code Description
 
-The user gives following input for fork function to work target_user(username of the user who's repo you want to fork), target_repo(name of the Repo which is to be forked),
-and token
+<img width="288" alt="image" src="https://github.com/psvkaushik/Group50_Proj2/assets/144864099/2c4a2fe3-ebd5-4fe8-946c-9c2100fb92e6">
+
+Input Description:\
+User Name: Target Repository's owner name.\
+Repo Name: Name of the target repository that you want to fork. 
