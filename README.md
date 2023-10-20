@@ -1,6 +1,7 @@
 # Group50_Proj2 - GITS3.1 - Sometimes all you need to do is make a REQUEST!!!!
 
-# The Demo Video:
+# Setup video can be found [here](https://www.youtube.com/watch?v=3JSH69fN-iU)
+# Tutorial can be found [here](https://www.youtube.com/watch?v=ESP3zT4LMaM)
 
 ### GITS3.1 - I.R.I.S (Ideal ReposItory for Software projects)
 
