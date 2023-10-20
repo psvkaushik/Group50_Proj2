@@ -1,6 +1,6 @@
 # Group50_Proj2 - GITS3.1 - Sometimes all you need to do is make a REQUEST!!!!
 
-https://github.com/psvkaushik/Group50_Proj2/assets/22112102/4534fe13-bb80-4621-9843-538e6e52fa14
+![GIF](https://github.com/psvkaushik/Group50_Proj2/assets/22112102/ad3c5a0c-eafc-4ead-937c-c5826c957078)
 
 [Demo Link](https://drive.google.com/file/d/1uQZSt3BLZcRopqDzw2HW4f06mlA4C-nT/view)  
 [Setup - YouTube Link](https://www.youtube.com/watch?v=3JSH69fN-iU)  
