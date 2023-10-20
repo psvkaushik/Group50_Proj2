@@ -8,4 +8,10 @@ The functionality of the code can be found [here](https://github.com/psvkaushik/
 
 # Code description
 
-The function takes input arguments as branch and message you want to commit
+<img width="344" alt="image" src="https://github.com/psvkaushik/Group50_Proj2/assets/144864099/a2fa74c5-d23f-4e69-aca8-333dc60fee77">
+
+Input Description:\
+Working Directory: Current local directory of the User.\
+Branch Name: The branch to which the user wants to commmit to.\
+Filenames: Can be multiple files separated by ' ' or by '.' if you want all files to be pushed.\
+Commit Message: The message you want to add for the commit. 
