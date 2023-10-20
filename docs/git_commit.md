@@ -14,4 +14,4 @@ Input Description:\
 Working Directory: Current local directory of the User.\
 Branch Name: The branch to which the user wants to commmit to.\
 Filenames: Can be multiple files separated by ' ' or by '.' if you want all files to be pushed.\
-Commit Message: The message you want to add for the commit. 
+Commit Message: The message you want to add for the commit.
