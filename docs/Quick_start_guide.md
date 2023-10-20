@@ -20,6 +20,11 @@ For Linux and Mac:
 
 Once you run above commands, it will setup the environment for you
 
+# Generate token
+![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/d5237e08-d5b4-486c-a622-9c87b40d1c91)
+Edit the token value in app.py  
+![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/96f3bb35-0224-498f-ac15-6f3781c1796c)
+
 # How to use:
 
 Once the above setup is ready, navigate to the directory where repo has been cloned and enter following command:
