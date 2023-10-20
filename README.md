@@ -66,8 +66,8 @@ Detail about generating token is given [here](https://docs.github.com/en/authent
    python3 ./src/app.py
    ```
    Quick start guide can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Quick_start_guide.md)\
-   Case studies can be found [here]  
-   Troubleshooting steps can be found [here]
+   Case studies can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/case_study.md)  
+   Troubleshooting steps can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Troubleshooting_guide.md)
 
 # Documentation
 
