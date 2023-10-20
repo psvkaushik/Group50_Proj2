@@ -4,7 +4,7 @@ https://github.com/psvkaushik/Group50_Proj2/assets/22112102/4534fe13-bb80-4621-9
 
 [Demo Link](https://drive.google.com/file/d/1uQZSt3BLZcRopqDzw2HW4f06mlA4C-nT/view)  
 [Setup - YouTube Link](https://www.youtube.com/watch?v=3JSH69fN-iU)  
-[Tutorial - YouTube Link](https://www.youtube.com/watch?v=ESP3zT4LMaM)  
+[Tutorial - YouTube Link](https://www.youtube.com/watch?v=ESP3zT4LMaM)
 
 ### GITS3.1 - I.R.I.S (Ideal ReposItory for Software projects)
 
