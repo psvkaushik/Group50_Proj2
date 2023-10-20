@@ -43,6 +43,8 @@ Here are few motivation points to come up with this idea
 
 # Installation Setup
 
+[![Video Title](http://img.youtube.com/vi/3JSH69fN-iU/0.jpg)](http://www.youtube.com/watch?v=3JSH69fN-iU)
+
 1. Install the pre-requisites Python 3.9 or above from [here](https://www.python.org/downloads/) and Git from [here](https://git-scm.com/downloads).
 2. Open terminal and clone repository
    ```
