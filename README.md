@@ -55,8 +55,8 @@ Here are few motivation points to come up with this idea
    ```
    Enter the details: Username and Auth token of your account (make sure to allow everything in token)
    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/af3ac6a9-8d4d-45bb-bd87-60b05524acac)
-   Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
+Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 Quick start guide can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Quick_start_guide.md)  
 Case studies can be found [here]  
 Troubleshooting steps can be found [here]
