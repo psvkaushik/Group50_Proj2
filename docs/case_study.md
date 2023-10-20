@@ -20,30 +20,32 @@
 6. Open the webpage at the given ip address  
    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/927dfaee-31cc-4ffc-ab60-111780ce18b9)
 
-# Case 01: Create repo
+   The web page looks like below:  
+  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/5e78d86a-14ac-47f0-8ce5-440ec616d749)  
 
-- Select the option create repo from the drop down  
-  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/5e78d86a-14ac-47f0-8ce5-440ec616d749)
-- Successfull once you click on submit  
+# Case 01: Create repo
+- Select the option create repo from the drop down
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/713134dc-055e-4470-930f-4b1227b53c8d)
-- Verification  
+- Successfull once you click on submit  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/8b7a5e86-b2db-4aa8-9611-412c04679084)
+- Verification  
+  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/18fa5814-1261-4e93-970e-d92353afe403)
 
 # Case 02: Clone repo
 
 - Select the option clone repo from the drop down  
-  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/18fa5814-1261-4e93-970e-d92353afe403)
-- Successfull once you click on submit  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/5b4d1e57-a59d-4e72-adf9-5ae5b78723b3)
-- Verification  
+- Successfull once you click on submit  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/7761a57d-2617-4ac7-baeb-bf9d276cbe64)
+- Verification  
+  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/b2b8bd30-f174-4d3d-90c6-2c366001602f)
 
 # Case 03: Create branch
 
 - Select the option create branch from the drop down
-  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/b2b8bd30-f174-4d3d-90c6-2c366001602f)
-- Successfull once you click on submit  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/fc0234d3-a464-4563-91d8-f51226cb76f9)
-- Verification  
+- Successfull once you click on submit  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/19094558-04e3-4955-8ddb-1c6a001e7007)
+- Verification  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/7a104311-b599-42a8-bb08-825eb7e0d689)
+  
