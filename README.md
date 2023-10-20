@@ -43,7 +43,7 @@ Here are few motivation points to come up with this idea
 
 # Installation Setup
 
-[![Video Title](https://as1.ftcdn.net/v2/jpg/02/26/18/84/1000_F_226188402_n3rOuLbYQVfYy4LfMAOmz5kQXcxJlXDP.jpg)](http://www.youtube.com/watch?v=VIDEO_ID_HERE)
+[![Video Title](https://as1.ftcdn.net/v2/jpg/02/26/18/84/1000_F_226188402_n3rOuLbYQVfYy4LfMAOmz5kQXcxJlXDP.jpg)](http://www.youtube.com/watch?v=3JSH69fN-iU)
 
 1. Install the pre-requisites Python 3.9 or above from [here](https://www.python.org/downloads/) and Git from [here](https://git-scm.com/downloads).
 2. Open terminal and clone repository
