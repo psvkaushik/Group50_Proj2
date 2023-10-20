@@ -8,5 +8,9 @@ The functionality of the code can be found [here](https://github.com/psvkaushik/
 
 # Code Description
 
-It takes following input from the user: owner(GitHub username), repo(name of the GitHub repository), branch(Specify the branch you want to compare with the last commit) and
-github_token.
+<img width="311" alt="image" src="https://github.com/psvkaushik/Group50_Proj2/assets/144864099/f96cb95d-698a-400f-afe7-88df1cb07c5b">
+
+Input Description:\
+Repo Owner: Name of the GitHub repository owner.\
+Repo Name: Name of the GitHub repository.\
+Branch Name: Name of the branch that you want to compare with the last commit.
