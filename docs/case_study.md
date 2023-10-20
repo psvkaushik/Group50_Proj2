@@ -18,12 +18,13 @@
    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/664ae067-e1d9-4ed3-b053-ac0d480c3e27)
 
 6. Open the webpage at the given ip address  
-   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/927dfaee-31cc-4ffc-ab60-111780ce18b9)
+    ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/927dfaee-31cc-4ffc-ab60-111780ce18b9)
 
    The web page looks like below:  
-  ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/5e78d86a-14ac-47f0-8ce5-440ec616d749)  
+   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/5e78d86a-14ac-47f0-8ce5-440ec616d749)
 
 # Case 01: Create repo
+
 - Select the option create repo from the drop down
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/713134dc-055e-4470-930f-4b1227b53c8d)
 - Successfull once you click on submit  
@@ -48,4 +49,3 @@
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/19094558-04e3-4955-8ddb-1c6a001e7007)
 - Verification  
   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/7a104311-b599-42a8-bb08-825eb7e0d689)
-  
