@@ -9,11 +9,6 @@ this file. If not, please write to: gits3.1project@gmail.com
 
 import requests
 
-#Inputs to the code:
-repository_owner = ' '
-repository_name = '  '
-branch_name = ' '
-access_token = ' '
 
 def merge_github_branch(repository_owner, repository_name, branch_name, access_token):
     #API endpoint for merging a branch
