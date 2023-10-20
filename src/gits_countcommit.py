@@ -11,7 +11,12 @@ import requests
 
 
 def count_commits_in_github_repo(repo_url):
-    global response
+    """
+    Function to get the total number of commits made to a repo
+    repo_url: Url of the repository on which the commits are counted
+    
+    """
+    
     parts = repo_url.rstrip('/').split('/')
     owner = parts[-2]
     repo_name = parts[-1]
