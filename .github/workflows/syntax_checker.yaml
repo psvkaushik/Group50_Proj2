@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cclauss/Find-Python-syntax-errors-action@main
+      - uses: cclauss/Find-Python-syntax-errors-action@v4.1
