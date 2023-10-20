@@ -11,25 +11,30 @@ import requests
 
 
 def get_github_diff(owner, repo, branch, github_token):
+    """
+    This function gets difference between the latest commit and the current state.
+    owner: GitHub username
+    repo: name of the GitHub repository 
+    branch: branch you want to compare with the last commit
+    github_token: user's PAT
+    """
     try:
-        # Replace 'YOUR_GITHUB_TOKEN' with your GitHub personal access token or use other authentication methods.
         headers = {
             'Authorization': f'token {github_token}',
         }
 
-        # Define the API URL to fetch the latest commit on a specific branch.
-        api_url = f'https://api.github.com/repos/{owner}/{repo}/commits/{branch}'
+        url = f'https://api.github.com/repos/{owner}/{repo}/commits/{branch}'
 
         # Send a GET request to the GitHub API to retrieve the commit information.
-        response = requests.get(api_url, headers=headers)
+        response = requests.get(url, headers=headers)
 
         if response.status_code == 200:
             commit = response.json()
             commit_sha = commit['sha']
 
-            diff_api_url = f'https://api.github.com/repos/{owner}/{repo}/compare/{commit_sha}...{branch}'
+            diff_url = f'https://api.github.com/repos/{owner}/{repo}/compare/{commit_sha}...{branch}'
 
-            response = requests.get(diff_api_url, headers=headers)
+            response = requests.get(diff_url, headers=headers)
             if response.status_code == 200:
                 diff_data = response.json()
                 return diff_data['files']
