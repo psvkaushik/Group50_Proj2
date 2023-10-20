@@ -93,8 +93,8 @@ The primary goal of this project is to simplify the tasks of developers as they 
 
 # Road-map ahead
 
-- [ ] Containerize the application and test cases
-- [ ] Website issue needs to be resolved in next 1 month
+- [ ] Containerize the application
+- [ ] Website without refresh
 - [ ] Custom commands can be added without template
 - [ ] Host application on cloud
 
