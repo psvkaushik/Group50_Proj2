@@ -12,4 +12,4 @@ The functionality can be found [here](https://github.com/psvkaushik/Group50_Proj
 
 Input Description:\
 User Name: Target Repository's owner name.\
-Repo Name: Name of the target repository that you want to fork. 
+Repo Name: Name of the target repository that you want to fork.
