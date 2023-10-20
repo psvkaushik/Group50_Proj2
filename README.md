@@ -46,15 +46,15 @@ Here are few motivation points to come up with this idea
 1. Install the pre-requisites Python 3.9 or above from [here](https://www.python.org/downloads/) and Git from [here](https://git-scm.com/downloads).
 2. Open terminal and clone repository
    ```
-   % git clone https://github.com/psvkaushik/Group50_Proj2
+   git clone https://github.com/psvkaushik/Group50_Proj2
    ```
 3. Navigate to the directory and enter following command on terminal for linux or mac os
    ```
-   % bash setup.sh
+   bash setup.sh
    ```
    Navigate to the directory and enter following command on terminal for windows
    ```
-   % windows_setup
+   windows_setup
    ```
 
 ### IMPORTANT: Generate a token of your account (make sure to allow everything in token) and add the token in line 30 of [app.py](https://github.com/psvkaushik/Group50_Proj2/blob/main/src/app.py)
@@ -63,7 +63,7 @@ Detail about generating token is given [here](https://docs.github.com/en/authent
 
 4. Navigate to the project directory and run the app.py file as follows
    ```bash
-   % python3 ./src/app.py
+   python3 ./src/app.py
    ```
    Quick start guide can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Quick_start_guide.md)\
    Case studies can be found [here]  
@@ -88,7 +88,7 @@ The primary goal of this project is to simplify the tasks of developers as they 
 4. Flask [link](https://flask.palletsprojects.com/en/3.0.x/installation/#python-version)
 5. PyYaml [linl](https://pypi.org/project/PyYAML/)
 
-<!---placeholder--->
+
 
 # Road-map ahead
 
