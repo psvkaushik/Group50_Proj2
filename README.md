@@ -88,8 +88,6 @@ The primary goal of this project is to simplify the tasks of developers as they 
 4. Flask [link](https://flask.palletsprojects.com/en/3.0.x/installation/#python-version)
 5. PyYaml [linl](https://pypi.org/project/PyYAML/)
 
-
-
 # Road-map ahead
 
 - [ ] Containerize the application and test cases
