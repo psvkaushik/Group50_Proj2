@@ -56,11 +56,15 @@ Here are few motivation points to come up with this idea
    ```
    % windows_setup
    ```
-   ![image](https://github.com/psvkaushik/Group50_Proj2/assets/111774368/af3ac6a9-8d4d-45bb-bd87-60b05524acac)
 
 ### IMPORTANT: Generate a token of your account (make sure to allow everything in token) and add the token in line 30 of [app.py](https://github.com/psvkaushik/Group50_Proj2/blob/main/src/app.py)
 
 Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)\
+
+4. Navigate to the project directory and run the app.py file as follows
+   ```bash
+   % python3 ./src/app.py
+   ```
 Quick start guide can be found [here](https://github.com/psvkaushik/Group50_Proj2/blob/main/docs/Quick_start_guide.md)\
 Case studies can be found [here]  
 Troubleshooting steps can be found [here]
