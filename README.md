@@ -73,7 +73,9 @@ The primary goal of this project is to simplify the tasks of developers as they 
 - [x] Provided feature to add custom commands and included instaructions on using template to create corressponding code
 
 # Third Party Dependencies
+
 Following third party dependencies are expected to be installed
+
 1. Git [link](https://github.com/git-guides/install-git)
 2. Python [link](https://www.python.org/downloads/)
 3. Requests [link](https://pypi.org/project/requests/)
