@@ -63,7 +63,7 @@ Here are few motivation points to come up with this idea
 
 ### IMPORTANT: Generate a token of your account (make sure to allow everything in token) and add the token in line 30 of [app.py](https://github.com/psvkaushik/Group50_Proj2/blob/main/src/app.py)
 
-Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)\
+Detail about generating token is given [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
 
 4. Navigate to the project directory and run the app.py file as follows
    ```bash
