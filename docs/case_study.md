@@ -1,15 +1,5 @@
 # WINDOWS
 
-
-
-
-
-
 # LINUX
-
-
-
-
-
 
 # MAC
